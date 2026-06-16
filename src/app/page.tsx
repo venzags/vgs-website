@@ -215,7 +215,44 @@ export default function Home() {
           © 2026 Venza Global Services. All Rights Reserved.
         </p>
       </footer>
+<div className="fixed bottom-0 left-0 w-full bg-white border-t shadow-lg z-50">
+  <div className="grid grid-cols-4 text-center">
 
+    <a
+      href="tel:+919999999999"
+      className="bg-blue-600 text-white py-4 font-semibold"
+    >
+      📞
+      <div className="text-xs">Call</div>
+    </a>
+
+    <a
+      href="https://wa.me/919999999999"
+      target="_blank"
+      className="bg-green-500 text-white py-4 font-semibold"
+    >
+      💬
+      <div className="text-xs">WhatsApp</div>
+    </a>
+
+    <a
+      href="mailto:admin@venzags.com"
+      className="bg-purple-600 text-white py-4 font-semibold"
+    >
+      📧
+      <div className="text-xs">Email</div>
+    </a>
+
+    <a
+      href="#contact"
+      className="bg-orange-500 text-white py-4 font-semibold"
+    >
+      📅
+      <div className="text-xs">Book</div>
+    </a>
+
+  </div>
+</div>
     </main>
   );
 }
