@@ -28,6 +28,16 @@ export default function Home() {
       <header className="sticky top-0 z-50 bg-white shadow-md">
         <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
           <div className="flex items-center">
+            <nav className="hidden md:flex gap-8 font-medium">
+ ...
+</nav>
+
+<button
+  className="md:hidden text-3xl"
+  onClick={() => setMenuOpen(!menuOpen)}
+>
+  ☰
+</button>
   <Image
     src="/images/vgs-logo.png"
     alt="Venza Global Services"
@@ -49,6 +59,23 @@ export default function Home() {
             Get Consultation
           </button>
         </div>
+        <header>
+  <div>
+    logo
+    nav
+    hamburger
+  </div>
+
+  {menuOpen && (
+    <div className="md:hidden bg-white shadow-lg">
+      <a href="#home" className="block p-4">Home</a>
+      <a href="#services" className="block p-4">Services</a>
+      <a href="#about" className="block p-4">About</a>
+      <a href="#industries" className="block p-4">Industries</a>
+      <a href="#contact" className="block p-4">Contact</a>
+    </div>
+  )}
+</header>
       </header>
 
       {/* Hero */}
