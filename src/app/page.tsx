@@ -41,8 +41,8 @@ export default function Home() {
   <Image
   src="/images/vgs-logo.png"
   alt="Venza Global Services"
-  width={140}
-  height={45}
+  width={145}
+  height={50}
   priority
 />
 </div>
