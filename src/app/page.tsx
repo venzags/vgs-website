@@ -1,5 +1,8 @@
+"use client";
+import { useState } from "react";
 import Image from "next/image";
 export default function Home() {
+  const [menuOpen, setMenuOpen] = useState(false);
   const services = [
     "AI Solutions",
     "Machine Learning",
