@@ -29,7 +29,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
           <div className="flex items-center">
             <nav className="hidden md:flex gap-8 font-medium">
- ...
+ 
 </nav>
 
 <button
@@ -38,14 +38,27 @@ export default function Home() {
 >
   ☰
 </button>
+  <div className="flex items-center">
+  {/* Desktop Logo */}
   <Image
-  src="/images/vgs-logo.png"
-  alt="Venza Global Services"
-  width={145}
-  height={50}
-  priority
-/>
-</div>
+    src="/images/vgs-logo.png"
+    alt="Venza Global Services"
+    width={260}
+    height={80}
+    priority
+    className="hidden md:block"
+  />
+
+  {/* Mobile Logo */}
+  <Image
+    src="/images/vgs-logo.png"
+    alt="Venza Global Services"
+    width={150}
+    height={50}
+    priority
+    className="block md:hidden"
+  />
+</div></div>
 
           <nav className="hidden md:flex gap-8 font-medium">
             <a href="#home">Home</a>
@@ -55,7 +68,7 @@ export default function Home() {
             <a href="#contact">Contact</a>
           </nav>
 
-          <button className="bg-blue-700 text-white px-3 py-2 rounded-lg text-sm md:px-5 md:py-2 md:text-base">
+          <button className="bg-blue-700 hover:bg-blue-800 text-white px-3 md:px-6 py-2 md:py-3 rounded-lg text-sm md:text-base font-semibold transition">
   Get Consultation
 </button>
         </div>
