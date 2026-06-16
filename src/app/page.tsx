@@ -60,21 +60,49 @@ export default function Home() {
           </button>
         </div>
         <header>
-  <div>
-    logo
-    nav
-    hamburger
-  </div>
-
   {menuOpen && (
-    <div className="md:hidden bg-white shadow-lg">
-      <a href="#home" className="block p-4">Home</a>
-      <a href="#services" className="block p-4">Services</a>
-      <a href="#about" className="block p-4">About</a>
-      <a href="#industries" className="block p-4">Industries</a>
-      <a href="#contact" className="block p-4">Contact</a>
-    </div>
-  )}
+  <div className="md:hidden bg-white shadow-lg">
+    <a
+      href="#home"
+      onClick={() => setMenuOpen(false)}
+      className="block p-4 border-b"
+    >
+      Home
+    </a>
+
+    <a
+      href="#services"
+      onClick={() => setMenuOpen(false)}
+      className="block p-4 border-b"
+    >
+      Services
+    </a>
+
+    <a
+      href="#about"
+      onClick={() => setMenuOpen(false)}
+      className="block p-4 border-b"
+    >
+      About
+    </a>
+
+    <a
+      href="#industries"
+      onClick={() => setMenuOpen(false)}
+      className="block p-4 border-b"
+    >
+      Industries
+    </a>
+
+    <a
+      href="#contact"
+      onClick={() => setMenuOpen(false)}
+      className="block p-4"
+    >
+      Contact
+    </a>
+  </div>
+)}
 </header>
       </header>
 
