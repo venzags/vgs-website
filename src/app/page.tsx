@@ -1,3 +1,4 @@
+import Image from "next/image";
 export default function Home() {
   const services = [
     "AI Solutions",
@@ -23,11 +24,15 @@ export default function Home() {
       {/* Navbar */}
       <header className="sticky top-0 z-50 bg-white shadow-md">
         <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-          <div>
-            <h1 className="text-2xl font-bold text-blue-700">
-              Venza Global Services
-            </h1>
-          </div>
+          <div className="flex items-center">
+  <Image
+    src="/images/vgs-logo.png"
+    alt="Venza Global Services"
+    width={220}
+    height={70}
+    priority
+  />
+</div>
 
           <nav className="hidden md:flex gap-8 font-medium">
             <a href="#home">Home</a>
