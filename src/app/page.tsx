@@ -26,25 +26,25 @@ export default function Home() {
 
       {/* Navbar */}
       <header className="sticky top-0 z-50 bg-white shadow-md">
-        <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+        <div className="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
           <div className="flex items-center">
             <nav className="hidden md:flex gap-8 font-medium">
  ...
 </nav>
 
 <button
-  className="md:hidden text-3xl"
+  className="md:hidden text-3xl mr-3"
   onClick={() => setMenuOpen(!menuOpen)}
 >
   ☰
 </button>
   <Image
-    src="/images/vgs-logo.png"
-    alt="Venza Global Services"
-    width={220}
-    height={70}
-    priority
-  />
+  src="/images/vgs-logo.png"
+  alt="Venza Global Services"
+  width={140}
+  height={45}
+  priority
+/>
 </div>
 
           <nav className="hidden md:flex gap-8 font-medium">
@@ -55,9 +55,9 @@ export default function Home() {
             <a href="#contact">Contact</a>
           </nav>
 
-          <button className="bg-blue-700 text-white px-5 py-2 rounded-lg">
-            Get Consultation
-          </button>
+          <button className="bg-blue-700 text-white px-3 py-2 rounded-lg text-sm md:px-5 md:py-2 md:text-base">
+  Get Consultation
+</button>
         </div>
         <header>
   {menuOpen && (
