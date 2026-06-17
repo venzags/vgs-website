@@ -2,6 +2,7 @@
 import { motion } from "framer-motion";
 import FadeIn from "./components/FadeIn";
 import Counter from "./components/Counter";
+import VGSNetwork from "./components/VGSNetwork";
 import { useState } from "react";
 import Image from "next/image";
 export default function Home() {
@@ -128,9 +129,21 @@ export default function Home() {
       {/* Hero */}
       <section
         id="home"
-        className="bg-gradient-to-r from-blue-700 to-blue-900 text-white py-28 px-6"
+        className="relative overflow-hidden bg-gradient-to-br from-slate-950 via-slate-900 to-black text-white py-32 px-6"
       >
-        <div className="max-w-6xl mx-auto text-center">
+        {/* Animated Background */}
+<div className="absolute inset-0 overflow-hidden">
+
+  <div className="absolute top-20 left-20 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl animate-pulse"></div>
+
+  <div className="absolute bottom-20 right-20 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl animate-pulse"></div>
+
+  <div className="absolute top-1/2 left-1/2 w-80 h-80 bg-indigo-500/10 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
+
+</div>
+       <VGSNetwork />
+
+<div className="relative z-10 max-w-6xl mx-auto text-center">
 
   <motion.h2
     initial={{ opacity: 0, y: 50 }}
