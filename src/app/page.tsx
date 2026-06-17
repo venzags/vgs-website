@@ -127,25 +127,23 @@ export default function Home() {
         className="bg-gradient-to-r from-blue-700 to-blue-900 text-white py-28 px-6"
       >
         <div className="max-w-6xl mx-auto text-center">
-          <motion.h2
-  initial={{ opacity: 0, y: 50 }}
-  animate={{ opacity: 1, y: 0 }}
-  transition={{ duration: 1 }}
-  className="text-5xl md:text-6xl font-bold mb-6"
->
-  AI-Powered Digital Transformation
-</motion.h2>
 
-          <motion.p
-  initial={{ opacity: 0 }}
-  animate={{ opacity: 1 }}
-  transition={{ delay: 0.5, duration: 1 }}
-  className="text-xl mb-8"
->
-  Helping businesses worldwide accelerate growth through Artificial Intelligence, Cloud Technologies, Software Development, and Digital Innovation.
-</motion.p>
+  <motion.h2
+    initial={{ opacity: 0, y: 50 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 1 }}
+    className="text-5xl md:text-6xl font-bold mb-6"
+  >
+    AI-Powered Digital Transformation
+  </motion.h2>
 
-          <div className="flex justify-center gap-4 flex-wrap">
+  <p className="text-xl mb-10">
+    Helping businesses worldwide accelerate growth through Artificial
+    Intelligence, Cloud Technologies, Software Development, and Digital
+    Innovation.
+  </p>
+
+<div className="flex justify-center gap-4 flex-wrap">
             <button className="bg-white text-blue-700 px-8 py-3 rounded-lg font-semibold">
               Explore Services
             </button>
@@ -156,7 +154,34 @@ export default function Home() {
           </div>
         </div>
       </section>
+{/* Statistics */}
+<section className="bg-white py-16">
+  <div className="max-w-6xl mx-auto px-6">
+    <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
 
+      <div>
+        <h3 className="text-4xl font-bold text-blue-700">150+</h3>
+        <p className="text-gray-600 mt-2">Projects</p>
+      </div>
+
+      <div>
+        <h3 className="text-4xl font-bold text-blue-700">25+</h3>
+        <p className="text-gray-600 mt-2">Countries</p>
+      </div>
+
+      <div>
+        <h3 className="text-4xl font-bold text-blue-700">50+</h3>
+        <p className="text-gray-600 mt-2">Clients</p>
+      </div>
+
+      <div>
+        <h3 className="text-4xl font-bold text-blue-700">98%</h3>
+        <p className="text-gray-600 mt-2">Satisfaction</p>
+      </div>
+
+    </div>
+  </div>
+</section>
       {/* About */}
 <FadeIn>
   <section
