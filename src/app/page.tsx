@@ -7,13 +7,16 @@ import Image from "next/image";
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
   const services = [
-    "AI Solutions",
-    "Machine Learning",
-    "Web Development",
-    "Mobile Applications",
-    "Cloud Solutions",
-    "IT Consulting",
-  ];
+  "🤖 AI Solutions",
+  "🧠 Machine Learning",
+  "💻 Software Development",
+  "🌐 Web Development",
+  "📱 Mobile Applications",
+  "☁️ Cloud Solutions",
+  "📈 Digital Marketing",
+  "📊 IT Consulting",
+  "🔒 Cyber Security",
+];
 
   const industries = [
     "Healthcare",
@@ -219,7 +222,7 @@ export default function Home() {
             {services.map((service) => (
               <div
                 key={service}
-                className="bg-white rounded-xl shadow-md p-8 hover:shadow-xl transition"
+                className="bg-white p-8 rounded-2xl shadow-md hover:shadow-2xl hover:-translate-y-3 transition-all duration-500 border border-gray-100 hover:border-blue-500"
               >
                 <h3 className="text-2xl font-bold text-blue-700 mb-4">
                   {service}
