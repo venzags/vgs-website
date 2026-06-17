@@ -1,4 +1,5 @@
 "use client";
+import { motion } from "framer-motion";
 import FadeIn from "./components/FadeIn";
 import { useState } from "react";
 import Image from "next/image";
@@ -126,15 +127,23 @@ export default function Home() {
         className="bg-gradient-to-r from-blue-700 to-blue-900 text-white py-28 px-6"
       >
         <div className="max-w-6xl mx-auto text-center">
-          <h2 className="text-5xl md:text-6xl font-bold mb-6">
-            AI-Powered Digital Transformation
-          </h2>
+          <motion.h2
+  initial={{ opacity: 0, y: 50 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 1 }}
+  className="text-5xl md:text-6xl font-bold mb-6"
+>
+  AI-Powered Digital Transformation
+</motion.h2>
 
-          <p className="text-xl max-w-3xl mx-auto mb-10">
-            Helping businesses worldwide accelerate growth through Artificial
-            Intelligence, Cloud Technologies, Software Development, and Digital
-            Innovation.
-          </p>
+          <motion.p
+  initial={{ opacity: 0 }}
+  animate={{ opacity: 1 }}
+  transition={{ delay: 0.5, duration: 1 }}
+  className="text-xl mb-8"
+>
+  Helping businesses worldwide accelerate growth through Artificial Intelligence, Cloud Technologies, Software Development, and Digital Innovation.
+</motion.p>
 
           <div className="flex justify-center gap-4 flex-wrap">
             <button className="bg-white text-blue-700 px-8 py-3 rounded-lg font-semibold">
@@ -149,21 +158,23 @@ export default function Home() {
       </section>
 
       {/* About */}
-      <section
-        id="about"
-        className="max-w-6xl mx-auto px-6 py-20"
-      >
-        <h2 className="text-4xl font-bold text-center mb-8">
-          About VGS
-        </h2>
+<FadeIn>
+  <section
+    id="about"
+    className="max-w-6xl mx-auto px-6 py-20"
+  >
+    <h2 className="text-4xl font-bold text-center mb-8">
+      About VGS
+    </h2>
 
-        <p className="text-lg text-gray-600 text-center max-w-4xl mx-auto">
-          Venza Global Services is a technology-focused consulting brand
-          delivering AI solutions, Machine Learning, Software Development,
-          Cloud Services, and Business Transformation solutions to clients
-          across the globe.
-        </p>
-      </section>
+    <p className="text-lg text-gray-600 text-center max-w-4xl mx-auto">
+      Venza Global Services is a technology-focused consulting brand
+      delivering AI solutions, Machine Learning, Software Development,
+      Cloud Services, and Business Transformation solutions to clients
+      across the globe.
+    </p>
+  </section>
+</FadeIn>
 
       {/* Services */}
       <section

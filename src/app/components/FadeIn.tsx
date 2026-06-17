@@ -9,9 +9,9 @@ export default function FadeIn({
 }) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 40 }}
+      initial={{ opacity: 0, y: 150 }}
       whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6 }}
+      transition={{ duration: 1.5 }}
       viewport={{ once: true }}
     >
       {children}
