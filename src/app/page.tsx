@@ -1,6 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 import FadeIn from "./components/FadeIn";
+import Counter from "./components/Counter";
 import { useState } from "react";
 import Image from "next/image";
 export default function Home() {
@@ -160,22 +161,24 @@ export default function Home() {
     <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
 
       <div>
-        <h3 className="text-4xl font-bold text-blue-700">150+</h3>
+        <h3 className="text-4xl font-bold text-blue-700">
+  <Counter end={150} />+
+</h3>
         <p className="text-gray-600 mt-2">Projects</p>
       </div>
 
       <div>
-        <h3 className="text-4xl font-bold text-blue-700">25+</h3>
+        <h3 className="text-4xl font-bold text-blue-700"><Counter end={25} />+</h3>
         <p className="text-gray-600 mt-2">Countries</p>
       </div>
 
       <div>
-        <h3 className="text-4xl font-bold text-blue-700">50+</h3>
+        <h3 className="text-4xl font-bold text-blue-700"><Counter end={50} />+</h3>
         <p className="text-gray-600 mt-2">Clients</p>
       </div>
 
       <div>
-        <h3 className="text-4xl font-bold text-blue-700">98%</h3>
+        <h3 className="text-4xl font-bold text-blue-700"><Counter end={98} />%</h3>
         <p className="text-gray-600 mt-2">Satisfaction</p>
       </div>
 
