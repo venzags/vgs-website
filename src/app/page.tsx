@@ -124,7 +124,7 @@ export default function Home() {
       {/* Hero */}
      <section
   id="home"
-  className="relative overflow-hidden bg-gradient-to-br from-slate-950 via-slate-900 to-black text-white py-32 px-6"
+  className="relative overflow-hidden bg-gradient-to-br from-slate-950 via-slate-900 to-black text-white py-32 px-6 transform-gpu"
 >
        {/* Animated Background */}
 <div className="absolute inset-0 overflow-hidden">
@@ -174,10 +174,13 @@ export default function Home() {
     {/* RIGHT SIDE */}
     <div className="flex justify-center items-center order-2 lg:order-none">
 
-     <div className="relative w-[320px] h-[320px]
-                sm:w-[380px] sm:h-[380px]
-                md:w-[450px] md:h-[450px]
-                lg:w-[500px] lg:h-[500px]">
+     <div
+  className="relative w-[320px] h-[320px]
+             sm:w-[380px] sm:h-[380px]
+             md:w-[450px] md:h-[450px]
+             lg:w-[500px] lg:h-[500px]
+             transform-gpu will-change-transform"
+>
   <VGSNetwork />
 </div>
 

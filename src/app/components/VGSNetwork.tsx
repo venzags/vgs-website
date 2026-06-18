@@ -3,6 +3,17 @@
 import { motion } from "framer-motion";
 
 export default function VGSNetwork() {
+    const serviceLabels = [
+    "AI Solutions",
+    "Machine Learning",
+    "Software Development",
+    "Web Development",
+    "Mobile Applications",
+    "Cloud Solutions",
+    "Digital Marketing",
+    "IT Consulting",
+    "Cyber Security",
+  ];
   return (
     <div className="absolute inset-0 overflow-hidden">
 
@@ -148,6 +159,50 @@ export default function VGSNetwork() {
   className="absolute bottom-44 right-8 md:bottom-44 md:right-20 text-cyan-300/80 text-sm md:text-base font-semibold"
 >
   Digital Marketing
+</motion.div>
+{/* Machine Learning */}
+<motion.div
+  animate={{ y: [0, -12, 0] }}
+  transition={{ repeat: Infinity, duration: 5 }}
+  className="absolute top-20 right-24 text-pink-300/70 font-semibold text-sm md:text-base"
+>
+  Machine Learning
+</motion.div>
+
+{/* Web Development */}
+<motion.div
+  animate={{ y: [0, 15, 0] }}
+  transition={{ repeat: Infinity, duration: 6 }}
+  className="absolute top-1/2 left-8 text-cyan-300/70 font-semibold text-sm md:text-base"
+>
+  Web Development
+</motion.div>
+
+{/* Mobile Applications */}
+<motion.div
+  animate={{ y: [0, -18, 0] }}
+  transition={{ repeat: Infinity, duration: 7 }}
+  className="absolute bottom-28 left-12 text-blue-300/70 font-semibold text-sm md:text-base"
+>
+  Mobile Applications
+</motion.div>
+
+{/* IT Consulting */}
+<motion.div
+  animate={{ y: [0, 10, 0] }}
+  transition={{ repeat: Infinity, duration: 5.5 }}
+  className="absolute bottom-16 right-32 text-indigo-300/70 font-semibold text-sm md:text-base"
+>
+  IT Consulting
+</motion.div>
+
+{/* Cyber Security */}
+<motion.div
+  animate={{ y: [0, -14, 0] }}
+  transition={{ repeat: Infinity, duration: 6.5 }}
+  className="absolute top-40 right-10 text-red-300/70 font-semibold text-sm md:text-base"
+>
+  Cyber Security
 </motion.div>
 
       {/* Particles */}
