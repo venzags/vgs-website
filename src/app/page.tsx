@@ -2,22 +2,17 @@
 import { motion } from "framer-motion";
 import FadeIn from "./components/FadeIn";
 import Counter from "./components/Counter";
+import Services from "./components/Services";
+import Portfolio from "./components/Portfolio";
+import Industries from "./components/Industries";
+import Testimonials from "./components/Testimonials";
+import CTA from "./components/CTA";
 import VGSNetwork from "./components/VGSNetwork";
 import { useState } from "react";
 import Image from "next/image";
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const services = [
-  "🤖 AI Solutions",
-  "🧠 Machine Learning",
-  "💻 Software Development",
-  "🌐 Web Development",
-  "📱 Mobile Applications",
-  "☁️ Cloud Solutions",
-  "📈 Digital Marketing",
-  "📊 IT Consulting",
-  "🔒 Cyber Security",
-];
+  
 
   const industries = [
     "Healthcare",
@@ -241,36 +236,11 @@ export default function Home() {
   </section>
 </FadeIn>
 
-      {/* Services */}
-      <section
-        id="services"
-        className="bg-gray-100 py-20 px-6"
-      >
-        <div className="max-w-7xl mx-auto">
-
-          <h2 className="text-4xl font-bold text-center mb-12">
-            Our Services
-          </h2>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {services.map((service) => (
-              <div
-                key={service}
-                className="bg-white p-8 rounded-2xl shadow-md hover:shadow-2xl hover:-translate-y-3 transition-all duration-500 border border-gray-100 hover:border-blue-500"
-              >
-                <h3 className="text-2xl font-bold text-blue-700 mb-4">
-                  {service}
-                </h3>
-
-                <p className="text-gray-600">
-                  Professional solutions tailored to modern business needs and
-                  scalable digital growth.
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+<Services /> 
+<Portfolio />
+<Industries />
+<Testimonials />
+<CTA />    
 
       {/* Why Choose VGS */}
       <section className="py-20 px-6">
