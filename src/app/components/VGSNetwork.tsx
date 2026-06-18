@@ -118,37 +118,37 @@ export default function VGSNetwork() {
 
       {/* Floating Labels */}
 
-      <motion.div
-        animate={{ y: [0, -15, 0] }}
-        transition={{ repeat: Infinity, duration: 4 }}
-        className="absolute top-24 left-32 text-cyan-300/70 font-semibold"
-      >
-        AI Solutions
-      </motion.div>
+<motion.div
+  animate={{ y: [0, -15, 0] }}
+  transition={{ repeat: Infinity, duration: 4 }}
+  className="absolute top-16 left-1/2 -translate-x-1/2 md:top-24 md:left-32 md:translate-x-0 text-cyan-300/80 text-sm md:text-base font-semibold"
+>
+  AI Solutions
+</motion.div>
 
-      <motion.div
-        animate={{ y: [0, 15, 0] }}
-        transition={{ repeat: Infinity, duration: 5 }}
-        className="absolute top-48 right-32 text-blue-300/70 font-semibold"
-      >
-        Cloud Services
-      </motion.div>
+<motion.div
+  animate={{ y: [0, 15, 0] }}
+  transition={{ repeat: Infinity, duration: 5 }}
+  className="absolute top-32 left-8 md:top-48 md:right-32 md:left-auto text-blue-300/80 text-sm md:text-base font-semibold"
+>
+  Cloud Services
+</motion.div>
 
-      <motion.div
-        animate={{ y: [0, -20, 0] }}
-        transition={{ repeat: Infinity, duration: 6 }}
-        className="absolute bottom-32 left-1/4 text-indigo-300/70 font-semibold"
-      >
-        Software Development
-      </motion.div>
+<motion.div
+  animate={{ y: [0, -20, 0] }}
+  transition={{ repeat: Infinity, duration: 6 }}
+  className="absolute bottom-28 left-10 md:bottom-32 md:left-1/4 text-indigo-300/80 text-sm md:text-base font-semibold"
+>
+  Software Development
+</motion.div>
 
-      <motion.div
-        animate={{ y: [0, 18, 0] }}
-        transition={{ repeat: Infinity, duration: 7 }}
-        className="absolute bottom-44 right-20 text-cyan-300/70 font-semibold"
-      >
-        Digital Marketing
-      </motion.div>
+<motion.div
+  animate={{ y: [0, 18, 0] }}
+  transition={{ repeat: Infinity, duration: 7 }}
+  className="absolute bottom-44 right-8 md:bottom-44 md:right-20 text-cyan-300/80 text-sm md:text-base font-semibold"
+>
+  Digital Marketing
+</motion.div>
 
       {/* Particles */}
 

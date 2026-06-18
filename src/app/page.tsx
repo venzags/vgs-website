@@ -179,15 +179,10 @@ export default function Home() {
     {/* RIGHT SIDE */}
     <div className="flex justify-center items-center order-2 lg:order-none">
 
-     <div
-  className="
-    relative
-    w-[220px] h-[220px]
-    sm:w-[280px] sm:h-[280px]
-    md:w-[350px] md:h-[350px]
-    lg:w-[500px] lg:h-[500px]
-  "
->
+     <div className="relative w-[320px] h-[320px]
+                sm:w-[380px] sm:h-[380px]
+                md:w-[450px] md:h-[450px]
+                lg:w-[500px] lg:h-[500px]">
   <VGSNetwork />
 </div>
 
