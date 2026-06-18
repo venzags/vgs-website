@@ -182,11 +182,10 @@ export default function Home() {
      <div
   className="
     relative
-    w-[180px] h-[180px]
-    sm:w-[220px] sm:h-[220px]
+    w-[220px] h-[220px]
+    sm:w-[280px] sm:h-[280px]
     md:w-[350px] md:h-[350px]
     lg:w-[500px] lg:h-[500px]
-    mx-auto
   "
 >
   <VGSNetwork />
