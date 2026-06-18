@@ -127,11 +127,11 @@ export default function Home() {
       </header>
 
       {/* Hero */}
-      <section
-        id="home"
-        className="relative overflow-hidden bg-gradient-to-br from-slate-950 via-slate-900 to-black text-white py-32 px-6"
-      >
-        {/* Animated Background */}
+     <section
+  id="home"
+  className="relative overflow-hidden bg-gradient-to-br from-slate-950 via-slate-900 to-black text-white py-32 px-6"
+>
+       {/* Animated Background */}
 <div className="absolute inset-0 overflow-hidden">
 
   <div className="absolute top-20 left-20 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl animate-pulse"></div>
@@ -141,36 +141,54 @@ export default function Home() {
   <div className="absolute top-1/2 left-1/2 w-80 h-80 bg-indigo-500/10 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
 
 </div>
-       <VGSNetwork />
 
-<div className="relative z-10 max-w-6xl mx-auto text-center">
+<div className="relative z-10 max-w-7xl mx-auto">
 
-  <motion.h2
-    initial={{ opacity: 0, y: 50 }}
-    animate={{ opacity: 1, y: 0 }}
-    transition={{ duration: 1 }}
-    className="text-5xl md:text-6xl font-bold mb-6"
-  >
-    AI-Powered Digital Transformation
-  </motion.h2>
+  <div className="grid lg:grid-cols-2 gap-12 items-center min-h-[600px]">
 
-  <p className="text-xl mb-10">
-    Helping businesses worldwide accelerate growth through Artificial
-    Intelligence, Cloud Technologies, Software Development, and Digital
-    Innovation.
-  </p>
+    {/* LEFT SIDE */}
+    <div className="text-left">
 
-<div className="flex justify-center gap-4 flex-wrap">
-            <button className="bg-white text-blue-700 px-8 py-3 rounded-lg font-semibold">
-              Explore Services
-            </button>
+      <motion.h2
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1 }}
+        className="text-5xl md:text-6xl font-bold mb-6"
+      >
+        AI-Powered Digital Transformation
+      </motion.h2>
 
-            <button className="border border-white px-8 py-3 rounded-lg">
-              Contact Us
-            </button>
-          </div>
-        </div>
-      </section>
+      <p className="text-xl mb-10">
+        Helping businesses worldwide accelerate growth through
+        Artificial Intelligence, Cloud Technologies,
+        Software Development, and Digital Innovation.
+      </p>
+
+      <div className="flex gap-4 flex-wrap">
+        <button className="bg-white text-blue-700 px-8 py-3 rounded-lg font-semibold">
+          Explore Services
+        </button>
+
+        <button className="border border-white px-8 py-3 rounded-lg">
+          Contact Us
+        </button>
+      </div>
+
+    </div> {/* LEFT SIDE END */}
+
+    {/* RIGHT SIDE */}
+    <div className="hidden lg:flex justify-center items-center">
+
+      <div className="relative w-[500px] h-[500px]">
+        <VGSNetwork />
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+</section>
 {/* Statistics */}
 <section className="bg-white py-16">
   <div className="max-w-6xl mx-auto px-6">

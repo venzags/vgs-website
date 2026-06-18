@@ -57,13 +57,85 @@ export default function VGSNetwork() {
         }}
         className="absolute bottom-20 right-1/4 w-5 h-5 bg-cyan-300 rounded-full shadow-[0_0_30px_#67e8f9]"
       />
+      {[...Array(12)].map((_, i) => (
+  <motion.div
+    key={i}
+    animate={{
+      scale: [1, 1.5, 1],
+      opacity: [0.4, 1, 0.4],
+    }}
+    transition={{
+      repeat: Infinity,
+      duration: 2 + i,
+    }}
+    className="absolute rounded-full bg-cyan-400"
+    style={{
+      width: "6px",
+      height: "6px",
+      left: `${10 + i * 6}%`,
+      top: `${15 + (i % 5) * 15}%`,
+    }}
+  />
+))}
+<motion.div
+  animate={{
+    x: [0, 250],
+  }}
+  transition={{
+    repeat: Infinity,
+    duration: 4,
+    ease: "linear",
+  }}
+  className="absolute top-24 left-24 w-2 h-2 rounded-full bg-white shadow-[0_0_15px_white]"
+/>
 
-      {/* Connection Lines */}
-      <div className="absolute top-24 left-24 w-64 h-px bg-cyan-400/30 rotate-12"></div>
+<motion.div
+  animate={{
+    x: [0, 300],
+  }}
+  transition={{
+    repeat: Infinity,
+    duration: 6,
+    ease: "linear",
+  }}
+  className="absolute bottom-36 left-1/3 w-2 h-2 rounded-full bg-cyan-300 shadow-[0_0_15px_#22d3ee]"
+/>
 
-      <div className="absolute top-52 left-80 w-80 h-px bg-blue-400/20 -rotate-12"></div>
+      {/* Animated Connection Line 1 */}
+      <motion.div
+        animate={{
+          opacity: [0.2, 1, 0.2],
+        }}
+        transition={{
+          repeat: Infinity,
+          duration: 3,
+        }}
+        className="absolute top-24 left-24 w-64 h-px bg-cyan-400/40 rotate-12"
+      />
 
-      <div className="absolute bottom-32 left-1/3 w-72 h-px bg-indigo-400/20 rotate-6"></div>
+      {/* Animated Connection Line 2 */}
+      <motion.div
+        animate={{
+          opacity: [0.2, 1, 0.2],
+        }}
+        transition={{
+          repeat: Infinity,
+          duration: 4,
+        }}
+        className="absolute top-52 left-80 w-80 h-px bg-blue-400/30 -rotate-12"
+      />
+
+      {/* Animated Connection Line 3 */}
+      <motion.div
+        animate={{
+          opacity: [0.2, 1, 0.2],
+        }}
+        transition={{
+          repeat: Infinity,
+          duration: 5,
+        }}
+        className="absolute bottom-32 left-1/3 w-72 h-px bg-indigo-400/30 rotate-6"
+      />
 
       {/* Floating Labels */}
 
