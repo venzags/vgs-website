@@ -177,11 +177,14 @@ export default function Home() {
     </div> {/* LEFT SIDE END */}
 
     {/* RIGHT SIDE */}
-    <div className="flex justify-center items-center mt-10 lg:mt-0">
+    <div className="hidden lg:flex justify-center items-center">
 
-      <div className="relative w-[500px] h-[500px]">
-        <VGSNetwork />
-      </div>
+      <div className="relative
+                w-[250px] h-[250px]
+                md:w-[350px] md:h-[350px]
+                lg:w-[500px] lg:h-[500px]">
+  <VGSNetwork />
+</div>
 
     </div>
 
