@@ -144,10 +144,10 @@ export default function Home() {
 
 <div className="relative z-10 max-w-7xl mx-auto">
 
-  <div className="grid lg:grid-cols-2 gap-12 items-center min-h-[600px]">
+  <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center min-h-[600px]lg:min-h-[600px]">
 
     {/* LEFT SIDE */}
-    <div className="text-left">
+    <div className="text-left order-1">
 
       <motion.h2
         initial={{ opacity: 0, y: 50 }}
@@ -158,7 +158,7 @@ export default function Home() {
         AI-Powered Digital Transformation
       </motion.h2>
 
-      <p className="text-xl mb-10">
+      <p className="text-sm md:text-xl mb-10">
         Helping businesses worldwide accelerate growth through
         Artificial Intelligence, Cloud Technologies,
         Software Development, and Digital Innovation.
@@ -177,12 +177,18 @@ export default function Home() {
     </div> {/* LEFT SIDE END */}
 
     {/* RIGHT SIDE */}
-    <div className="flex justify-center items-center mt-10 lg:mt-0">
+    <div className="flex justify-center items-center order-2 lg:order-none">
 
-      <div className="relative
-                w-[250px] h-[250px]
-                md:w-[350px] md:h-[350px]
-                lg:w-[500px] lg:h-[500px]">
+     <div
+  className="
+    relative
+    w-[180px] h-[180px]
+    sm:w-[220px] sm:h-[220px]
+    md:w-[350px] md:h-[350px]
+    lg:w-[500px] lg:h-[500px]
+    mx-auto
+  "
+>
   <VGSNetwork />
 </div>
 
