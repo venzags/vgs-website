@@ -177,7 +177,7 @@ export default function Home() {
     </div> {/* LEFT SIDE END */}
 
     {/* RIGHT SIDE */}
-    <div className="hidden lg:flex justify-center items-center">
+    <div className="flex justify-center items-center mt-10 lg:mt-0">
 
       <div className="relative
                 w-[250px] h-[250px]
