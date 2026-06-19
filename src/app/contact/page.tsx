@@ -1,68 +1,186 @@
+"use client";
+import Link from "next/link";
+import Image from "next/image";
+import type { FormEvent } from "react";
+
 export default function ContactPage() {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    // Add your own form handling logic later
+  };
+
   return (
-    <main className="min-h-screen bg-gray-50 py-20 px-6">
-      <div className="max-w-3xl mx-auto bg-white p-8 rounded-2xl shadow-lg">
+    <main className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-indigo-50">
+      {/* Header – white, transparent, with logo */}
+      <header className="border-b border-gray-200 bg-white/80 backdrop-blur-md sticky top-0 z-50">
+        <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+          <Link href="/" className="flex items-center">
+            <Image
+              src="/images/vgs-logo.png"
+              alt="Venza Global Services"
+              width={260}
+              height={80}
+              priority
+              className="hidden md:block"
+            />
+            <Image
+              src="/images/vgs-logo.png"
+              alt="Venza Global Services"
+              width={150}
+              height={50}
+              priority
+              className="block md:hidden"
+            />
+          </Link>
 
-        <h1 className="text-4xl font-bold text-center mb-4">
-          Contact Venza Global Services
-        </h1>
+          <div className="flex gap-3">
+            <Link
+              href="/"
+              className="px-4 py-2 rounded-lg bg-gray-100 hover:bg-gray-200 text-gray-700"
+            >
+              Home
+            </Link>
+            <Link
+              href="/consultation"
+              className="px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-700 text-white"
+            >
+              Free Consultation
+            </Link>
+          </div>
+        </div>
+      </header>
 
-        <p className="text-gray-600 text-center mb-10">
-          Have a question, partnership inquiry, or business requirement?
-          Send us a message and our team will get back to you.
-        </p>
+      {/* Contact section */}
+      <div className="max-w-3xl mx-auto py-20 px-6">
+        <div className="bg-white rounded-2xl shadow-2xl border border-blue-50 relative overflow-hidden">
+          {/* Decorative gradient top bar */}
+          <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500" />
 
-        <form className="space-y-6">
+          <div className="p-8">
+            {/* Colourful gradient heading */}
+            <h1 className="text-4xl font-extrabold text-center mb-4 bg-gradient-to-r from-blue-700 to-indigo-600 bg-clip-text text-transparent">
+              Contact Venza Global Services
+            </h1>
 
-          <input
-            type="text"
-            placeholder="Full Name"
-            className="w-full border p-3 rounded-lg"
-          />
+            <p className="text-gray-600 text-center mb-10 max-w-xl mx-auto">
+              Have a question, partnership inquiry, or business requirement?
+              <br />
+              <span className="font-medium text-blue-700">
+                Send us a message and our team will get back to you.
+              </span>
+            </p>
 
-          <input
-            type="email"
-            placeholder="Email Address"
-            className="w-full border p-3 rounded-lg"
-          />
+            <form className="space-y-6" onSubmit={handleSubmit}>
+              {/* Full Name */}
+              <div>
+                <label htmlFor="fullName" className="sr-only">
+                  Full Name
+                </label>
+                <input
+                  id="fullName"
+                  type="text"
+                  name="fullName"
+                  placeholder="Full Name"
+                  className="w-full border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 p-4 rounded-xl outline-none transition text-gray-900 placeholder-gray-400 bg-white"
+                  required
+                />
+              </div>
 
-          <input
-            type="tel"
-            placeholder="Phone Number"
-            className="w-full border p-3 rounded-lg"
-          />
+              {/* Email */}
+              <div>
+                <label htmlFor="email" className="sr-only">
+                  Email Address
+                </label>
+                <input
+                  id="email"
+                  type="email"
+                  name="email"
+                  placeholder="Email Address"
+                  className="w-full border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 p-4 rounded-xl outline-none transition text-gray-900 placeholder-gray-400 bg-white"
+                  required
+                />
+              </div>
 
-          <input
-            type="text"
-            placeholder="Company Name"
-            className="w-full border p-3 rounded-lg"
-          />
+              {/* Phone */}
+              <div>
+                <label htmlFor="phone" className="sr-only">
+                  Phone Number
+                </label>
+                <input
+                  id="phone"
+                  type="tel"
+                  name="phone"
+                  placeholder="Phone Number"
+                  className="w-full border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 p-4 rounded-xl outline-none transition text-gray-900 placeholder-gray-400 bg-white"
+                />
+              </div>
 
-          <select className="w-full border p-3 rounded-lg">
-            <option>Select Inquiry Type</option>
-            <option>General Inquiry</option>
-            <option>Business Partnership</option>
-            <option>Support Request</option>
-            <option>Project Discussion</option>
-            <option>Career Opportunity</option>
-          </select>
+              {/* Company */}
+              <div>
+                <label htmlFor="company" className="sr-only">
+                  Company Name
+                </label>
+                <input
+                  id="company"
+                  type="text"
+                  name="company"
+                  placeholder="Company Name"
+                  className="w-full border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 p-4 rounded-xl outline-none transition text-gray-900 placeholder-gray-400 bg-white"
+                />
+              </div>
 
-          <textarea
-            placeholder="Your Message"
-            rows={6}
-            className="w-full border p-3 rounded-lg"
-          />
+              {/* Inquiry Type */}
+              <div>
+                <label htmlFor="inquiryType" className="sr-only">
+                  Select Inquiry Type
+                </label>
+                <select
+                  id="inquiryType"
+                  name="inquiryType"
+                  className="w-full border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 p-4 rounded-xl outline-none transition text-gray-900 bg-white"
+                  defaultValue=""
+                >
+                  <option value="" disabled className="text-gray-400">
+                    Select Inquiry Type
+                  </option>
+                  <option value="general">General Inquiry</option>
+                  <option value="partnership">Business Partnership</option>
+                  <option value="support">Support Request</option>
+                  <option value="project">Project Discussion</option>
+                  <option value="career">Career Opportunity</option>
+                </select>
+              </div>
 
-          <button
-            type="submit"
-            className="w-full bg-blue-700 hover:bg-blue-800 text-white py-3 rounded-lg font-semibold transition"
-          >
-            Send Message
-          </button>
+              {/* Message */}
+              <div>
+                <label htmlFor="message" className="sr-only">
+                  Your Message
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
+                  placeholder="Your Message"
+                  rows={6}
+                  className="w-full border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 p-4 rounded-xl outline-none transition resize-none text-gray-900 placeholder-gray-400 bg-white"
+                />
+              </div>
 
-        </form>
-
+              {/* Submit button */}
+              <button
+                type="submit"
+                className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white py-4 rounded-xl font-bold text-lg shadow-lg shadow-blue-200/50 transition"
+              >
+                ✉️ Send Message
+              </button>
+            </form>
+          </div>
+        </div>
       </div>
+
+      {/* Footer */}
+      <footer className="border-t border-gray-200 py-8 text-center text-gray-500">
+        © 2026 Venza Global Services. All Rights Reserved.
+      </footer>
     </main>
   );
 }
