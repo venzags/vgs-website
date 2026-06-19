@@ -14,8 +14,9 @@ export default function ContactPage() {
       {/* Header */}
       <header className="border-b border-gray-200 bg-white/80 backdrop-blur-md sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 sm:py-4 flex justify-between items-center">
-          {/* Logo – already responsive */}
+          {/* Logo – now properly sized on mobile */}
           <Link href="/" className="flex items-center shrink-0">
+            {/* Desktop Logo (hidden on mobile) */}
             <Image
               src="/images/vgs-logo.png"
               alt="Venza Global Services"
@@ -24,17 +25,18 @@ export default function ContactPage() {
               priority
               className="hidden sm:block h-8 w-auto md:h-auto md:w-auto"
             />
+            {/* Mobile Logo (hidden on desktop) – now much bigger */}
             <Image
               src="/images/vgs-logo.png"
               alt="Venza Global Services"
-              width={200}
-              height={75}
+              width={180}
+              height={70}
               priority
-              className="block sm:hidden h-6 w-auto"
+              className="block sm:hidden h-10 w-auto"
             />
           </Link>
 
-          {/* Navigation – now mobile friendly */}
+          {/* Navigation */}
           <div className="flex items-center gap-2 sm:gap-3 ml-4">
             <Link
               href="/"
@@ -52,16 +54,14 @@ export default function ContactPage() {
         </div>
       </header>
 
-      {/* Contact section – unchanged, still colourful */}
+      {/* Contact section */}
       <div className="max-w-3xl mx-auto py-20 px-6">
         <div className="bg-white rounded-2xl shadow-2xl border border-blue-50 relative overflow-hidden">
           <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500" />
-
           <div className="p-6 sm:p-8">
             <h1 className="text-3xl sm:text-4xl font-extrabold text-center mb-4 bg-gradient-to-r from-blue-700 to-indigo-600 bg-clip-text text-transparent">
               Contact Venza Global Services
             </h1>
-
             <p className="text-gray-600 text-center mb-10 max-w-xl mx-auto text-sm sm:text-base">
               Have a question, partnership inquiry, or business requirement?
               <br />
@@ -69,9 +69,7 @@ export default function ContactPage() {
                 Send us a message and our team will get back to you.
               </span>
             </p>
-
             <form className="space-y-5 sm:space-y-6" onSubmit={handleSubmit}>
-              {/* All fields – same visibility fixes */}
               <div>
                 <label htmlFor="fullName" className="sr-only">Full Name</label>
                 <input
@@ -83,7 +81,6 @@ export default function ContactPage() {
                   required
                 />
               </div>
-
               <div>
                 <label htmlFor="email" className="sr-only">Email Address</label>
                 <input
@@ -95,7 +92,6 @@ export default function ContactPage() {
                   required
                 />
               </div>
-
               <div>
                 <label htmlFor="phone" className="sr-only">Phone Number</label>
                 <input
@@ -106,7 +102,6 @@ export default function ContactPage() {
                   className="w-full border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 p-3 sm:p-4 rounded-xl outline-none transition text-gray-900 placeholder-gray-400 bg-white text-sm sm:text-base"
                 />
               </div>
-
               <div>
                 <label htmlFor="company" className="sr-only">Company Name</label>
                 <input
@@ -117,7 +112,6 @@ export default function ContactPage() {
                   className="w-full border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 p-3 sm:p-4 rounded-xl outline-none transition text-gray-900 placeholder-gray-400 bg-white text-sm sm:text-base"
                 />
               </div>
-
               <div>
                 <label htmlFor="inquiryType" className="sr-only">Select Inquiry Type</label>
                 <select
@@ -136,7 +130,6 @@ export default function ContactPage() {
                   <option value="career">Career Opportunity</option>
                 </select>
               </div>
-
               <div>
                 <label htmlFor="message" className="sr-only">Your Message</label>
                 <textarea
@@ -147,7 +140,6 @@ export default function ContactPage() {
                   className="w-full border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 p-3 sm:p-4 rounded-xl outline-none transition resize-none text-gray-900 placeholder-gray-400 bg-white text-sm sm:text-base"
                 />
               </div>
-
               <button
                 type="submit"
                 className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white py-3 sm:py-4 rounded-xl font-bold text-base sm:text-lg shadow-lg shadow-blue-200/50 transition"
@@ -158,7 +150,6 @@ export default function ContactPage() {
           </div>
         </div>
       </div>
-
       <footer className="border-t border-gray-200 py-8 text-center text-gray-500 text-sm">
         © 2026 Venza Global Services. All Rights Reserved.
       </footer>
