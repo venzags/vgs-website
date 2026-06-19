@@ -123,6 +123,19 @@ export default function Home() {
   {menuOpen && (
   <div className="md:hidden bg-white shadow-lg border-t">
 
+    <div className="flex justify-between items-center p-4 border-b">
+      <h3 className="font-bold text-lg">
+        Menu
+      </h3>
+
+      <button
+        onClick={() => setMenuOpen(false)}
+        className="text-2xl font-bold text-gray-700"
+      >
+        ✕
+      </button>
+    </div>
+
     <a
       href="#home"
       onClick={() => setMenuOpen(false)}
@@ -349,8 +362,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      
 
       {/* Footer */}
       <footer className="bg-gray-900 text-white py-8 pb-28 text-center">
