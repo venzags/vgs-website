@@ -63,12 +63,57 @@ export default function Home() {
 </div></div>
 
           <nav className="hidden md:flex gap-8 font-medium">
-            <a href="#home">Home</a>
-            <a href="#services">Services</a>
-            <a href="#about">About</a>
-            <a href="#industries">Industries</a>
-            <a href="#contact">Contact</a>
-          </nav>
+
+  <a
+    href="#home"
+    className="hover:text-cyan-400 transition-colors duration-300"
+  >
+    Home
+  </a>
+
+  <a
+    href="#about"
+    className="hover:text-cyan-400 transition-colors duration-300"
+  >
+    About
+  </a>
+
+  <a
+    href="#services"
+    className="hover:text-cyan-400 transition-colors duration-300"
+  >
+    Services
+  </a>
+
+  <a
+    href="#portfolio"
+    className="hover:text-cyan-400 transition-colors duration-300"
+  >
+    Portfolio
+  </a>
+
+  <a
+    href="#industries"
+    className="hover:text-cyan-400 transition-colors duration-300"
+  >
+    Industries
+  </a>
+
+  <a
+    href="#testimonials"
+    className="hover:text-cyan-400 transition-colors duration-300"
+  >
+    Testimonials
+  </a>
+
+  <a
+    href="#contact"
+    className="hover:text-cyan-400 transition-colors duration-300"
+  >
+    Contact
+  </a>
+
+</nav>
 
           <button className="bg-blue-700 hover:bg-blue-800 text-white px-3 md:px-6 py-2 md:py-3 rounded-lg text-sm md:text-base font-semibold transition">
   Get Consultation
@@ -76,47 +121,56 @@ export default function Home() {
         </div>
         <header>
   {menuOpen && (
-  <div className="md:hidden bg-white shadow-lg">
-    <a
-      href="#home"
-      onClick={() => setMenuOpen(false)}
-      className="block p-4 border-b"
-    >
-      Home
-    </a>
+ <nav className="hidden md:flex gap-8 font-medium">
+  <a
+    href="#home"
+    className="hover:text-cyan-400 transition-colors duration-300"
+  >
+    Home
+  </a>
 
-    <a
-      href="#services"
-      onClick={() => setMenuOpen(false)}
-      className="block p-4 border-b"
-    >
-      Services
-    </a>
+  <a
+    href="#about"
+    className="hover:text-cyan-400 transition-colors duration-300"
+  >
+    About
+  </a>
 
-    <a
-      href="#about"
-      onClick={() => setMenuOpen(false)}
-      className="block p-4 border-b"
-    >
-      About
-    </a>
+  <a
+    href="#services"
+    className="hover:text-cyan-400 transition-colors duration-300"
+  >
+    Services
+  </a>
 
-    <a
-      href="#industries"
-      onClick={() => setMenuOpen(false)}
-      className="block p-4 border-b"
-    >
-      Industries
-    </a>
+  <a
+    href="#portfolio"
+    className="hover:text-cyan-400 transition-colors duration-300"
+  >
+    Portfolio
+  </a>
 
-    <a
-      href="#contact"
-      onClick={() => setMenuOpen(false)}
-      className="block p-4"
-    >
-      Contact
-    </a>
-  </div>
+  <a
+    href="#industries"
+    className="hover:text-cyan-400 transition-colors duration-300"
+  >
+    Industries
+  </a>
+
+  <a
+    href="#testimonials"
+    className="hover:text-cyan-400 transition-colors duration-300"
+  >
+    Testimonials
+  </a>
+
+  <a
+    href="#contact"
+    className="hover:text-cyan-400 transition-colors duration-300"
+  >
+    Contact
+  </a>
+</nav> 
 )}
 </header>
       </header>
