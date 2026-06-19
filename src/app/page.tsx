@@ -45,7 +45,7 @@ export default function Home() {
   <Image
     src="/images/vgs-logo.png"
     alt="Venza Global Services"
-    width={260}
+    width={280}
     height={80}
     priority
     className="hidden md:block"
@@ -55,8 +55,8 @@ export default function Home() {
   <Image
     src="/images/vgs-logo.png"
     alt="Venza Global Services"
-    width={150}
-    height={50}
+    width={180}
+    height={70}
     priority
     className="block md:hidden"
   />
