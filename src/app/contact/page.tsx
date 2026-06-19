@@ -27,8 +27,8 @@ export default function ContactPage() {
             <Image
               src="/images/vgs-logo.png"
               alt="Venza Global Services"
-              width={150}
-              height={50}
+              width={180}
+              height={65}
               priority
               className="block sm:hidden h-6 w-auto"
             />
