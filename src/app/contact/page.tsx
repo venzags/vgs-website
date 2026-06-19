@@ -11,38 +11,40 @@ export default function ContactPage() {
 
   return (
     <main className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-indigo-50">
-      {/* Header – white, transparent, with logo */}
+      {/* Header */}
       <header className="border-b border-gray-200 bg-white/80 backdrop-blur-md sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-          <Link href="/" className="flex items-center">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 sm:py-4 flex justify-between items-center">
+          {/* Logo – already responsive */}
+          <Link href="/" className="flex items-center shrink-0">
             <Image
               src="/images/vgs-logo.png"
               alt="Venza Global Services"
               width={260}
               height={80}
               priority
-              className="hidden md:block"
+              className="hidden sm:block h-8 w-auto md:h-auto md:w-auto"
             />
             <Image
               src="/images/vgs-logo.png"
               alt="Venza Global Services"
-              width={160}
-              height={60}
+              width={150}
+              height={50}
               priority
-              className="block md:hidden"
+              className="block sm:hidden h-6 w-auto"
             />
           </Link>
 
-          <div className="flex gap-3">
+          {/* Navigation – now mobile friendly */}
+          <div className="flex items-center gap-2 sm:gap-3 ml-4">
             <Link
               href="/"
-              className="px-4 py-2 rounded-lg bg-gray-100 hover:bg-gray-200 text-gray-700"
+              className="px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg bg-gray-100 hover:bg-gray-200 text-gray-700 text-sm sm:text-base whitespace-nowrap transition"
             >
               Home
             </Link>
             <Link
               href="/consultation"
-              className="px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-700 text-white"
+              className="px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-sm sm:text-base whitespace-nowrap transition"
             >
               Free Consultation
             </Link>
@@ -50,19 +52,17 @@ export default function ContactPage() {
         </div>
       </header>
 
-      {/* Contact section */}
+      {/* Contact section – unchanged, still colourful */}
       <div className="max-w-3xl mx-auto py-20 px-6">
         <div className="bg-white rounded-2xl shadow-2xl border border-blue-50 relative overflow-hidden">
-          {/* Decorative gradient top bar */}
           <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500" />
 
-          <div className="p-8">
-            {/* Colourful gradient heading */}
-            <h1 className="text-4xl font-extrabold text-center mb-4 bg-gradient-to-r from-blue-700 to-indigo-600 bg-clip-text text-transparent">
+          <div className="p-6 sm:p-8">
+            <h1 className="text-3xl sm:text-4xl font-extrabold text-center mb-4 bg-gradient-to-r from-blue-700 to-indigo-600 bg-clip-text text-transparent">
               Contact Venza Global Services
             </h1>
 
-            <p className="text-gray-600 text-center mb-10 max-w-xl mx-auto">
+            <p className="text-gray-600 text-center mb-10 max-w-xl mx-auto text-sm sm:text-base">
               Have a question, partnership inquiry, or business requirement?
               <br />
               <span className="font-medium text-blue-700">
@@ -70,74 +70,60 @@ export default function ContactPage() {
               </span>
             </p>
 
-            <form className="space-y-6" onSubmit={handleSubmit}>
-              {/* Full Name */}
+            <form className="space-y-5 sm:space-y-6" onSubmit={handleSubmit}>
+              {/* All fields – same visibility fixes */}
               <div>
-                <label htmlFor="fullName" className="sr-only">
-                  Full Name
-                </label>
+                <label htmlFor="fullName" className="sr-only">Full Name</label>
                 <input
                   id="fullName"
                   type="text"
                   name="fullName"
                   placeholder="Full Name"
-                  className="w-full border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 p-4 rounded-xl outline-none transition text-gray-900 placeholder-gray-400 bg-white"
+                  className="w-full border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 p-3 sm:p-4 rounded-xl outline-none transition text-gray-900 placeholder-gray-400 bg-white text-sm sm:text-base"
                   required
                 />
               </div>
 
-              {/* Email */}
               <div>
-                <label htmlFor="email" className="sr-only">
-                  Email Address
-                </label>
+                <label htmlFor="email" className="sr-only">Email Address</label>
                 <input
                   id="email"
                   type="email"
                   name="email"
                   placeholder="Email Address"
-                  className="w-full border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 p-4 rounded-xl outline-none transition text-gray-900 placeholder-gray-400 bg-white"
+                  className="w-full border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 p-3 sm:p-4 rounded-xl outline-none transition text-gray-900 placeholder-gray-400 bg-white text-sm sm:text-base"
                   required
                 />
               </div>
 
-              {/* Phone */}
               <div>
-                <label htmlFor="phone" className="sr-only">
-                  Phone Number
-                </label>
+                <label htmlFor="phone" className="sr-only">Phone Number</label>
                 <input
                   id="phone"
                   type="tel"
                   name="phone"
                   placeholder="Phone Number"
-                  className="w-full border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 p-4 rounded-xl outline-none transition text-gray-900 placeholder-gray-400 bg-white"
+                  className="w-full border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 p-3 sm:p-4 rounded-xl outline-none transition text-gray-900 placeholder-gray-400 bg-white text-sm sm:text-base"
                 />
               </div>
 
-              {/* Company */}
               <div>
-                <label htmlFor="company" className="sr-only">
-                  Company Name
-                </label>
+                <label htmlFor="company" className="sr-only">Company Name</label>
                 <input
                   id="company"
                   type="text"
                   name="company"
                   placeholder="Company Name"
-                  className="w-full border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 p-4 rounded-xl outline-none transition text-gray-900 placeholder-gray-400 bg-white"
+                  className="w-full border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 p-3 sm:p-4 rounded-xl outline-none transition text-gray-900 placeholder-gray-400 bg-white text-sm sm:text-base"
                 />
               </div>
 
-              {/* Inquiry Type */}
               <div>
-                <label htmlFor="inquiryType" className="sr-only">
-                  Select Inquiry Type
-                </label>
+                <label htmlFor="inquiryType" className="sr-only">Select Inquiry Type</label>
                 <select
                   id="inquiryType"
                   name="inquiryType"
-                  className="w-full border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 p-4 rounded-xl outline-none transition text-gray-900 bg-white"
+                  className="w-full border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 p-3 sm:p-4 rounded-xl outline-none transition text-gray-900 bg-white text-sm sm:text-base"
                   defaultValue=""
                 >
                   <option value="" disabled className="text-gray-400">
@@ -151,24 +137,20 @@ export default function ContactPage() {
                 </select>
               </div>
 
-              {/* Message */}
               <div>
-                <label htmlFor="message" className="sr-only">
-                  Your Message
-                </label>
+                <label htmlFor="message" className="sr-only">Your Message</label>
                 <textarea
                   id="message"
                   name="message"
                   placeholder="Your Message"
-                  rows={6}
-                  className="w-full border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 p-4 rounded-xl outline-none transition resize-none text-gray-900 placeholder-gray-400 bg-white"
+                  rows={5}
+                  className="w-full border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 p-3 sm:p-4 rounded-xl outline-none transition resize-none text-gray-900 placeholder-gray-400 bg-white text-sm sm:text-base"
                 />
               </div>
 
-              {/* Submit button */}
               <button
                 type="submit"
-                className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white py-4 rounded-xl font-bold text-lg shadow-lg shadow-blue-200/50 transition"
+                className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white py-3 sm:py-4 rounded-xl font-bold text-base sm:text-lg shadow-lg shadow-blue-200/50 transition"
               >
                 ✉️ Send Message
               </button>
@@ -177,8 +159,7 @@ export default function ContactPage() {
         </div>
       </div>
 
-      {/* Footer */}
-      <footer className="border-t border-gray-200 py-8 text-center text-gray-500">
+      <footer className="border-t border-gray-200 py-8 text-center text-gray-500 text-sm">
         © 2026 Venza Global Services. All Rights Reserved.
       </footer>
     </main>
