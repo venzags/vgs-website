@@ -115,9 +115,12 @@ export default function Home() {
 
 </nav>
 
-          <button className="bg-blue-700 hover:bg-blue-800 text-white px-3 md:px-6 py-2 md:py-3 rounded-lg text-sm md:text-base font-semibold transition">
+          <a
+  href="/consultation"
+  className="bg-blue-700 hover:bg-blue-800 text-white px-3 md:px-6 py-2 md:py-3 rounded-lg text-sm md:text-base font-semibold transition"
+>
   Get Consultation
-</button>
+</a>
         </div>
         <header>
   {menuOpen && (
@@ -236,13 +239,19 @@ export default function Home() {
       </p>
 
       <div className="flex gap-4 flex-wrap">
-        <button className="bg-white text-blue-700 px-8 py-3 rounded-lg font-semibold">
-          Explore Services
-        </button>
+        <a
+  href="#services"
+  className="bg-white text-blue-700 px-8 py-3 rounded-lg font-semibold inline-block"
+>
+  Explore Services
+</a>
 
-        <button className="border border-white px-8 py-3 rounded-lg">
-          Contact Us
-        </button>
+<a
+  href="/contact"
+  className="border border-white px-8 py-3 rounded-lg inline-block"
+>
+  Contact Us
+</a>
       </div>
 
     </div> {/* LEFT SIDE END */}
@@ -370,7 +379,7 @@ export default function Home() {
         </p>
       </footer>
 <div className="fixed bottom-0 left-0 w-full bg-white border-t shadow-lg z-50">
-  <div className="grid grid-cols-4 text-center">
+  <div className="grid grid-cols-5 text-center">
 
     <a
       href="tel:+919999999999"
@@ -398,7 +407,15 @@ export default function Home() {
     </a>
 
     <a
-      href="#contact"
+      href="/contact"
+      className="bg-cyan-600 text-white py-4 font-semibold"
+    >
+      📝
+      <div className="text-xs">Contact</div>
+    </a>
+
+    <a
+      href="/consultation"
       className="bg-orange-500 text-white py-4 font-semibold"
     >
       📅
