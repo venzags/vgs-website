@@ -121,56 +121,65 @@ export default function Home() {
         </div>
         <header>
   {menuOpen && (
- <nav className="hidden md:flex gap-8 font-medium">
-  <a
-    href="#home"
-    className="hover:text-cyan-400 transition-colors duration-300"
-  >
-    Home
-  </a>
+  <div className="md:hidden bg-white shadow-lg border-t">
 
-  <a
-    href="#about"
-    className="hover:text-cyan-400 transition-colors duration-300"
-  >
-    About
-  </a>
+    <a
+      href="#home"
+      onClick={() => setMenuOpen(false)}
+      className="block p-4 border-b"
+    >
+      Home
+    </a>
 
-  <a
-    href="#services"
-    className="hover:text-cyan-400 transition-colors duration-300"
-  >
-    Services
-  </a>
+    <a
+      href="#about"
+      onClick={() => setMenuOpen(false)}
+      className="block p-4 border-b"
+    >
+      About
+    </a>
 
-  <a
-    href="#portfolio"
-    className="hover:text-cyan-400 transition-colors duration-300"
-  >
-    Portfolio
-  </a>
+    <a
+      href="#services"
+      onClick={() => setMenuOpen(false)}
+      className="block p-4 border-b"
+    >
+      Services
+    </a>
 
-  <a
-    href="#industries"
-    className="hover:text-cyan-400 transition-colors duration-300"
-  >
-    Industries
-  </a>
+    <a
+      href="#portfolio"
+      onClick={() => setMenuOpen(false)}
+      className="block p-4 border-b"
+    >
+      Portfolio
+    </a>
 
-  <a
-    href="#testimonials"
-    className="hover:text-cyan-400 transition-colors duration-300"
-  >
-    Testimonials
-  </a>
+    <a
+      href="#industries"
+      onClick={() => setMenuOpen(false)}
+      className="block p-4 border-b"
+    >
+      Industries
+    </a>
 
-  <a
-    href="#contact"
-    className="hover:text-cyan-400 transition-colors duration-300"
-  >
-    Contact
-  </a>
-</nav> 
+    <a
+      href="#testimonials"
+      onClick={() => setMenuOpen(false)}
+      className="block p-4 border-b"
+    >
+      Testimonials
+    </a>
+
+    <a
+      href="#contact"
+      onClick={() => setMenuOpen(false)}
+      className="block p-4"
+    >
+      Contact
+    </a>
+
+  </div>
 )}
 </header>
       </header>
@@ -341,48 +350,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Industries */}
-      <section
-        id="industries"
-        className="bg-gray-100 py-20 px-6"
-      >
-        <div className="max-w-6xl mx-auto">
-
-          <h2 className="text-4xl font-bold text-center mb-12">
-            Industries We Serve
-          </h2>
-
-          <div className="grid md:grid-cols-3 gap-6">
-            {industries.map((industry) => (
-              <div
-                key={industry}
-                className="bg-white p-8 rounded-xl shadow text-center font-semibold"
-              >
-                {industry}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Contact CTA */}
-      <section
-        id="contact"
-        className="bg-blue-800 text-white py-24 px-6 text-center"
-      >
-        <h2 className="text-4xl font-bold mb-6">
-          Ready To Transform Your Business?
-        </h2>
-
-        <p className="max-w-2xl mx-auto mb-8">
-          Let's discuss how Venza Global Services can help your organization
-          achieve digital growth and innovation.
-        </p>
-
-        <button className="bg-white text-blue-700 px-8 py-3 rounded-lg font-bold">
-          Contact VGS
-        </button>
-      </section>
+      
 
       {/* Footer */}
       <footer className="bg-gray-900 text-white py-8 pb-28 text-center">
