@@ -1,6 +1,5 @@
 "use client";
 import Link from "next/link";
-import Image from "next/image";
 import type { FormEvent } from "react";
 
 export default function ConsultationPage() {
@@ -11,91 +10,6 @@ export default function ConsultationPage() {
 
   return (
     <main className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-indigo-50 text-gray-900">
-      {/* ===== HEADER – full navigation menu ===== */}
-      <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 sm:py-4 flex justify-between items-center">
-          {/* Logo */}
-          <Link href="/" className="flex items-center shrink-0">
-            <Image
-              src="/images/vgs-logo.png"
-              alt="Venza Global Services"
-              width={260}
-              height={80}
-              priority
-              className="hidden sm:block h-8 w-auto md:h-auto md:w-auto"
-            />
-            <Image
-              src="/images/vgs-logo.png"
-              alt="Venza Global Services"
-              width={180}
-              height={70}
-              priority
-              className="block sm:hidden h-10 w-auto"
-            />
-          </Link>
-
-          {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center gap-6 xl:gap-8 font-medium text-gray-600">
-            <Link href="/" className="hover:text-blue-700 transition">
-              Home
-            </Link>
-            <Link href="/#about" className="hover:text-blue-700 transition">
-              About
-            </Link>
-            <Link href="/services" className="hover:text-blue-700 transition">
-              Services
-            </Link>
-            <Link href="/#portfolio" className="hover:text-blue-700 transition">
-              Portfolio
-            </Link>
-            <Link href="/#industries" className="hover:text-blue-700 transition">
-              Industries
-            </Link>
-            <Link href="/testimonials" className="hover:text-blue-700 transition">
-              Testimonials
-            </Link>
-            <Link href="/contact" className="hover:text-blue-700 transition">
-              Contact
-            </Link>
-          </nav>
-
-          {/* CTA Button */}
-          <Link
-            href="/consultation"
-            className="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2.5 sm:px-6 sm:py-3 rounded-xl font-semibold transition shadow-md"
-          >
-            Free Consultation
-          </Link>
-        </div>
-
-        {/* Mobile Navigation – scrollable (FIXED) */}
-        <div className="lg:hidden overflow-x-auto pb-2 px-6">
-          <div className="flex gap-4 text-sm font-medium text-gray-600">
-            <Link href="/" className="whitespace-nowrap hover:text-blue-700 transition">
-              Home
-            </Link>
-            <Link href="/#about" className="whitespace-nowrap hover:text-blue-700 transition">
-              About
-            </Link>
-            <Link href="/services" className="whitespace-nowrap hover:text-blue-700 transition">
-              Services
-            </Link>
-            <Link href="/#portfolio" className="whitespace-nowrap hover:text-blue-700 transition">
-              Portfolio
-            </Link>
-            <Link href="/#industries" className="whitespace-nowrap hover:text-blue-700 transition">
-              Industries
-            </Link>
-            <Link href="/testimonials" className="whitespace-nowrap hover:text-blue-700 transition">
-              Testimonials
-            </Link>
-            <Link href="/contact" className="whitespace-nowrap hover:text-blue-700 transition">
-              Contact
-            </Link>
-          </div>
-        </div>
-      </header>
-
       {/* Hero */}
       <section className="text-center py-16 px-6">
         <h1 className="text-4xl sm:text-5xl font-extrabold mb-6 bg-gradient-to-r from-blue-700 to-indigo-600 bg-clip-text text-transparent">
@@ -248,8 +162,17 @@ export default function ConsultationPage() {
         </div>
       </section>
 
-      <footer className="border-t border-gray-200 py-8 text-center text-gray-500 text-sm">
-        © 2026 Venza Global Services. All Rights Reserved.
+     {/* ===== FOOTER ===== */}
+      <footer className="bg-[#1F2937] text-white px-6 py-8 text-center text-sm">
+        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4">
+          <p className="text-gray-300">© 2026 Venza Global Services. All Rights Reserved.</p>
+          <div className="flex gap-5">
+            <Link href="/" className="hover:text-[#38BDF8] transition">Home</Link>
+            <Link href="/services" className="hover:text-[#38BDF8] transition">Services</Link>
+            <Link href="/contact" className="hover:text-[#38BDF8] transition">Contact</Link>
+            <Link href="/consultation" className="hover:text-[#38BDF8] transition">Consultation</Link>
+          </div>
+        </div>
       </footer>
     </main>
   );

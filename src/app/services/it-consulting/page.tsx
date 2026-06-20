@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Image from "next/image";
 
 export default function ITConsultingPage() {
   const consultingServices = [
@@ -134,58 +133,6 @@ export default function ITConsultingPage() {
         }
       `}</style>
 
-      {/* ===== HEADER (brand colors, full nav, logo) ===== */}
-      <header className="sticky top-0 z-50 border-b border-gray-200 bg-white/90 backdrop-blur-lg">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 sm:py-4 flex justify-between items-center">
-          <Link href="/" className="flex items-center shrink-0">
-            <Image
-              src="/images/vgs-logo.png"
-              alt="Venza Global Services"
-              width={260}
-              height={80}
-              priority
-              className="hidden sm:block h-8 w-auto md:h-auto md:w-auto"
-            />
-            <Image
-              src="/images/vgs-logo.png"
-              alt="Venza Global Services"
-              width={180}
-              height={70}
-              priority
-              className="block sm:hidden h-10 w-auto"
-            />
-          </Link>
-
-          <nav className="hidden lg:flex items-center gap-6 xl:gap-8 font-medium text-[#1F2937]">
-            <Link href="/" className="hover:text-[#0A66C2] transition">Home</Link>
-            <Link href="/#about" className="hover:text-[#0A66C2] transition">About</Link>
-            <Link href="/services" className="hover:text-[#0A66C2] transition">Services</Link>
-            <Link href="/#portfolio" className="hover:text-[#0A66C2] transition">Portfolio</Link>
-            <Link href="/#industries" className="hover:text-[#0A66C2] transition">Industries</Link>
-            <Link href="/testimonials" className="hover:text-[#0A66C2] transition">Testimonials</Link>
-            <Link href="/contact" className="hover:text-[#0A66C2] transition">Contact</Link>
-          </nav>
-
-          <Link
-            href="/consultation"
-            className="bg-[#0A66C2] hover:bg-[#094e9e] text-white px-5 py-2.5 sm:px-6 sm:py-3 rounded-xl font-bold shadow-md shadow-[#0A66C2]/20 transition animate-pulse-soft"
-          >
-            Book Consultation
-          </Link>
-        </div>
-        <div className="lg:hidden overflow-x-auto pb-2 px-6">
-          <div className="flex gap-4 text-sm font-medium text-[#1F2937]">
-            <Link href="/" className="whitespace-nowrap hover:text-[#0A66C2]">Home</Link>
-            <Link href="/#about" className="whitespace-nowrap hover:text-[#0A66C2]">About</Link>
-            <Link href="/services" className="whitespace-nowrap hover:text-[#0A66C2]">Services</Link>
-            <Link href="/#portfolio" className="whitespace-nowrap hover:text-[#0A66C2]">Portfolio</Link>
-            <Link href="/#industries" className="whitespace-nowrap hover:text-[#0A66C2]">Industries</Link>
-            <Link href="/testimonials" className="whitespace-nowrap hover:text-[#0A66C2]">Testimonials</Link>
-            <Link href="/contact" className="whitespace-nowrap hover:text-[#0A66C2]">Contact</Link>
-          </div>
-        </div>
-      </header>
-
       {/* ===== BREADCRUMB ===== */}
       <section className="px-6 pt-8">
         <div className="mx-auto max-w-7xl text-sm text-[#6B7280] animate-fade-in-up">
@@ -201,24 +148,20 @@ export default function ITConsultingPage() {
           <h1 className="text-5xl sm:text-6xl md:text-7xl font-extrabold text-[#1F2937] mb-4 animate-fade-in-up">
             Venza Global Services
           </h1>
-
           <div className="animate-fade-in-up">
             <span className="inline-block px-4 py-2 rounded-full bg-[#0A66C2]/10 text-[#0A66C2] text-sm font-semibold mb-6 border border-[#0A66C2]/20">
               🧭 Practical technology advice for business growth
             </span>
           </div>
-
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-6 animate-fade-in-up bg-gradient-to-r from-[#0A66C2] to-[#38BDF8] bg-clip-text text-transparent animate-gradient-flow">
             IT Consulting
           </h2>
-
           <p className="max-w-3xl mx-auto text-base sm:text-lg text-[#6B7280] mb-12 animate-fade-in-up">
             Venza Global Services helps businesses choose the right
             technology, improve operations, reduce risks, plan digital
             transformation, and turn complex IT decisions into a clear
             action plan.
           </p>
-
           <div className="flex flex-col sm:flex-row justify-center gap-4 animate-fade-in-up">
             <Link
               href="/consultation"
@@ -251,7 +194,6 @@ export default function ITConsultingPage() {
               supports your future growth.
             </p>
           </div>
-
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {consultingServices.map((service, index) => (
               <article
@@ -285,7 +227,6 @@ export default function ITConsultingPage() {
               Better Decisions Create Better Results
             </h2>
           </div>
-
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {outcomes.map((outcome, index) => (
               <article
@@ -313,7 +254,6 @@ export default function ITConsultingPage() {
               From Confusion to a Clear Technology Plan
             </h2>
           </div>
-
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {process.map((item, index) => (
               <article
