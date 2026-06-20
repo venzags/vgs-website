@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-
+import ServiceNavbar from "../components/ServiceNavbar";
 export default function ServicesPage() {
   const services = [
     {
