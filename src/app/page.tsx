@@ -79,7 +79,7 @@ export default function Home() {
   </a>
 
   <a
-    href="#services"
+    href="/services"
     className="hover:text-cyan-400 transition-colors duration-300"
   >
     Services
@@ -156,7 +156,7 @@ export default function Home() {
     </a>
 
     <a
-      href="#services"
+      href="/services"
       onClick={() => setMenuOpen(false)}
       className="block p-4 border-b"
     >
@@ -240,7 +240,7 @@ export default function Home() {
 
       <div className="flex gap-4 flex-wrap">
         <a
-  href="#services"
+  href="/services"
   className="bg-white text-blue-700 px-8 py-3 rounded-lg font-semibold inline-block"
 >
   Explore Services

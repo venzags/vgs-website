@@ -11,12 +11,11 @@ export default function ConsultationPage() {
 
   return (
     <main className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-indigo-50 text-gray-900">
-      {/* Header – now mobile-friendly with larger logo */}
-      <header className="border-b border-gray-200 bg-white/80 backdrop-blur-md sticky top-0 z-50">
+      {/* ===== HEADER – full navigation menu ===== */}
+      <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 sm:py-4 flex justify-between items-center">
           {/* Logo */}
           <Link href="/" className="flex items-center shrink-0">
-            {/* Desktop Logo (hidden on mobile) */}
             <Image
               src="/images/vgs-logo.png"
               alt="Venza Global Services"
@@ -25,7 +24,6 @@ export default function ConsultationPage() {
               priority
               className="hidden sm:block h-8 w-auto md:h-auto md:w-auto"
             />
-            {/* Mobile Logo (hidden on desktop) – now much bigger */}
             <Image
               src="/images/vgs-logo.png"
               alt="Venza Global Services"
@@ -36,19 +34,63 @@ export default function ConsultationPage() {
             />
           </Link>
 
-          {/* Navigation buttons – responsive & matching */}
-          <div className="flex items-center gap-2 sm:gap-3 ml-4">
-            <Link
-              href="/"
-              className="px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg bg-gray-100 hover:bg-gray-200 text-gray-700 text-sm sm:text-base whitespace-nowrap transition"
-            >
+          {/* Desktop Navigation */}
+          <nav className="hidden lg:flex items-center gap-6 xl:gap-8 font-medium text-gray-600">
+            <Link href="/" className="hover:text-blue-700 transition">
               Home
             </Link>
-            <Link
-              href="/contact"
-              className="px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-sm sm:text-base whitespace-nowrap transition"
-            >
-              Contact Us
+            <Link href="/#about" className="hover:text-blue-700 transition">
+              About
+            </Link>
+            <Link href="/services" className="hover:text-blue-700 transition">
+              Services
+            </Link>
+            <Link href="/#portfolio" className="hover:text-blue-700 transition">
+              Portfolio
+            </Link>
+            <Link href="/#industries" className="hover:text-blue-700 transition">
+              Industries
+            </Link>
+            <Link href="/testimonials" className="hover:text-blue-700 transition">
+              Testimonials
+            </Link>
+            <Link href="/contact" className="hover:text-blue-700 transition">
+              Contact
+            </Link>
+          </nav>
+
+          {/* CTA Button */}
+          <Link
+            href="/consultation"
+            className="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2.5 sm:px-6 sm:py-3 rounded-xl font-semibold transition shadow-md"
+          >
+            Free Consultation
+          </Link>
+        </div>
+
+        {/* Mobile Navigation – scrollable (FIXED) */}
+        <div className="lg:hidden overflow-x-auto pb-2 px-6">
+          <div className="flex gap-4 text-sm font-medium text-gray-600">
+            <Link href="/" className="whitespace-nowrap hover:text-blue-700 transition">
+              Home
+            </Link>
+            <Link href="/#about" className="whitespace-nowrap hover:text-blue-700 transition">
+              About
+            </Link>
+            <Link href="/services" className="whitespace-nowrap hover:text-blue-700 transition">
+              Services
+            </Link>
+            <Link href="/#portfolio" className="whitespace-nowrap hover:text-blue-700 transition">
+              Portfolio
+            </Link>
+            <Link href="/#industries" className="whitespace-nowrap hover:text-blue-700 transition">
+              Industries
+            </Link>
+            <Link href="/testimonials" className="whitespace-nowrap hover:text-blue-700 transition">
+              Testimonials
+            </Link>
+            <Link href="/contact" className="whitespace-nowrap hover:text-blue-700 transition">
+              Contact
             </Link>
           </div>
         </div>

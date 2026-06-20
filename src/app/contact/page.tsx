@@ -11,12 +11,11 @@ export default function ContactPage() {
 
   return (
     <main className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-indigo-50">
-      {/* Header */}
-      <header className="border-b border-gray-200 bg-white/80 backdrop-blur-md sticky top-0 z-50">
+      {/* ===== HEADER – full navigation menu ===== */}
+      <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 sm:py-4 flex justify-between items-center">
-          {/* Logo – now properly sized on mobile */}
+          {/* Logo */}
           <Link href="/" className="flex items-center shrink-0">
-            {/* Desktop Logo (hidden on mobile) */}
             <Image
               src="/images/vgs-logo.png"
               alt="Venza Global Services"
@@ -25,7 +24,6 @@ export default function ContactPage() {
               priority
               className="hidden sm:block h-8 w-auto md:h-auto md:w-auto"
             />
-            {/* Mobile Logo (hidden on desktop) – now much bigger */}
             <Image
               src="/images/vgs-logo.png"
               alt="Venza Global Services"
@@ -36,19 +34,69 @@ export default function ContactPage() {
             />
           </Link>
 
-          {/* Navigation */}
-          <div className="flex items-center gap-2 sm:gap-3 ml-4">
-            <Link
-              href="/"
-              className="px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg bg-gray-100 hover:bg-gray-200 text-gray-700 text-sm sm:text-base whitespace-nowrap transition"
-            >
+          {/* Desktop Navigation */}
+          <nav className="hidden lg:flex items-center gap-6 xl:gap-8 font-medium text-gray-600">
+            <Link href="/" className="hover:text-blue-700 transition">
               Home
             </Link>
+            <Link href="/#about" className="hover:text-blue-700 transition">
+              About
+            </Link>
+            <Link href="/services" className="hover:text-blue-700 transition">
+              Services
+            </Link>
+            <Link href="/#portfolio" className="hover:text-blue-700 transition">
+              Portfolio
+            </Link>
+            <Link href="/#industries" className="hover:text-blue-700 transition">
+              Industries
+            </Link>
+            <Link href="/#Testimonials" className="hover:text-blue-700 transition">
+              Testimonials
+            </Link>
             <Link
-              href="/consultation"
-              className="px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-sm sm:text-base whitespace-nowrap transition"
+              href="/contact"
+              className="text-blue-700 font-semibold hover:text-blue-800 transition"
             >
-              Free Consultation
+              Contact
+            </Link>
+          </nav>
+
+          {/* CTA Button */}
+          <Link
+            href="/consultation"
+            className="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2.5 sm:px-6 sm:py-3 rounded-xl font-semibold transition shadow-md"
+          >
+            Free Consultation
+          </Link>
+        </div>
+
+        {/* Mobile Navigation – scrollable */}
+        <div className="lg:hidden overflow-x-auto pb-2 px-6">
+          <div className="flex gap-4 text-sm font-medium text-gray-600">
+            <Link href="/" className="whitespace-nowrap hover:text-blue-700 transition">
+              Home
+            </Link>
+            <Link href="/#about" className="whitespace-nowrap hover:text-blue-700 transition">
+              About
+            </Link>
+            <Link href="/services" className="whitespace-nowrap hover:text-blue-700 transition">
+              Services
+            </Link>
+            <Link href="/#portfolio" className="whitespace-nowrap hover:text-blue-700 transition">
+              Portfolio
+            </Link>
+            <Link href="/#industries" className="whitespace-nowrap hover:text-blue-700 transition">
+              Industries
+            </Link>
+            <Link href="/#Testimonials" className="hover:text-blue-700 transition">
+              Testimonials
+            </Link>
+            <Link
+              href="/contact"
+              className="whitespace-nowrap text-blue-700 font-semibold"
+            >
+              Contact
             </Link>
           </div>
         </div>
@@ -71,7 +119,9 @@ export default function ContactPage() {
             </p>
             <form className="space-y-5 sm:space-y-6" onSubmit={handleSubmit}>
               <div>
-                <label htmlFor="fullName" className="sr-only">Full Name</label>
+                <label htmlFor="fullName" className="sr-only">
+                  Full Name
+                </label>
                 <input
                   id="fullName"
                   type="text"
@@ -82,7 +132,9 @@ export default function ContactPage() {
                 />
               </div>
               <div>
-                <label htmlFor="email" className="sr-only">Email Address</label>
+                <label htmlFor="email" className="sr-only">
+                  Email Address
+                </label>
                 <input
                   id="email"
                   type="email"
@@ -93,7 +145,9 @@ export default function ContactPage() {
                 />
               </div>
               <div>
-                <label htmlFor="phone" className="sr-only">Phone Number</label>
+                <label htmlFor="phone" className="sr-only">
+                  Phone Number
+                </label>
                 <input
                   id="phone"
                   type="tel"
@@ -103,7 +157,9 @@ export default function ContactPage() {
                 />
               </div>
               <div>
-                <label htmlFor="company" className="sr-only">Company Name</label>
+                <label htmlFor="company" className="sr-only">
+                  Company Name
+                </label>
                 <input
                   id="company"
                   type="text"
@@ -113,7 +169,9 @@ export default function ContactPage() {
                 />
               </div>
               <div>
-                <label htmlFor="inquiryType" className="sr-only">Select Inquiry Type</label>
+                <label htmlFor="inquiryType" className="sr-only">
+                  Select Inquiry Type
+                </label>
                 <select
                   id="inquiryType"
                   name="inquiryType"
@@ -131,7 +189,9 @@ export default function ContactPage() {
                 </select>
               </div>
               <div>
-                <label htmlFor="message" className="sr-only">Your Message</label>
+                <label htmlFor="message" className="sr-only">
+                  Your Message
+                </label>
                 <textarea
                   id="message"
                   name="message"
