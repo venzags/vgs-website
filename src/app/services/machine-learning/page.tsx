@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Image from "next/image";
 
 export default function MachineLearningPage() {
   const capabilities = [
@@ -44,62 +43,6 @@ export default function MachineLearningPage() {
 
   return (
     <main className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-indigo-50 text-gray-900">
-      {/* ===== HEADER – full navigation menu (same as all white‑theme pages) ===== */}
-      <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 sm:py-4 flex justify-between items-center">
-          {/* Logo */}
-          <Link href="/" className="flex items-center shrink-0">
-            <Image
-              src="/images/vgs-logo.png"
-              alt="Venza Global Services"
-              width={260}
-              height={80}
-              priority
-              className="hidden sm:block h-8 w-auto md:h-auto md:w-auto"
-            />
-            <Image
-              src="/images/vgs-logo.png"
-              alt="Venza Global Services"
-              width={180}
-              height={70}
-              priority
-              className="block sm:hidden h-10 w-auto"
-            />
-          </Link>
-
-          {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center gap-6 xl:gap-8 font-medium text-gray-600">
-            <Link href="/" className="hover:text-cyan-700 transition">Home</Link>
-            <Link href="/#about" className="hover:text-cyan-700 transition">About</Link>
-            <Link href="/services" className="hover:text-cyan-700 transition">Services</Link>
-            <Link href="/#portfolio" className="hover:text-cyan-700 transition">Portfolio</Link>
-            <Link href="/#industries" className="hover:text-cyan-700 transition">Industries</Link>
-            <Link href="/testimonials" className="hover:text-cyan-700 transition">Testimonials</Link>
-            <Link href="/contact" className="hover:text-cyan-700 transition">Contact</Link>
-          </nav>
-
-          <Link
-            href="/consultation"
-            className="bg-cyan-600 hover:bg-cyan-700 text-white px-5 py-2.5 sm:px-6 sm:py-3 rounded-xl font-semibold transition shadow-md"
-          >
-            Free Consultation
-          </Link>
-        </div>
-
-        {/* Mobile Navigation – scrollable */}
-        <div className="lg:hidden overflow-x-auto pb-2 px-6">
-          <div className="flex gap-4 text-sm font-medium text-gray-600">
-            <Link href="/" className="whitespace-nowrap hover:text-cyan-700 transition">Home</Link>
-            <Link href="/#about" className="whitespace-nowrap hover:text-cyan-700 transition">About</Link>
-            <Link href="/services" className="whitespace-nowrap hover:text-cyan-700 transition">Services</Link>
-            <Link href="/#portfolio" className="whitespace-nowrap hover:text-cyan-700 transition">Portfolio</Link>
-            <Link href="/#industries" className="whitespace-nowrap hover:text-cyan-700 transition">Industries</Link>
-            <Link href="/testimonials" className="whitespace-nowrap hover:text-cyan-700 transition">Testimonials</Link>
-            <Link href="/contact" className="whitespace-nowrap hover:text-cyan-700 transition">Contact</Link>
-          </div>
-        </div>
-      </header>
-
       {/* Breadcrumb */}
       <section className="px-6 pt-8">
         <div className="mx-auto max-w-7xl text-sm text-gray-500">
@@ -269,11 +212,6 @@ export default function MachineLearningPage() {
           </div>
         </div>
       </section>
-
-      {/* Footer */}
-      <footer className="border-t border-gray-200 px-6 py-8 text-center text-sm text-gray-500">
-        © 2026 Venza Global Services. All Rights Reserved.
-      </footer>
-    </main>
+</main>
   );
 }

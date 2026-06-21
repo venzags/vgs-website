@@ -197,13 +197,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      {/* Footer */}
-      <footer className="bg-gray-900 text-white py-8 pb-28 text-center">
-        <p>
-          © {new Date().getFullYear()} Venza Global Services. All Rights Reserved.
-        </p>
-      </footer>
 <div className="fixed bottom-0 left-0 w-full bg-white border-t shadow-lg z-50">
   <div className="grid grid-cols-5 text-center">
 

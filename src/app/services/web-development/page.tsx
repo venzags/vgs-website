@@ -64,27 +64,16 @@ export default function WebDevelopmentPage() {
     },
   ];
 
-  const technologies = [
-    "Next.js",
-    "React",
-    "TypeScript",
-    "Tailwind CSS",
-    "Node.js",
-    "API Integration",
-    "Cloud Deployment",
-    "SEO Optimisation",
-  ];
-
   return (
     <main className="relative min-h-screen overflow-x-hidden bg-white">
-      {/* ===== BRAND BACKGROUND ORBS (using primary & secondary) ===== */}
+      {/* ===== BRAND BACKGROUND ORBS ===== */}
       <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
         <div className="absolute -left-32 top-20 h-80 w-80 animate-[float_8s_ease-in-out_infinite] rounded-full bg-[#0A66C2]/10 blur-3xl" />
         <div className="absolute -right-32 top-1/3 h-96 w-96 animate-[float_10s_ease-in-out_infinite] rounded-full bg-[#38BDF8]/15 blur-3xl" style={{ animationDelay: "-4s" }} />
         <div className="absolute bottom-0 left-1/3 h-72 w-72 animate-[float_9s_ease-in-out_infinite] rounded-full bg-[#0A66C2]/8 blur-3xl" style={{ animationDelay: "-2s" }} />
       </div>
 
-      {/* ===== INJECT CUSTOM KEYFRAMES ===== */}
+      {/* ===== KEYFRAMES ===== */}
       <style>{`
         @keyframes float {
           0%, 100% { transform: translateY(0) scale(1); }
@@ -124,58 +113,6 @@ export default function WebDevelopmentPage() {
         .animate-tilt { animation: tilt 8s ease-in-out infinite; }
         .animate-card-lift { animation: card-lift 5s ease-in-out infinite; }
       `}</style>
-
-      {/* ===== HEADER (white background, brand colors) ===== */}
-      <header className="sticky top-0 z-50 border-b border-gray-200 bg-white/90 backdrop-blur-lg">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6 py-3 sm:py-4">
-          <Link href="/" className="flex items-center shrink-0">
-            <Image
-              src="/images/vgs-logo.png"
-              alt="Venza Global Services"
-              width={260}
-              height={80}
-              priority
-              className="hidden sm:block h-8 w-auto md:h-auto md:w-auto"
-            />
-            <Image
-              src="/images/vgs-logo.png"
-              alt="Venza Global Services"
-              width={180}
-              height={70}
-              priority
-              className="block sm:hidden h-10 w-auto"
-            />
-          </Link>
-
-          <nav className="hidden lg:flex items-center gap-6 xl:gap-8 font-medium text-[#1F2937]">
-            <Link href="/" className="hover:text-[#0A66C2] transition">Home</Link>
-            <Link href="/#about" className="hover:text-[#0A66C2] transition">About</Link>
-            <Link href="/services" className="hover:text-[#0A66C2] transition">Services</Link>
-            <Link href="/#portfolio" className="hover:text-[#0A66C2] transition">Portfolio</Link>
-            <Link href="/#industries" className="hover:text-[#0A66C2] transition">Industries</Link>
-            <Link href="/testimonials" className="hover:text-[#0A66C2] transition">Testimonials</Link>
-            <Link href="/contact" className="hover:text-[#0A66C2] transition">Contact</Link>
-          </nav>
-
-          <Link
-            href="/consultation"
-            className="rounded-xl bg-[#0A66C2] px-5 py-2.5 sm:px-6 sm:py-3 text-sm font-bold text-white shadow-md shadow-[#0A66C2]/20 transition hover:bg-[#094e9e] hover:shadow-lg"
-          >
-            Start a Project
-          </Link>
-        </div>
-        <div className="lg:hidden overflow-x-auto pb-2 px-6">
-          <div className="flex gap-4 text-sm font-medium text-[#1F2937]">
-            <Link href="/" className="whitespace-nowrap hover:text-[#0A66C2]">Home</Link>
-            <Link href="/#about" className="whitespace-nowrap hover:text-[#0A66C2]">About</Link>
-            <Link href="/services" className="whitespace-nowrap hover:text-[#0A66C2]">Services</Link>
-            <Link href="/#portfolio" className="whitespace-nowrap hover:text-[#0A66C2]">Portfolio</Link>
-            <Link href="/#industries" className="whitespace-nowrap hover:text-[#0A66C2]">Industries</Link>
-            <Link href="/testimonials" className="whitespace-nowrap hover:text-[#0A66C2]">Testimonials</Link>
-            <Link href="/contact" className="whitespace-nowrap hover:text-[#0A66C2]">Contact</Link>
-          </div>
-        </div>
-      </header>
 
       {/* ===== HERO SECTION ===== */}
       <section className="relative px-6 pt-16 pb-20 sm:pt-24 sm:pb-28 bg-white">
@@ -343,15 +280,99 @@ export default function WebDevelopmentPage() {
         </div>
       </section>
 
-      {/* ===== TECHNOLOGY MARQUEE (brand blue background) ===== */}
+      {/* ===== FIVE ANIMATED TECHNOLOGY MARQUEES ===== */}
+
+      {/* 1️⃣ Modern Frontend + Full‑Stack (Brand Blue) */}
       <section className="border-y border-gray-100 bg-[#0A66C2]/5 px-6 py-14">
         <div className="mx-auto max-w-7xl text-center">
-          <p className="mb-7 text-sm font-bold uppercase tracking-[0.22em] text-[#0A66C2] animate-fade-in">Built with modern technology</p>
+          <p className="mb-7 text-sm font-bold uppercase tracking-[0.22em] text-[#0A66C2] animate-fade-in">
+            Modern Frontend + Full‑Stack Base
+          </p>
           <div className="flex flex-wrap justify-center gap-3">
-            {technologies.map((tech, index) => (
+            {["Next.js", "React", "TypeScript", "Tailwind CSS", "Node.js", "API Integration", "Cloud Deployment", "SEO Optimisation"].map((tech, index) => (
               <span
                 key={tech}
                 className="rounded-full border border-[#0A66C2]/20 bg-white px-5 py-2.5 text-sm font-semibold text-[#0A66C2] transition hover:scale-110 hover:border-[#0A66C2] animate-pulse-soft"
+                style={{ animationDelay: `${index * 0.2}s` }}
+              >
+                {tech}
+              </span>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 2️⃣ Enterprise Frontend (Purple) */}
+      <section className="border-y border-gray-100 bg-[#7C3AED]/5 px-6 py-14">
+        <div className="mx-auto max-w-7xl text-center">
+          <p className="mb-7 text-sm font-bold uppercase tracking-[0.22em] text-[#7C3AED] animate-fade-in">
+            Enterprise Frontend Expansion
+          </p>
+          <div className="flex flex-wrap justify-center gap-3">
+            {["Angular 21", "RxJS", "NgRx", "Material Design Components"].map((tech, index) => (
+              <span
+                key={tech}
+                className="rounded-full border border-[#7C3AED]/20 bg-white px-5 py-2.5 text-sm font-semibold text-[#7C3AED] transition hover:scale-110 hover:border-[#7C3AED] animate-pulse-soft"
+                style={{ animationDelay: `${index * 0.2}s` }}
+              >
+                {tech}
+              </span>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 3️⃣ Progressive & Lightweight (Green) */}
+      <section className="border-y border-gray-100 bg-[#10B981]/5 px-6 py-14">
+        <div className="mx-auto max-w-7xl text-center">
+          <p className="mb-7 text-sm font-bold uppercase tracking-[0.22em] text-[#10B981] animate-fade-in">
+            Progressive & Lightweight Frameworks
+          </p>
+          <div className="flex flex-wrap justify-center gap-3">
+            {["Vue 3.5", "Nuxt.js", "Pinia", "Vite"].map((tech, index) => (
+              <span
+                key={tech}
+                className="rounded-full border border-[#10B981]/20 bg-white px-5 py-2.5 text-sm font-semibold text-[#10B981] transition hover:scale-110 hover:border-[#10B981] animate-pulse-soft"
+                style={{ animationDelay: `${index * 0.2}s` }}
+              >
+                {tech}
+              </span>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 4️⃣ Mobile & Cross‑Platform (Orange) */}
+      <section className="border-y border-gray-100 bg-[#F59E0B]/5 px-6 py-14">
+        <div className="mx-auto max-w-7xl text-center">
+          <p className="mb-7 text-sm font-bold uppercase tracking-[0.22em] text-[#F59E0B] animate-fade-in">
+            Mobile & Cross‑Platform Development
+          </p>
+          <div className="flex flex-wrap justify-center gap-3">
+            {["Flutter 3.24", "React Native", "SwiftUI", "Kotlin Multiplatform"].map((tech, index) => (
+              <span
+                key={tech}
+                className="rounded-full border border-[#F59E0B]/20 bg-white px-5 py-2.5 text-sm font-semibold text-[#F59E0B] transition hover:scale-110 hover:border-[#F59E0B] animate-pulse-soft"
+                style={{ animationDelay: `${index * 0.2}s` }}
+              >
+                {tech}
+              </span>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 5️⃣ Backend & Emerging Tech (Teal) */}
+      <section className="border-y border-gray-100 bg-[#14B8A6]/5 px-6 py-14">
+        <div className="mx-auto max-w-7xl text-center">
+          <p className="mb-7 text-sm font-bold uppercase tracking-[0.22em] text-[#14B8A6] animate-fade-in">
+            Backend & Emerging Tech
+          </p>
+          <div className="flex flex-wrap justify-center gap-3">
+            {["NestJS", "FastAPI", "Django 5.1", "Spring Boot", "ASP.NET Core 9.0", "Laravel 11", "Go", "Rust"].map((tech, index) => (
+              <span
+                key={tech}
+                className="rounded-full border border-[#14B8A6]/20 bg-white px-5 py-2.5 text-sm font-semibold text-[#14B8A6] transition hover:scale-110 hover:border-[#14B8A6] animate-pulse-soft"
                 style={{ animationDelay: `${index * 0.2}s` }}
               >
                 {tech}
@@ -385,19 +406,6 @@ export default function WebDevelopmentPage() {
           </div>
         </div>
       </section>
-
-      {/* ===== FOOTER (dark slate) ===== */}
-      <footer className="bg-[#1F2937] text-white px-6 py-10">
-        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-5 text-center text-sm text-gray-300 md:flex-row md:text-left">
-          <p>© 2026 Venza Global Services. All Rights Reserved.</p>
-          <div className="flex flex-wrap justify-center gap-5">
-            <Link href="/" className="transition hover:text-[#38BDF8]">Home</Link>
-            <Link href="/services" className="transition hover:text-[#38BDF8]">Services</Link>
-            <Link href="/contact" className="transition hover:text-[#38BDF8]">Contact</Link>
-            <Link href="/consultation" className="transition hover:text-[#38BDF8]">Consultation</Link>
-          </div>
-        </div>
-      </footer>
-    </main>
+</main>
   );
 }

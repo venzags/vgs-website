@@ -128,60 +128,7 @@ export default function MobileApplicationsPage() {
         .animate-tilt { animation: tilt 8s ease-in-out infinite; }
         .animate-card-lift { animation: card-lift 5s ease-in-out infinite; }
       `}</style>
-
-      {/* ===== HEADER (white, brand colors) ===== */}
-      <header className="sticky top-0 z-50 border-b border-gray-200 bg-white/90 backdrop-blur-lg">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6 py-3 sm:py-4">
-          <Link href="/" className="flex items-center shrink-0">
-            <Image
-              src="/images/vgs-logo.png"
-              alt="Venza Global Services"
-              width={260}
-              height={80}
-              priority
-              className="hidden sm:block h-8 w-auto md:h-auto md:w-auto"
-            />
-            <Image
-              src="/images/vgs-logo.png"
-              alt="Venza Global Services"
-              width={180}
-              height={70}
-              priority
-              className="block sm:hidden h-10 w-auto"
-            />
-          </Link>
-
-          <nav className="hidden lg:flex items-center gap-6 xl:gap-8 font-medium text-[#1F2937]">
-            <Link href="/" className="hover:text-[#0A66C2] transition">Home</Link>
-            <Link href="/#about" className="hover:text-[#0A66C2] transition">About</Link>
-            <Link href="/services" className="hover:text-[#0A66C2] transition">Services</Link>
-            <Link href="/#portfolio" className="hover:text-[#0A66C2] transition">Portfolio</Link>
-            <Link href="/#industries" className="hover:text-[#0A66C2] transition">Industries</Link>
-            <Link href="/testimonials" className="hover:text-[#0A66C2] transition">Testimonials</Link>
-            <Link href="/contact" className="hover:text-[#0A66C2] transition">Contact</Link>
-          </nav>
-
-          <Link
-            href="/consultation"
-            className="rounded-xl bg-[#0A66C2] px-5 py-2.5 sm:px-6 sm:py-3 text-sm font-bold text-white shadow-md shadow-[#0A66C2]/20 transition hover:bg-[#094e9e] hover:shadow-lg"
-          >
-            Start App Project
-          </Link>
-        </div>
-        <div className="lg:hidden overflow-x-auto pb-2 px-6">
-          <div className="flex gap-4 text-sm font-medium text-[#1F2937]">
-            <Link href="/" className="whitespace-nowrap hover:text-[#0A66C2]">Home</Link>
-            <Link href="/#about" className="whitespace-nowrap hover:text-[#0A66C2]">About</Link>
-            <Link href="/services" className="whitespace-nowrap hover:text-[#0A66C2]">Services</Link>
-            <Link href="/#portfolio" className="whitespace-nowrap hover:text-[#0A66C2]">Portfolio</Link>
-            <Link href="/#industries" className="whitespace-nowrap hover:text-[#0A66C2]">Industries</Link>
-            <Link href="/testimonials" className="whitespace-nowrap hover:text-[#0A66C2]">Testimonials</Link>
-            <Link href="/contact" className="whitespace-nowrap hover:text-[#0A66C2]">Contact</Link>
-          </div>
-        </div>
-      </header>
-
-      {/* ===== BREADCRUMB ===== */}
+{/* ===== BREADCRUMB ===== */}
       <section className="px-6 pt-8">
         <div className="mx-auto max-w-7xl text-sm text-[#6B7280] animate-fade-in">
           <Link href="/" className="hover:text-[#0A66C2]">Home</Link> /
@@ -416,19 +363,6 @@ export default function MobileApplicationsPage() {
           </div>
         </div>
       </section>
-
-      {/* ===== FOOTER (dark slate) ===== */}
-      <footer className="bg-[#1F2937] text-white px-6 py-10">
-        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-5 text-center text-sm text-gray-300 md:flex-row md:text-left">
-          <p>© 2026 Venza Global Services. All Rights Reserved.</p>
-          <div className="flex flex-wrap justify-center gap-5">
-            <Link href="/" className="transition hover:text-[#38BDF8]">Home</Link>
-            <Link href="/services" className="transition hover:text-[#38BDF8]">Services</Link>
-            <Link href="/contact" className="transition hover:text-[#38BDF8]">Contact</Link>
-            <Link href="/consultation" className="transition hover:text-[#38BDF8]">Consultation</Link>
-          </div>
-        </div>
-      </footer>
-    </main>
+</main>
   );
 }

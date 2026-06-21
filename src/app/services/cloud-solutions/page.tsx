@@ -396,19 +396,6 @@ export default function CloudSolutionsPage() {
           </div>
         </div>
       </section>
-
-      {/* ===== FOOTER ===== */}
-      <footer className="bg-[#1F2937] text-white px-6 py-8 text-center text-sm">
-        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4">
-          <p className="text-gray-300">© 2026 Venza Global Services. All Rights Reserved.</p>
-          <div className="flex gap-5">
-            <Link href="/" className="hover:text-[#38BDF8] transition">Home</Link>
-            <Link href="/services" className="hover:text-[#38BDF8] transition">Services</Link>
-            <Link href="/contact" className="hover:text-[#38BDF8] transition">Contact</Link>
-            <Link href="/consultation" className="hover:text-[#38BDF8] transition">Consultation</Link>
-          </div>
-        </div>
-      </footer>
-    </main>
+</main>
   );
 }

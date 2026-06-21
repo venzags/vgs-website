@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Image from "next/image";
 
 export default function CyberSecurityPage() {
   const securityServices = [
@@ -142,58 +141,6 @@ export default function CyberSecurityPage() {
           animation: pulse-soft 2.5s infinite;
         }
       `}</style>
-
-      {/* ===== HEADER (brand colors, full navigation, logo) ===== */}
-      <header className="sticky top-0 z-50 border-b border-gray-200 bg-white/90 backdrop-blur-lg">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 sm:py-4 flex justify-between items-center">
-          <Link href="/" className="flex items-center shrink-0">
-            <Image
-              src="/images/vgs-logo.png"
-              alt="Venza Global Services"
-              width={260}
-              height={80}
-              priority
-              className="hidden sm:block h-8 w-auto md:h-auto md:w-auto"
-            />
-            <Image
-              src="/images/vgs-logo.png"
-              alt="Venza Global Services"
-              width={180}
-              height={70}
-              priority
-              className="block sm:hidden h-10 w-auto"
-            />
-          </Link>
-
-          <nav className="hidden lg:flex items-center gap-6 xl:gap-8 font-medium text-[#1F2937]">
-            <Link href="/" className="hover:text-[#0A66C2] transition">Home</Link>
-            <Link href="/#about" className="hover:text-[#0A66C2] transition">About</Link>
-            <Link href="/services" className="hover:text-[#0A66C2] transition">Services</Link>
-            <Link href="/#portfolio" className="hover:text-[#0A66C2] transition">Portfolio</Link>
-            <Link href="/#industries" className="hover:text-[#0A66C2] transition">Industries</Link>
-            <Link href="/testimonials" className="hover:text-[#0A66C2] transition">Testimonials</Link>
-            <Link href="/contact" className="hover:text-[#0A66C2] transition">Contact</Link>
-          </nav>
-
-          <Link
-            href="/consultation"
-            className="bg-[#0A66C2] hover:bg-[#094e9e] text-white px-5 py-2.5 sm:px-6 sm:py-3 rounded-xl font-bold shadow-md shadow-[#0A66C2]/20 transition animate-pulse-soft"
-          >
-            Security Consultation
-          </Link>
-        </div>
-        <div className="lg:hidden overflow-x-auto pb-2 px-6">
-          <div className="flex gap-4 text-sm font-medium text-[#1F2937]">
-            <Link href="/" className="whitespace-nowrap hover:text-[#0A66C2]">Home</Link>
-            <Link href="/#about" className="whitespace-nowrap hover:text-[#0A66C2]">About</Link>
-            <Link href="/services" className="whitespace-nowrap hover:text-[#0A66C2]">Services</Link>
-            <Link href="/#portfolio" className="whitespace-nowrap hover:text-[#0A66C2]">Portfolio</Link>
-            <Link href="/#industries" className="whitespace-nowrap hover:text-[#0A66C2]">Industries</Link>
-            <Link href="/testimonials" className="whitespace-nowrap hover:text-[#0A66C2]">Testimonials</Link>
-            <Link href="/contact" className="whitespace-nowrap hover:text-[#0A66C2]">Contact</Link>
-          </div>
-        </div>
-      </header>
 
       {/* ===== BREADCRUMB ===== */}
       <section className="px-6 pt-8">
@@ -422,19 +369,6 @@ export default function CyberSecurityPage() {
           </div>
         </div>
       </section>
-
-      {/* ===== FOOTER ===== */}
-      <footer className="bg-[#1F2937] text-white px-6 py-8 text-center text-sm">
-        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4">
-          <p className="text-gray-300">© 2026 Venza Global Services. All Rights Reserved.</p>
-          <div className="flex gap-5">
-            <Link href="/" className="hover:text-[#38BDF8] transition">Home</Link>
-            <Link href="/services" className="hover:text-[#38BDF8] transition">Services</Link>
-            <Link href="/contact" className="hover:text-[#38BDF8] transition">Contact</Link>
-            <Link href="/consultation" className="hover:text-[#38BDF8] transition">Consultation</Link>
-          </div>
-        </div>
-      </footer>
-    </main>
+</main>
   );
 }
