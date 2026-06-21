@@ -24,7 +24,7 @@ export default function Home() {
   ];
 
   return (
-    <main className="bg-white pb-24 text-gray-900">
+    <main className="bg-white pb-24 text-gray-900 lg:pb-0">
 
   {/* Hero */}
      <section
@@ -197,7 +197,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-<div className="fixed bottom-0 left-0 w-full bg-white border-t shadow-lg z-50">
+<div className="fixed bottom-0 left-0 z-50 w-full border-t bg-white shadow-lg lg:hidden">
   <div className="grid grid-cols-5 text-center">
 
     <a
