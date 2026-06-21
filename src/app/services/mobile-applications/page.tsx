@@ -79,6 +79,102 @@ export default function MobileApplicationsPage() {
     },
   ];
 
+  // --- 6 slides for the animated carousel ---
+  const mobileSlides = [
+    {
+      title: "Android Apps",
+      desc: "Fast, reliable apps for phones, tablets, and business devices.",
+      color: "#0A66C2",
+      icon: (
+        <svg viewBox="0 0 120 120" className="w-28 h-28 sm:w-36 sm:h-36">
+          <rect x="35" y="20" width="50" height="80" rx="8" fill="#e0f2fe" stroke="#0A66C2" strokeWidth="2" />
+          <rect x="45" y="30" width="30" height="45" rx="4" fill="white" />
+          <circle cx="60" cy="55" r="8" fill="#0A66C2" className="animate-pulse" />
+          <text x="60" y="58" textAnchor="middle" fontSize="8" fill="white" fontWeight="bold">▶</text>
+          <rect x="52" y="80" width="16" height="4" rx="2" fill="#0A66C2" opacity="0.6" />
+          <circle cx="60" cy="90" r="3" fill="#0A66C2" />
+        </svg>
+      ),
+    },
+    {
+      title: "iOS Apps",
+      desc: "Premium iPhone and iPad experiences with Swift and SwiftUI.",
+      color: "#7C3AED",
+      icon: (
+        <svg viewBox="0 0 120 120" className="w-28 h-28 sm:w-36 sm:h-36">
+          <rect x="35" y="20" width="50" height="80" rx="8" fill="#EDE9FE" stroke="#7C3AED" strokeWidth="2" />
+          <rect x="45" y="30" width="30" height="45" rx="4" fill="white" />
+          <circle cx="60" cy="55" r="10" fill="#7C3AED" />
+          <text x="60" y="58" textAnchor="middle" fontSize="8" fill="white" fontWeight="bold">🍎</text>
+          <rect x="52" y="80" width="16" height="4" rx="2" fill="#7C3AED" opacity="0.6" />
+          <circle cx="60" cy="90" r="3" fill="#7C3AED" />
+        </svg>
+      ),
+    },
+    {
+      title: "Cross‑Platform",
+      desc: "One codebase, both platforms – faster delivery, lower cost.",
+      color: "#059669",
+      icon: (
+        <svg viewBox="0 0 120 120" className="w-28 h-28 sm:w-36 sm:h-36">
+          <rect x="20" y="25" width="35" height="70" rx="6" fill="#D1FAE5" stroke="#059669" strokeWidth="2" />
+          <rect x="28" y="35" width="19" height="35" rx="2" fill="white" />
+          <circle cx="37" cy="55" r="6" fill="#059669" />
+          <rect x="65" y="25" width="35" height="70" rx="6" fill="#D1FAE5" stroke="#059669" strokeWidth="2" />
+          <rect x="73" y="35" width="19" height="35" rx="2" fill="white" />
+          <circle cx="82" cy="55" r="6" fill="#059669" />
+          <line x1="55" y1="60" x2="65" y2="60" stroke="#059669" strokeWidth="3" strokeDasharray="3,3" />
+          <circle cx="60" cy="60" r="4" fill="#10b981" className="animate-ping" style={{ animationDuration: "2s" }} />
+        </svg>
+      ),
+    },
+    {
+      title: "E‑Commerce Apps",
+      desc: "Mobile shopping with carts, payments, and push notifications.",
+      color: "#D97706",
+      icon: (
+        <svg viewBox="0 0 120 120" className="w-28 h-28 sm:w-36 sm:h-36">
+          <rect x="35" y="25" width="50" height="70" rx="8" fill="#FEF3C7" stroke="#D97706" strokeWidth="2" />
+          <circle cx="50" cy="45" r="6" fill="#D97706" />
+          <circle cx="70" cy="45" r="6" fill="#D97706" />
+          <path d="M35 60 L85 60" stroke="#D97706" strokeWidth="3" strokeLinecap="round" />
+          <rect x="40" y="70" width="40" height="15" rx="3" fill="#D97706" className="animate-pulse" />
+          <text x="60" y="80" textAnchor="middle" fontSize="8" fill="white" fontWeight="bold">PAY</text>
+        </svg>
+      ),
+    },
+    {
+      title: "Business & Dashboards",
+      desc: "Internal tools for teams, reporting, and workflow automation.",
+      color: "#4F46E5",
+      icon: (
+        <svg viewBox="0 0 120 120" className="w-28 h-28 sm:w-36 sm:h-36">
+          <rect x="15" y="30" width="90" height="60" rx="8" fill="#EEF2FF" stroke="#4F46E5" strokeWidth="2" />
+          <rect x="25" y="40" width="30" height="40" rx="4" fill="white" />
+          <rect x="60" y="40" width="35" height="40" rx="4" fill="white" />
+          <rect x="65" y="50" width="25" height="20" rx="2" fill="#4F46E5" opacity="0.2" />
+          <line x1="65" y1="60" x2="90" y2="60" stroke="#4F46E5" strokeWidth="2" strokeDasharray="3,2" />
+          <circle cx="80" cy="60" r="5" fill="#4F46E5" />
+        </svg>
+      ),
+    },
+    {
+      title: "API & Integrations",
+      desc: "Connect apps with payments, CRM, cloud, and third‑party services.",
+      color: "#E11D48",
+      icon: (
+        <svg viewBox="0 0 120 120" className="w-28 h-28 sm:w-36 sm:h-36">
+          <circle cx="40" cy="40" r="15" fill="#FFE4E6" stroke="#E11D48" strokeWidth="2" />
+          <circle cx="80" cy="80" r="15" fill="#FFE4E6" stroke="#E11D48" strokeWidth="2" />
+          <line x1="50" y1="50" x2="70" y2="70" stroke="#E11D48" strokeWidth="3" strokeDasharray="4,3" className="animate-pulse" />
+          <circle cx="60" cy="60" r="5" fill="#E11D48" className="animate-ping" style={{ animationDuration: "2s" }} />
+          <text x="40" y="43" textAnchor="middle" fontSize="8" fill="#E11D48" fontWeight="bold">API</text>
+          <text x="80" y="83" textAnchor="middle" fontSize="8" fill="#E11D48" fontWeight="bold">DB</text>
+        </svg>
+      ),
+    },
+  ];
+
   return (
     <main className="relative min-h-screen overflow-x-hidden bg-white">
       {/* ===== BRAND BACKGROUND ORBS ===== */}
@@ -120,6 +216,36 @@ export default function MobileApplicationsPage() {
           0%, 100% { transform: translateY(0); }
           50% { transform: translateY(-8px); }
         }
+
+        /* Carousel */
+        .mobile-carousel {
+          position: relative;
+          width: 100%;
+          height: 280px;
+          overflow: hidden;
+        }
+        .mobile-carousel .slide {
+          position: absolute;
+          top: 0; left: 0; width: 100%; height: 100%;
+          opacity: 0;
+          animation: carousel-fade 30s infinite;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 1rem;
+        }
+        .mobile-carousel .slide:nth-child(1) { animation-delay: 0s; }
+        .mobile-carousel .slide:nth-child(2) { animation-delay: 5s; }
+        .mobile-carousel .slide:nth-child(3) { animation-delay: 10s; }
+        .mobile-carousel .slide:nth-child(4) { animation-delay: 15s; }
+        .mobile-carousel .slide:nth-child(5) { animation-delay: 20s; }
+        .mobile-carousel .slide:nth-child(6) { animation-delay: 25s; }
+
+        @keyframes carousel-fade {
+          0%, 14.28% { opacity: 1; }
+          18%, 100%  { opacity: 0; }
+        }
+
         .animate-float { animation: float 6s ease-in-out infinite; }
         .animate-pulse-soft { animation: pulse-soft 2.5s infinite; }
         .animate-gradient-flow { background-size: 200% 200%; animation: gradient-flow 4s ease infinite; }
@@ -128,7 +254,8 @@ export default function MobileApplicationsPage() {
         .animate-tilt { animation: tilt 8s ease-in-out infinite; }
         .animate-card-lift { animation: card-lift 5s ease-in-out infinite; }
       `}</style>
-{/* ===== BREADCRUMB ===== */}
+
+      {/* ===== BREADCRUMB ===== */}
       <section className="px-6 pt-8">
         <div className="mx-auto max-w-7xl text-sm text-[#6B7280] animate-fade-in">
           <Link href="/" className="hover:text-[#0A66C2]">Home</Link> /
@@ -238,6 +365,32 @@ export default function MobileApplicationsPage() {
               <p className="text-xs text-[#6B7280]">Available on</p>
               <p className="mt-1 font-bold text-[#0A66C2]">Android + iOS</p>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ===== ANIMATED MOBILE CAROUSEL (NEW) ===== */}
+      <section className="pb-16 px-4 sm:px-6">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-3xl font-bold text-center text-[#1F2937] mb-8 animate-fade-in-up">
+            Our Mobile App Projects
+          </h2>
+          <div className="mobile-carousel rounded-3xl shadow-lg border border-gray-100 bg-white">
+            {mobileSlides.map((slide, idx) => (
+              <div key={idx} className="slide">
+                <div className="flex flex-col sm:flex-row items-center gap-6 p-6">
+                  <div className="rounded-2xl bg-gray-50 p-4 shadow-sm">
+                    {slide.icon}
+                  </div>
+                  <div className="text-center sm:text-left">
+                    <h3 className="text-2xl font-extrabold" style={{ color: slide.color }}>
+                      {slide.title}
+                    </h3>
+                    <p className="mt-2 text-gray-600 max-w-md">{slide.desc}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -363,6 +516,6 @@ export default function MobileApplicationsPage() {
           </div>
         </div>
       </section>
-</main>
+    </main>
   );
 }

@@ -86,6 +86,113 @@ export default function DigitalMarketingPage() {
     { value: "Clearer", label: "Marketing Insights" },
   ];
 
+  // --- 6 slides for digital marketing carousel ---
+  const marketingSlides = [
+    {
+      title: "SEO Strategy",
+      desc: "Boost organic traffic with data‑driven search optimisation.",
+      color: "#0A66C2",
+      icon: (
+        <svg viewBox="0 0 120 120" className="w-28 h-28 sm:w-36 sm:h-36">
+          {/* Magnifying glass */}
+          <circle cx="45" cy="45" r="18" fill="none" stroke="#0A66C2" strokeWidth="3" />
+          <line x1="58" y1="58" x2="78" y2="78" stroke="#0A66C2" strokeWidth="4" strokeLinecap="round" />
+          {/* Graph arrow */}
+          <polyline points="30,90 45,70 65,80 90,50 105,60" fill="none" stroke="#38BDF8" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+          <circle cx="90" cy="50" r="4" fill="#0A66C2" />
+        </svg>
+      ),
+    },
+    {
+      title: "Social Media Marketing",
+      desc: "Engaging content strategies that build your brand community.",
+      color: "#7C3AED",
+      icon: (
+        <svg viewBox="0 0 120 120" className="w-28 h-28 sm:w-36 sm:h-36">
+          {/* Speech bubble */}
+          <rect x="25" y="30" width="70" height="55" rx="10" fill="#EDE9FE" stroke="#7C3AED" strokeWidth="2" />
+          <polygon points="45,85 55,100 65,85" fill="#EDE9FE" stroke="#7C3AED" strokeWidth="2" />
+          {/* Heart icon inside */}
+          <path d="M60 55 C60 45 45 40 45 50 C45 60 60 65 60 65 C60 65 75 60 75 50 C75 40 60 45 60 55 Z" fill="#7C3AED" />
+        </svg>
+      ),
+    },
+    {
+      title: "Performance Advertising",
+      desc: "Paid campaigns optimized for leads, sales, and ROI.",
+      color: "#D97706",
+      icon: (
+        <svg viewBox="0 0 120 120" className="w-28 h-28 sm:w-36 sm:h-36">
+          {/* Target */}
+          <circle cx="60" cy="55" r="25" fill="none" stroke="#D97706" strokeWidth="3" />
+          <circle cx="60" cy="55" r="15" fill="none" stroke="#D97706" strokeWidth="2" />
+          <circle cx="60" cy="55" r="5" fill="#D97706" />
+          {/* Dollar signs flowing in */}
+          <text x="30" y="40" fontSize="14" fill="#D97706" fontWeight="bold">$</text>
+          <text x="85" y="30" fontSize="14" fill="#D97706" fontWeight="bold" className="animate-pulse">$</text>
+          <text x="80" y="75" fontSize="14" fill="#D97706" fontWeight="bold">$</text>
+          <line x1="40" y1="85" x2="80" y2="85" stroke="#D97706" strokeWidth="2" strokeDasharray="3,2" />
+        </svg>
+      ),
+    },
+    {
+      title: "Content Marketing",
+      desc: "High‑value content that educates, builds trust, and converts.",
+      color: "#059669",
+      icon: (
+        <svg viewBox="0 0 120 120" className="w-28 h-28 sm:w-36 sm:h-36">
+          {/* Document / page */}
+          <rect x="20" y="20" width="80" height="80" rx="6" fill="#D1FAE5" stroke="#059669" strokeWidth="2" />
+          <line x1="35" y1="35" x2="85" y2="35" stroke="#059669" strokeWidth="3" strokeLinecap="round" />
+          <line x1="35" y1="50" x2="75" y2="50" stroke="#059669" strokeWidth="3" strokeLinecap="round" />
+          <line x1="35" y1="65" x2="80" y2="65" stroke="#059669" strokeWidth="3" strokeLinecap="round" />
+          <line x1="35" y1="80" x2="65" y2="80" stroke="#059669" strokeWidth="3" strokeLinecap="round" />
+          {/* Star */}
+          <polygon points="100,30 103,40 113,40 105,46 108,56 100,50 92,56 95,46 87,40 97,40" fill="#059669" className="animate-pulse" />
+        </svg>
+      ),
+    },
+    {
+      title: "Analytics & Reporting",
+      desc: "Track every click, lead, and conversion with clear dashboards.",
+      color: "#4F46E5",
+      icon: (
+        <svg viewBox="0 0 120 120" className="w-28 h-28 sm:w-36 sm:h-36">
+          {/* Bar chart */}
+          <rect x="25" y="60" width="15" height="30" rx="2" fill="#4F46E5" />
+          <rect x="45" y="40" width="15" height="50" rx="2" fill="#4F46E5" />
+          <rect x="65" y="25" width="15" height="65" rx="2" fill="#4F46E5" />
+          <rect x="85" y="50" width="15" height="40" rx="2" fill="#4F46E5" />
+          {/* Trend line */}
+          <polyline points="30,60 55,40 75,25 95,50" fill="none" stroke="#38BDF8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+          <circle cx="95" cy="50" r="4" fill="#0A66C2" />
+        </svg>
+      ),
+    },
+    {
+      title: "Conversion Optimisation",
+      desc: "Turn more visitors into customers with smarter UX and CTA.",
+      color: "#E11D48",
+      icon: (
+        <svg viewBox="0 0 120 120" className="w-28 h-28 sm:w-36 sm:h-36">
+          {/* Funnel */}
+          <path d="M20 30 L100 30 L80 70 L40 70 Z" fill="#FFE4E6" stroke="#E11D48" strokeWidth="2" />
+          <path d="M40 70 L70 70 L60 100 L50 100 Z" fill="#FFE4E6" stroke="#E11D48" strokeWidth="2" />
+          {/* Arrow down */}
+          <line x1="60" y1="15" x2="60" y2="25" stroke="#E11D48" strokeWidth="3" markerEnd="url(#arrowPink)" />
+          <defs>
+            <marker id="arrowPink" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+              <path d="M0,0 L8,4 L0,8 Z" fill="#E11D48" />
+            </marker>
+          </defs>
+          {/* Stars */}
+          <text x="30" y="55" fontSize="12" fill="#E11D48" className="animate-pulse">★</text>
+          <text x="85" y="70" fontSize="12" fill="#E11D48" className="animate-pulse">★</text>
+        </svg>
+      ),
+    },
+  ];
+
   return (
     <main className="relative min-h-screen overflow-hidden bg-white">
       {/* ===== ANIMATED BACKGROUND ORBS (brand blue) ===== */}
@@ -116,6 +223,37 @@ export default function DigitalMarketingPage() {
           0%, 100% { box-shadow: 0 0 0 0 rgba(10, 102, 194, 0.5); }
           50% { box-shadow: 0 0 0 15px rgba(10, 102, 194, 0); }
         }
+
+        /* Marketing carousel */
+        .marketing-carousel {
+          position: relative;
+          width: 100%;
+          height: 280px;
+          overflow: hidden;
+        }
+        .marketing-carousel .mkt-slide {
+          position: absolute;
+          top: 0; left: 0; width: 100%; height: 100%;
+          opacity: 0;
+          animation: carousel-fade 30s infinite;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 1rem;
+        }
+        .marketing-carousel .mkt-slide:nth-child(1) { animation-delay: 0s; }
+        .marketing-carousel .mkt-slide:nth-child(2) { animation-delay: 5s; }
+        .marketing-carousel .mkt-slide:nth-child(3) { animation-delay: 10s; }
+        .marketing-carousel .mkt-slide:nth-child(4) { animation-delay: 15s; }
+        .marketing-carousel .mkt-slide:nth-child(5) { animation-delay: 20s; }
+        .marketing-carousel .mkt-slide:nth-child(6) { animation-delay: 25s; }
+
+        @keyframes carousel-fade {
+          0%, 14.28% { opacity: 1; }
+          18%, 100%  { opacity: 0; }
+        }
+
+        .animate-float { animation: float 6s ease-in-out infinite; }
         .animate-fade-in-up {
           animation: fade-in-up 0.7s ease-out forwards;
           opacity: 0;
@@ -124,11 +262,10 @@ export default function DigitalMarketingPage() {
           background-size: 200% 200%;
           animation: gradient-flow 4s ease infinite;
         }
-        .animate-pulse-soft {
-          animation: pulse-soft 2.5s infinite;
-        }
+        .animate-pulse-soft { animation: pulse-soft 2.5s infinite; }
       `}</style>
-{/* ===== BREADCRUMB ===== */}
+
+      {/* ===== BREADCRUMB ===== */}
       <section className="px-6 pt-8">
         <div className="mx-auto max-w-7xl text-sm text-[#6B7280] animate-fade-in-up">
           <Link href="/" className="hover:text-[#0A66C2]">Home</Link> /
@@ -174,6 +311,32 @@ export default function DigitalMarketingPage() {
             >
               Talk to VGS
             </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ===== ANIMATED MARKETING CAROUSEL (NEW) ===== */}
+      <section className="pb-16 px-4 sm:px-6">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-3xl font-bold text-center text-[#1F2937] mb-8 animate-fade-in-up">
+            Digital Marketing Services
+          </h2>
+          <div className="marketing-carousel rounded-3xl shadow-lg border border-gray-100 bg-white">
+            {marketingSlides.map((slide, idx) => (
+              <div key={idx} className="mkt-slide">
+                <div className="flex flex-col sm:flex-row items-center gap-6 p-6">
+                  <div className="rounded-2xl bg-gray-50 p-4 shadow-sm">
+                    {slide.icon}
+                  </div>
+                  <div className="text-center sm:text-left">
+                    <h3 className="text-2xl font-extrabold" style={{ color: slide.color }}>
+                      {slide.title}
+                    </h3>
+                    <p className="mt-2 text-gray-600 max-w-md">{slide.desc}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>

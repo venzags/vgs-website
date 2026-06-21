@@ -62,7 +62,6 @@ export default function SoftwareDevelopmentPage() {
     },
   ];
 
-  // ----- Industries for auto‑slider -----
   const industries = [
     {
       icon: "🏥",
@@ -124,11 +123,24 @@ export default function SoftwareDevelopmentPage() {
           50% { background-position: 100% 50%; }
           100% { background-position: 0% 50%; }
         }
-        /* ---------- AUTO SLIDER ---------- */
+        @keyframes spin-slow {
+          from { transform: rotate(0deg); }
+          to { transform: rotate(360deg); }
+        }
+        @keyframes code-typing {
+          0% { width: 0; }
+          100% { width: 100%; }
+        }
+        @keyframes cloud-float {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(-8px); }
+        }
+
+        /* Slider */
         .slider {
           position: relative;
           width: 100%;
-          height: 280px;  /* Fixed height for the slider */
+          height: 280px;
           overflow: hidden;
         }
         .slide {
@@ -137,7 +149,6 @@ export default function SoftwareDevelopmentPage() {
           opacity: 0;
           animation: sliderFade 30s infinite;
         }
-        /* Each slide gets a delay based on its index */
         .slide:nth-child(1) { animation-delay: 0s; }
         .slide:nth-child(2) { animation-delay: 5s; }
         .slide:nth-child(3) { animation-delay: 10s; }
@@ -146,19 +157,24 @@ export default function SoftwareDevelopmentPage() {
         .slide:nth-child(6) { animation-delay: 25s; }
 
         @keyframes sliderFade {
-          0%, 14.28% { opacity: 1; }   /* visible for ~5s (100/7 =14.28) */
-          20%, 100%  { opacity: 0; }   /* hidden rest of time */
+          0%, 14.28% { opacity: 1; }
+          20%, 100%  { opacity: 0; }
         }
-        .animate-fade-in-up { animation: fadeInUp 0.8s ease-out forwards; }
-        .animate-fade-in { animation: fadeIn 1.2s ease-out forwards; }
+
+        .animate-fade-in-up { animation: fadeInUp 0.8s ease-out forwards; opacity: 0; }
+        .animate-fade-in { animation: fadeIn 1.2s ease-out forwards; opacity: 0; }
         .animate-float { animation: float 3s ease-in-out infinite; }
         .animate-pulse-soft { animation: pulse-soft 2s infinite; }
         .animate-gradient {
           background-size: 200% 200%;
           animation: gradient-shift 4s ease infinite;
         }
+        .animate-spin-slow { animation: spin-slow 10s linear infinite; }
+        .animate-cloud-float { animation: cloud-float 4s ease-in-out infinite; }
+        .animate-code-typing { animation: code-typing 2s steps(20) forwards; }
       `}</style>
-{/* ===== AUTO‑SLIDING INDUSTRY CAROUSEL ===== */}
+
+      {/* ===== AUTO‑SLIDING INDUSTRY CAROUSEL ===== */}
       <section className="slider mb-10">
         {industries.map((ind, idx) => (
           <div key={idx} className="slide flex items-center justify-center px-6 py-10">
@@ -207,6 +223,53 @@ export default function SoftwareDevelopmentPage() {
             >
               Talk to Our Team
             </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ===== SOFTWARE DEVELOPMENT VISUAL FRAME (CSS ILLUSTRATION) ===== */}
+      <section className="pb-16 px-4 sm:px-6">
+        <div className="max-w-4xl mx-auto">
+          <div className="relative bg-white rounded-3xl shadow-lg border border-gray-100 p-8 animate-fade-in-up">
+            <div className="flex items-center justify-center gap-6 flex-wrap">
+              {/* Left: Code editor with typing animation */}
+              <svg className="w-36 h-36 sm:w-44 sm:h-44" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+                <rect x="10" y="15" width="100" height="90" rx="8" fill="#1e293b" />
+                <rect x="20" y="30" width="80" height="8" rx="2" fill="#06b6d4" className="animate-pulse" />
+                <rect x="20" y="48" width="50" height="8" rx="2" fill="#38bdf8" />
+                <rect x="20" y="66" width="65" height="8" rx="2" fill="#06b6d4" className="animate-pulse" style={{ animationDelay: "0.5s" }} />
+                <rect x="20" y="84" width="45" height="8" rx="2" fill="#38bdf8" />
+                <circle cx="95" cy="95" r="8" fill="#10b981" className="animate-ping" style={{ animationDuration: "2s" }} />
+                <text x="95" y="98" textAnchor="middle" fontSize="8" fill="white" fontWeight="bold">✓</text>
+              </svg>
+
+              {/* Center: Gears / Cloud */}
+              <svg className="w-36 h-36 sm:w-44 sm:h-44" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="60" cy="55" r="28" fill="none" stroke="#06b6d4" strokeWidth="4" strokeDasharray="8 4" className="animate-spin-slow" />
+                <circle cx="60" cy="55" r="18" fill="none" stroke="#3b82f6" strokeWidth="4" strokeDasharray="6 3" className="animate-spin-slow" style={{ animationDirection: "reverse", animationDuration: "8s" }} />
+                <circle cx="60" cy="55" r="8" fill="#06b6d4" />
+                <text x="60" y="58" textAnchor="middle" fontSize="10" fill="white" fontWeight="bold">SD</text>
+                <path d="M30 90 Q60 100 90 90" fill="none" stroke="#e2e8f0" strokeWidth="6" strokeLinecap="round" className="animate-cloud-float" />
+                <circle cx="45" cy="90" r="10" fill="#e2e8f0" className="animate-cloud-float" style={{ animationDelay: "0.3s" }} />
+                <circle cx="75" cy="90" r="12" fill="#e2e8f0" className="animate-cloud-float" style={{ animationDelay: "0.7s" }} />
+              </svg>
+
+              {/* Right: Devices / Cloud connection */}
+              <svg className="w-36 h-36 sm:w-44 sm:h-44" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+                <rect x="15" y="30" width="35" height="45" rx="4" fill="#f8fafc" stroke="#06b6d4" strokeWidth="2" />
+                <rect x="22" y="38" width="21" height="25" rx="2" fill="#e0f2fe" />
+                <circle cx="32" cy="70" r="3" fill="#06b6d4" />
+                <rect x="65" y="40" width="35" height="45" rx="4" fill="#f8fafc" stroke="#3b82f6" strokeWidth="2" />
+                <rect x="72" y="48" width="21" height="25" rx="2" fill="#e0f2fe" />
+                <circle cx="82" cy="80" r="3" fill="#3b82f6" />
+                <line x1="50" y1="52" x2="65" y2="60" stroke="#06b6d4" strokeWidth="2" strokeDasharray="3,3" className="animate-pulse" />
+                <line x1="50" y1="65" x2="65" y2="70" stroke="#3b82f6" strokeWidth="2" strokeDasharray="3,3" className="animate-pulse" style={{ animationDelay: "1s" }} />
+                <circle cx="55" cy="58" r="4" fill="#10b981" className="animate-ping" style={{ animationDuration: "2s", animationDelay: "0.5s" }} />
+              </svg>
+            </div>
+            <p className="text-center text-lg text-gray-500 mt-6 animate-fade-in-up">
+              From clean code to scalable cloud deployments — we build software that powers your business.
+            </p>
           </div>
         </div>
       </section>
@@ -421,6 +484,6 @@ export default function SoftwareDevelopmentPage() {
           </div>
         </div>
       </section>
-</main>
+    </main>
   );
 }

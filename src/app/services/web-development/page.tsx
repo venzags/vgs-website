@@ -64,6 +64,120 @@ export default function WebDevelopmentPage() {
     },
   ];
 
+  // ----- 6 slides for the illustration carousel -----
+  const slides = [
+    {
+      title: "Business Websites",
+      desc: "Professional sites that build trust and generate leads.",
+      color: "#0A66C2",
+      icon: (
+        <svg viewBox="0 0 120 120" className="w-28 h-28 sm:w-36 sm:h-36">
+          {/* Monitor */}
+          <rect x="20" y="15" width="80" height="60" rx="6" fill="#e0f2fe" stroke="#0A66C2" strokeWidth="2" />
+          <rect x="30" y="25" width="60" height="40" rx="2" fill="white" />
+          {/* Chart bars */}
+          <rect x="40" y="45" width="8" height="15" fill="#38BDF8" />
+          <rect x="52" y="35" width="8" height="25" fill="#0A66C2" />
+          <rect x="64" y="40" width="8" height="20" fill="#38BDF8" />
+          {/* Base */}
+          <rect x="35" y="80" width="50" height="8" rx="2" fill="#475569" />
+          <rect x="45" y="88" width="30" height="4" rx="1" fill="#475569" />
+        </svg>
+      ),
+    },
+    {
+      title: "E-Commerce Stores",
+      desc: "Fast online stores with secure payments and mobile-first design.",
+      color: "#7C3AED",
+      icon: (
+        <svg viewBox="0 0 120 120" className="w-28 h-28 sm:w-36 sm:h-36">
+          {/* Shopping bag */}
+          <rect x="25" y="35" width="70" height="70" rx="8" fill="#EDE9FE" stroke="#7C3AED" strokeWidth="2" />
+          <path d="M40 35 V20 A20 20 0 0 1 80 20 V35" fill="none" stroke="#7C3AED" strokeWidth="3" strokeLinecap="round" />
+          <circle cx="45" cy="55" r="4" fill="#7C3AED" />
+          <circle cx="75" cy="55" r="4" fill="#7C3AED" />
+          <line x1="45" y1="70" x2="75" y2="70" stroke="#7C3AED" strokeWidth="3" strokeLinecap="round" />
+        </svg>
+      ),
+    },
+    {
+      title: "Web Applications",
+      desc: "Custom portals, dashboards, booking systems, and workflow apps.",
+      color: "#059669",
+      icon: (
+        <svg viewBox="0 0 120 120" className="w-28 h-28 sm:w-36 sm:h-36">
+          {/* Gear / App icon */}
+          <circle cx="60" cy="40" r="18" fill="#D1FAE5" stroke="#059669" strokeWidth="2" />
+          <path d="M60 22 V58 M42 40 H78" stroke="#059669" strokeWidth="3" strokeLinecap="round" />
+          {/* Window panels */}
+          <rect x="15" y="65" width="40" height="35" rx="4" fill="#D1FAE5" stroke="#059669" strokeWidth="2" />
+          <rect x="22" y="72" width="26" height="20" rx="2" fill="white" />
+          <rect x="65" y="65" width="40" height="35" rx="4" fill="#D1FAE5" stroke="#059669" strokeWidth="2" />
+          <rect x="72" y="72" width="26" height="20" rx="2" fill="white" />
+          <circle cx="85" cy="80" r="6" fill="#059669" className="animate-pulse" style={{ animationDuration: "2s" }} />
+        </svg>
+      ),
+    },
+    {
+      title: "Website Redesign",
+      desc: "Modernise outdated sites with stronger branding and UX.",
+      color: "#D97706",
+      icon: (
+        <svg viewBox="0 0 120 120" className="w-28 h-28 sm:w-36 sm:h-36">
+          {/* Brush / redesign */}
+          <rect x="20" y="25" width="80" height="70" rx="8" fill="#FEF3C7" stroke="#D97706" strokeWidth="2" />
+          {/* Old design (grey) */}
+          <rect x="30" y="35" width="25" height="20" rx="2" fill="#e5e7eb" />
+          <rect x="30" y="60" width="35" height="8" rx="2" fill="#e5e7eb" />
+          <rect x="30" y="72" width="28" height="8" rx="2" fill="#e5e7eb" />
+          {/* Arrow to new design */}
+          <line x1="60" y1="45" x2="80" y2="45" stroke="#D97706" strokeWidth="2" markerEnd="url(#arrowOrange)" />
+          <defs>
+            <marker id="arrowOrange" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+              <path d="M0,0 L8,4 L0,8 Z" fill="#D97706" />
+            </marker>
+          </defs>
+          {/* New design (blue) */}
+          <rect x="80" y="30" width="25" height="25" rx="2" fill="#0A66C2" opacity="0.2" />
+          <rect x="80" y="60" width="35" height="8" rx="2" fill="#0A66C2" opacity="0.3" />
+          <rect x="80" y="72" width="28" height="8" rx="2" fill="#0A66C2" opacity="0.3" />
+        </svg>
+      ),
+    },
+    {
+      title: "SEO-Ready Development",
+      desc: "Clean structure, speed, and technical foundations for search visibility.",
+      color: "#0284C7",
+      icon: (
+        <svg viewBox="0 0 120 120" className="w-28 h-28 sm:w-36 sm:h-36">
+          {/* Magnifying glass */}
+          <circle cx="45" cy="45" r="20" fill="none" stroke="#0284C7" strokeWidth="4" />
+          <line x1="60" y1="60" x2="80" y2="80" stroke="#0284C7" strokeWidth="4" strokeLinecap="round" />
+          {/* Graph line */}
+          <polyline points="20,90 40,70 60,80 80,50 100,60" fill="none" stroke="#38BDF8" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+          <circle cx="80" cy="50" r="4" fill="#0A66C2" />
+        </svg>
+      ),
+    },
+    {
+      title: "Website Maintenance",
+      desc: "Ongoing updates, security, monitoring, and continuous improvements.",
+      color: "#7C3AED",
+      icon: (
+        <svg viewBox="0 0 120 120" className="w-28 h-28 sm:w-36 sm:h-36">
+          {/* Tools / maintenance */}
+          <rect x="20" y="30" width="80" height="70" rx="8" fill="#EDE9FE" stroke="#7C3AED" strokeWidth="2" />
+          {/* Wrench */}
+          <path d="M30 45 L45 60 L55 50 L40 35 Z" fill="#7C3AED" />
+          <circle cx="50" cy="45" r="6" fill="#EDE9FE" stroke="#7C3AED" strokeWidth="2" />
+          {/* Gear */}
+          <circle cx="80" cy="50" r="14" fill="none" stroke="#7C3AED" strokeWidth="3" strokeDasharray="4 2" className="animate-spin-slow" />
+          <circle cx="80" cy="50" r="6" fill="#7C3AED" />
+        </svg>
+      ),
+    },
+  ];
+
   return (
     <main className="relative min-h-screen overflow-x-hidden bg-white">
       {/* ===== BRAND BACKGROUND ORBS ===== */}
@@ -73,7 +187,7 @@ export default function WebDevelopmentPage() {
         <div className="absolute bottom-0 left-1/3 h-72 w-72 animate-[float_9s_ease-in-out_infinite] rounded-full bg-[#0A66C2]/8 blur-3xl" style={{ animationDelay: "-2s" }} />
       </div>
 
-      {/* ===== KEYFRAMES ===== */}
+      {/* ===== KEYFRAMES (including carousel) ===== */}
       <style>{`
         @keyframes float {
           0%, 100% { transform: translateY(0) scale(1); }
@@ -105,6 +219,44 @@ export default function WebDevelopmentPage() {
           0%, 100% { transform: translateY(0); }
           50% { transform: translateY(-8px); }
         }
+        @keyframes spin-slow {
+          from { transform: rotate(0deg); }
+          to { transform: rotate(360deg); }
+        }
+        @keyframes cloud-float {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(-8px); }
+        }
+
+        /* ---------- CAROUSEL ---------- */
+        .carousel {
+          position: relative;
+          width: 100%;
+          height: 300px;
+          overflow: hidden;
+        }
+        .carousel-slide {
+          position: absolute;
+          top: 0; left: 0; width: 100%; height: 100%;
+          opacity: 0;
+          animation: carousel-fade 36s infinite;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 1rem;
+        }
+        .carousel-slide:nth-child(1) { animation-delay: 0s; }
+        .carousel-slide:nth-child(2) { animation-delay: 6s; }
+        .carousel-slide:nth-child(3) { animation-delay: 12s; }
+        .carousel-slide:nth-child(4) { animation-delay: 18s; }
+        .carousel-slide:nth-child(5) { animation-delay: 24s; }
+        .carousel-slide:nth-child(6) { animation-delay: 30s; }
+
+        @keyframes carousel-fade {
+          0%, 14.28% { opacity: 1; }
+          20%, 100%  { opacity: 0; }
+        }
+
         .animate-float { animation: float 6s ease-in-out infinite; }
         .animate-pulse-soft { animation: pulse-soft 2.5s infinite; }
         .animate-gradient-flow { background-size: 200% 200%; animation: gradient-flow 4s ease infinite; }
@@ -112,6 +264,8 @@ export default function WebDevelopmentPage() {
         .animate-fade-in { animation: fade-in 1s ease-out forwards; opacity: 0; }
         .animate-tilt { animation: tilt 8s ease-in-out infinite; }
         .animate-card-lift { animation: card-lift 5s ease-in-out infinite; }
+        .animate-spin-slow { animation: spin-slow 10s linear infinite; }
+        .animate-cloud-float { animation: cloud-float 4s ease-in-out infinite; }
       `}</style>
 
       {/* ===== HERO SECTION ===== */}
@@ -161,7 +315,7 @@ export default function WebDevelopmentPage() {
               </div>
             </div>
 
-            {/* Browser Mockup (recolored) */}
+            {/* Browser Mockup (existing) */}
             <div className="relative mx-auto w-full max-w-xl animate-tilt">
               <div className="absolute -inset-6 animate-[pulse_5s_ease-in-out_infinite] rounded-[2.5rem] bg-gradient-to-r from-[#0A66C2]/20 to-[#38BDF8]/20 blur-2xl" />
               <div className="relative overflow-hidden rounded-[2rem] border border-gray-200 bg-white p-3 shadow-2xl animate-card-lift">
@@ -216,6 +370,32 @@ export default function WebDevelopmentPage() {
                 <p className="mt-1 font-bold text-[#0A66C2]">Modern technology</p>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ===== 6‑SLIDE ANIMATED CAROUSEL (CSS illustrations) ===== */}
+      <section className="pb-16 px-4 sm:px-6">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-3xl font-bold text-center text-[#1F2937] mb-8 animate-fade-in-up">
+            Our Web Development Projects
+          </h2>
+          <div className="carousel rounded-3xl shadow-lg border border-gray-100 bg-white">
+            {slides.map((slide, idx) => (
+              <div key={idx} className="carousel-slide">
+                <div className="flex flex-col sm:flex-row items-center gap-6 p-6">
+                  <div className="rounded-2xl bg-gray-50 p-4 shadow-sm">
+                    {slide.icon}
+                  </div>
+                  <div className="text-center sm:text-left">
+                    <h3 className="text-2xl font-extrabold" style={{ color: slide.color }}>
+                      {slide.title}
+                    </h3>
+                    <p className="mt-2 text-gray-600 max-w-md">{slide.desc}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -281,7 +461,6 @@ export default function WebDevelopmentPage() {
       </section>
 
       {/* ===== FIVE ANIMATED TECHNOLOGY MARQUEES ===== */}
-
       {/* 1️⃣ Modern Frontend + Full‑Stack (Brand Blue) */}
       <section className="border-y border-gray-100 bg-[#0A66C2]/5 px-6 py-14">
         <div className="mx-auto max-w-7xl text-center">
@@ -387,14 +566,12 @@ export default function WebDevelopmentPage() {
         <div className="relative mx-auto max-w-6xl overflow-hidden rounded-[2rem] border border-[#0A66C2]/20 bg-gradient-to-br from-[#0A66C2] to-[#38BDF8] p-8 text-center shadow-2xl shadow-[#0A66C2]/20 sm:p-14 animate-gradient-flow">
           <div className="absolute -left-20 -top-20 h-56 w-56 animate-float rounded-full bg-white/20 blur-3xl" />
           <div className="absolute -bottom-24 -right-20 h-64 w-64 animate-float rounded-full bg-white/20 blur-3xl" style={{ animationDelay: "-5s" }} />
-
           <div className="relative">
             <p className="text-sm font-bold uppercase tracking-[0.22em] text-white/80 animate-fade-in">Your next digital move starts here</p>
             <h2 className="mx-auto mt-5 max-w-3xl text-3xl font-bold sm:text-5xl text-white animate-fade-in-up">Ready for a website that works as hard as you do?</h2>
             <p className="mx-auto mt-6 max-w-2xl text-lg text-white/80 animate-fade-in-up">
               Tell us your idea, current problem, or business goal. We will help you choose the right website or web application solution.
             </p>
-
             <div className="mt-9 flex flex-col justify-center gap-4 sm:flex-row animate-fade-in-up">
               <Link href="/consultation" className="rounded-xl bg-white px-8 py-4 font-bold text-[#0A66C2] transition hover:bg-gray-100 shadow-lg animate-pulse-soft">
                 Request Free Consultation

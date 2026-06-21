@@ -99,6 +99,93 @@ export default function CyberSecurityPage() {
     "Practical security for real business operations",
   ];
 
+  // ----- 6 slides for cybersecurity carousel -----
+  const securitySlides = [
+    {
+      title: "Security Assessment",
+      desc: "Identify vulnerabilities before attackers do.",
+      color: "#0A66C2",
+      icon: (
+        <svg viewBox="0 0 120 120" className="w-28 h-28 sm:w-36 sm:h-36">
+          <circle cx="60" cy="45" r="22" fill="none" stroke="#0A66C2" strokeWidth="3" strokeDasharray="6 3" className="animate-[spin_12s_linear_infinite]" />
+          <path d="M55 35 L65 45 L55 55" fill="none" stroke="#0A66C2" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+          <rect x="30" y="80" width="60" height="15" rx="4" fill="#E0F2FE" />
+          <text x="60" y="91" textAnchor="middle" fontSize="8" fill="#0A66C2" fontWeight="bold">AUDIT</text>
+        </svg>
+      ),
+    },
+    {
+      title: "Website & App Security",
+      desc: "Secure configuration, access controls, and updates.",
+      color: "#7C3AED",
+      icon: (
+        <svg viewBox="0 0 120 120" className="w-28 h-28 sm:w-36 sm:h-36">
+          <rect x="25" y="20" width="70" height="70" rx="8" fill="#EDE9FE" stroke="#7C3AED" strokeWidth="2" />
+          <rect x="35" y="30" width="50" height="40" rx="4" fill="white" />
+          <path d="M50 45 L60 55 L70 40" fill="none" stroke="#7C3AED" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+          <circle cx="60" cy="55" r="5" fill="#7C3AED" />
+          <line x1="40" y1="65" x2="80" y2="65" stroke="#7C3AED" strokeWidth="2" strokeDasharray="3,2" />
+        </svg>
+      ),
+    },
+    {
+      title: "Cloud Security",
+      desc: "Protect servers, storage, and cloud environments.",
+      color: "#059669",
+      icon: (
+        <svg viewBox="0 0 120 120" className="w-28 h-28 sm:w-36 sm:h-36">
+          <path d="M30 75 Q 60 60 90 75 Q 105 95 75 95 L45 95 Q 15 95 30 75" fill="none" stroke="#059669" strokeWidth="3" />
+          <circle cx="45" cy="55" r="10" fill="#D1FAE5" stroke="#059669" strokeWidth="2" className="animate-[float_3s_ease-in-out_infinite]" />
+          <circle cx="75" cy="55" r="12" fill="#D1FAE5" stroke="#059669" strokeWidth="2" className="animate-[float_3s_ease-in-out_infinite]" style={{ animationDelay: "0.5s" }} />
+          <rect x="40" y="70" width="40" height="15" rx="4" fill="#059669" opacity="0.2" />
+          <text x="60" y="82" textAnchor="middle" fontSize="8" fill="#059669" fontWeight="bold">SECURE</text>
+        </svg>
+      ),
+    },
+    {
+      title: "Identity & Access",
+      desc: "Strong authentication and least‑privilege controls.",
+      color: "#D97706",
+      icon: (
+        <svg viewBox="0 0 120 120" className="w-28 h-28 sm:w-36 sm:h-36">
+          <rect x="25" y="25" width="70" height="70" rx="8" fill="#FEF3C7" stroke="#D97706" strokeWidth="2" />
+          <circle cx="60" cy="50" r="18" fill="none" stroke="#D97706" strokeWidth="3" strokeDasharray="5 3" className="animate-[spin_10s_linear_infinite]" />
+          <path d="M55 45 L65 55 L55 65" fill="none" stroke="#D97706" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+          <rect x="45" y="75" width="30" height="12" rx="3" fill="#D97706" />
+          <text x="60" y="84" textAnchor="middle" fontSize="7" fill="white" fontWeight="bold">LOCK</text>
+        </svg>
+      ),
+    },
+    {
+      title: "Backup & Recovery",
+      desc: "Automated backups and disaster recovery plans.",
+      color: "#4F46E5",
+      icon: (
+        <svg viewBox="0 0 120 120" className="w-28 h-28 sm:w-36 sm:h-36">
+          <rect x="25" y="20" width="70" height="70" rx="8" fill="#EEF2FF" stroke="#4F46E5" strokeWidth="2" />
+          <circle cx="60" cy="50" r="15" fill="none" stroke="#4F46E5" strokeWidth="3" strokeDasharray="6 3" className="animate-[spin_10s_linear_infinite]" />
+          <path d="M60 35 V65" stroke="#4F46E5" strokeWidth="3" strokeLinecap="round" />
+          <path d="M50 50 H70" stroke="#4F46E5" strokeWidth="3" strokeLinecap="round" />
+          <text x="60" y="85" textAnchor="middle" fontSize="8" fill="#4F46E5" fontWeight="bold">RECOVER</text>
+        </svg>
+      ),
+    },
+    {
+      title: "Policy & Awareness",
+      desc: "Train teams on passwords, phishing, and safe practices.",
+      color: "#E11D48",
+      icon: (
+        <svg viewBox="0 0 120 120" className="w-28 h-28 sm:w-36 sm:h-36">
+          <circle cx="60" cy="50" r="22" fill="#FFE4E6" stroke="#E11D48" strokeWidth="2" />
+          <text x="60" y="48" textAnchor="middle" fontSize="12" fill="#E11D48" fontWeight="bold">⚠️</text>
+          <path d="M60 60 L60 70 M60 75 L60 78" stroke="#E11D48" strokeWidth="3" strokeLinecap="round" />
+          <rect x="30" y="85" width="60" height="12" rx="4" fill="#E11D48" />
+          <text x="60" y="94" textAnchor="middle" fontSize="7" fill="white" fontWeight="bold">AWARE</text>
+        </svg>
+      ),
+    },
+  ];
+
   return (
     <main className="relative min-h-screen overflow-hidden bg-white">
       {/* ===== ANIMATED BACKGROUND ORBS (brand colors) ===== */}
@@ -129,6 +216,37 @@ export default function CyberSecurityPage() {
           0%, 100% { box-shadow: 0 0 0 0 rgba(10, 102, 194, 0.5); }
           50% { box-shadow: 0 0 0 15px rgba(10, 102, 194, 0); }
         }
+
+        /* Security carousel */
+        .security-carousel {
+          position: relative;
+          width: 100%;
+          height: 280px;
+          overflow: hidden;
+        }
+        .security-carousel .sec-slide {
+          position: absolute;
+          top: 0; left: 0; width: 100%; height: 100%;
+          opacity: 0;
+          animation: carousel-fade 30s infinite;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 1rem;
+        }
+        .security-carousel .sec-slide:nth-child(1) { animation-delay: 0s; }
+        .security-carousel .sec-slide:nth-child(2) { animation-delay: 5s; }
+        .security-carousel .sec-slide:nth-child(3) { animation-delay: 10s; }
+        .security-carousel .sec-slide:nth-child(4) { animation-delay: 15s; }
+        .security-carousel .sec-slide:nth-child(5) { animation-delay: 20s; }
+        .security-carousel .sec-slide:nth-child(6) { animation-delay: 25s; }
+
+        @keyframes carousel-fade {
+          0%, 14.28% { opacity: 1; }
+          18%, 100%  { opacity: 0; }
+        }
+
+        .animate-float { animation: float 6s ease-in-out infinite; }
         .animate-fade-in-up {
           animation: fade-in-up 0.7s ease-out forwards;
           opacity: 0;
@@ -137,9 +255,7 @@ export default function CyberSecurityPage() {
           background-size: 200% 200%;
           animation: gradient-flow 4s ease infinite;
         }
-        .animate-pulse-soft {
-          animation: pulse-soft 2.5s infinite;
-        }
+        .animate-pulse-soft { animation: pulse-soft 2.5s infinite; }
       `}</style>
 
       {/* ===== BREADCRUMB ===== */}
@@ -188,6 +304,32 @@ export default function CyberSecurityPage() {
             >
               Talk to VGS
             </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ===== ANIMATED SECURITY CAROUSEL (NEW) ===== */}
+      <section className="pb-16 px-4 sm:px-6">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-3xl font-bold text-center text-[#1F2937] mb-8 animate-fade-in-up">
+            Our Security Services
+          </h2>
+          <div className="security-carousel rounded-3xl shadow-lg border border-gray-100 bg-white">
+            {securitySlides.map((slide, idx) => (
+              <div key={idx} className="sec-slide">
+                <div className="flex flex-col sm:flex-row items-center gap-6 p-6">
+                  <div className="rounded-2xl bg-gray-50 p-4 shadow-sm">
+                    {slide.icon}
+                  </div>
+                  <div className="text-center sm:text-left">
+                    <h3 className="text-2xl font-extrabold" style={{ color: slide.color }}>
+                      {slide.title}
+                    </h3>
+                    <p className="mt-2 text-gray-600 max-w-md">{slide.desc}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>

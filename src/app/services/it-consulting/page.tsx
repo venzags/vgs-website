@@ -90,9 +90,104 @@ export default function ITConsultingPage() {
     },
   ];
 
+  // --- 6 slides for IT Consulting visual carousel ---
+  const consultingSlides = [
+    {
+      title: "Technology Strategy",
+      desc: "Roadmaps that align technology with business growth goals.",
+      color: "#0A66C2",
+      icon: (
+        <svg viewBox="0 0 120 120" className="w-28 h-28 sm:w-36 sm:h-36">
+          <circle cx="60" cy="45" r="20" fill="none" stroke="#0A66C2" strokeWidth="3" strokeDasharray="6 3" className="animate-[spin_12s_linear_infinite]" />
+          <polygon points="60,30 68,48 88,48 72,58 78,76 60,64 42,76 48,58 32,48 52,48" fill="#0A66C2" />
+          <rect x="30" y="85" width="60" height="15" rx="4" fill="#E0F2FE" />
+          <text x="60" y="95" textAnchor="middle" fontSize="8" fill="#0A66C2" fontWeight="bold">STRATEGY</text>
+        </svg>
+      ),
+    },
+    {
+      title: "IT Assessment",
+      desc: "Deep dive into systems, security, and processes to uncover gaps.",
+      color: "#7C3AED",
+      icon: (
+        <svg viewBox="0 0 120 120" className="w-28 h-28 sm:w-36 sm:h-36">
+          <rect x="15" y="25" width="90" height="70" rx="8" fill="#EDE9FE" stroke="#7C3AED" strokeWidth="2" />
+          <line x1="30" y1="40" x2="90" y2="40" stroke="#7C3AED" strokeWidth="2" strokeDasharray="4 2" className="animate-pulse" />
+          <line x1="30" y1="55" x2="85" y2="55" stroke="#7C3AED" strokeWidth="2" strokeDasharray="4 2" className="animate-pulse" style={{ animationDelay: "0.5s" }} />
+          <line x1="30" y1="70" x2="75" y2="70" stroke="#7C3AED" strokeWidth="2" strokeDasharray="4 2" className="animate-pulse" style={{ animationDelay: "1s" }} />
+          <circle cx="100" cy="30" r="8" fill="#7C3AED" className="animate-ping" style={{ animationDuration: "2s" }} />
+          <text x="100" y="34" textAnchor="middle" fontSize="8" fill="white" fontWeight="bold">✓</text>
+        </svg>
+      ),
+    },
+    {
+      title: "Digital Transformation",
+      desc: "Modernise processes, tools, and customer experiences.",
+      color: "#059669",
+      icon: (
+        <svg viewBox="0 0 120 120" className="w-28 h-28 sm:w-36 sm:h-36">
+          <rect x="20" y="30" width="80" height="60" rx="8" fill="#D1FAE5" stroke="#059669" strokeWidth="2" />
+          <path d="M40 50 L60 30 L80 50" fill="none" stroke="#059669" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+          <circle cx="60" cy="30" r="4" fill="#059669" />
+          <circle cx="40" cy="50" r="4" fill="#059669" />
+          <circle cx="80" cy="50" r="4" fill="#059669" />
+          <line x1="60" y1="50" x2="60" y2="80" stroke="#059669" strokeWidth="3" strokeLinecap="round" />
+          <rect x="40" y="78" width="40" height="12" rx="4" fill="#059669" />
+          <text x="60" y="86" textAnchor="middle" fontSize="8" fill="white" fontWeight="bold">NEW</text>
+        </svg>
+      ),
+    },
+    {
+      title: "Process Automation",
+      desc: "Streamline repetitive tasks with intelligent workflows.",
+      color: "#D97706",
+      icon: (
+        <svg viewBox="0 0 120 120" className="w-28 h-28 sm:w-36 sm:h-36">
+          <rect x="15" y="35" width="90" height="50" rx="6" fill="#FEF3C7" stroke="#D97706" strokeWidth="2" />
+          <circle cx="40" cy="60" r="8" fill="#D97706" />
+          <circle cx="60" cy="60" r="8" fill="#D97706" />
+          <circle cx="80" cy="60" r="8" fill="#D97706" />
+          <line x1="48" y1="60" x2="52" y2="60" stroke="#D97706" strokeWidth="3" />
+          <line x1="68" y1="60" x2="72" y2="60" stroke="#D97706" strokeWidth="3" />
+          <path d="M30 45 L60 35 L90 45" fill="none" stroke="#D97706" strokeWidth="2" strokeDasharray="3,2" />
+          <text x="60" y="20" textAnchor="middle" fontSize="8" fill="#D97706" fontWeight="bold">AUTO</text>
+        </svg>
+      ),
+    },
+    {
+      title: "Security & Risk Planning",
+      desc: "Protect data, access, and systems before incidents happen.",
+      color: "#E11D48",
+      icon: (
+        <svg viewBox="0 0 120 120" className="w-28 h-28 sm:w-36 sm:h-36">
+          <rect x="25" y="25" width="70" height="70" rx="8" fill="#FFE4E6" stroke="#E11D48" strokeWidth="2" />
+          <circle cx="60" cy="60" r="15" fill="none" stroke="#E11D48" strokeWidth="3" strokeDasharray="5 3" className="animate-[spin_10s_linear_infinite]" />
+          <path d="M55 55 L65 60 L55 65" fill="none" stroke="#E11D48" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+          <rect x="45" y="75" width="30" height="12" rx="3" fill="#E11D48" />
+          <text x="60" y="84" textAnchor="middle" fontSize="7" fill="white" fontWeight="bold">LOCK</text>
+        </svg>
+      ),
+    },
+    {
+      title: "Project Planning",
+      desc: "Turn ideas into clear, actionable technology projects.",
+      color: "#4F46E5",
+      icon: (
+        <svg viewBox="0 0 120 120" className="w-28 h-28 sm:w-36 sm:h-36">
+          <rect x="20" y="30" width="80" height="60" rx="6" fill="#EEF2FF" stroke="#4F46E5" strokeWidth="2" />
+          <line x1="30" y1="45" x2="90" y2="45" stroke="#4F46E5" strokeWidth="2" strokeDasharray="3,2" />
+          <line x1="30" y1="55" x2="80" y2="55" stroke="#4F46E5" strokeWidth="2" strokeDasharray="3,2" />
+          <line x1="30" y1="65" x2="70" y2="65" stroke="#4F46E5" strokeWidth="2" strokeDasharray="3,2" />
+          <circle cx="95" cy="45" r="8" fill="#4F46E5" />
+          <text x="95" y="49" textAnchor="middle" fontSize="8" fill="white" fontWeight="bold">→</text>
+        </svg>
+      ),
+    },
+  ];
+
   return (
     <main className="relative min-h-screen overflow-hidden bg-white">
-      {/* ===== ANIMATED BACKGROUND ORBS (brand colors) ===== */}
+      {/* ===== ANIMATED BACKGROUND ORBS ===== */}
       <div className="pointer-events-none fixed inset-0 -z-10">
         <div className="absolute top-0 left-0 w-full h-full">
           <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#0A66C2]/10 rounded-full filter blur-3xl animate-[float_10s_ease-in-out_infinite]" />
@@ -120,6 +215,36 @@ export default function ITConsultingPage() {
           0%, 100% { box-shadow: 0 0 0 0 rgba(10, 102, 194, 0.5); }
           50% { box-shadow: 0 0 0 15px rgba(10, 102, 194, 0); }
         }
+        /* Carousel */
+        .consulting-carousel {
+          position: relative;
+          width: 100%;
+          height: 280px;
+          overflow: hidden;
+        }
+        .consulting-carousel .consulting-slide {
+          position: absolute;
+          top: 0; left: 0; width: 100%; height: 100%;
+          opacity: 0;
+          animation: carousel-fade 30s infinite;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 1rem;
+        }
+        .consulting-carousel .consulting-slide:nth-child(1) { animation-delay: 0s; }
+        .consulting-carousel .consulting-slide:nth-child(2) { animation-delay: 5s; }
+        .consulting-carousel .consulting-slide:nth-child(3) { animation-delay: 10s; }
+        .consulting-carousel .consulting-slide:nth-child(4) { animation-delay: 15s; }
+        .consulting-carousel .consulting-slide:nth-child(5) { animation-delay: 20s; }
+        .consulting-carousel .consulting-slide:nth-child(6) { animation-delay: 25s; }
+
+        @keyframes carousel-fade {
+          0%, 14.28% { opacity: 1; }
+          18%, 100%  { opacity: 0; }
+        }
+
+        .animate-float { animation: float 6s ease-in-out infinite; }
         .animate-fade-in-up {
           animation: fade-in-up 0.7s ease-out forwards;
           opacity: 0;
@@ -128,9 +253,7 @@ export default function ITConsultingPage() {
           background-size: 200% 200%;
           animation: gradient-flow 4s ease infinite;
         }
-        .animate-pulse-soft {
-          animation: pulse-soft 2.5s infinite;
-        }
+        .animate-pulse-soft { animation: pulse-soft 2.5s infinite; }
       `}</style>
 
       {/* ===== BREADCRUMB ===== */}
@@ -180,7 +303,33 @@ export default function ITConsultingPage() {
         </div>
       </section>
 
-      {/* ===== CONSULTING SERVICES GRID (staggered fade-in) ===== */}
+      {/* ===== ANIMATED CONSULTING CAROUSEL (NEW) ===== */}
+      <section className="pb-16 px-4 sm:px-6">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-3xl font-bold text-center text-[#1F2937] mb-8 animate-fade-in-up">
+            Our Consulting Services
+          </h2>
+          <div className="consulting-carousel rounded-3xl shadow-lg border border-gray-100 bg-white">
+            {consultingSlides.map((slide, idx) => (
+              <div key={idx} className="consulting-slide">
+                <div className="flex flex-col sm:flex-row items-center gap-6 p-6">
+                  <div className="rounded-2xl bg-gray-50 p-4 shadow-sm">
+                    {slide.icon}
+                  </div>
+                  <div className="text-center sm:text-left">
+                    <h3 className="text-2xl font-extrabold" style={{ color: slide.color }}>
+                      {slide.title}
+                    </h3>
+                    <p className="mt-2 text-gray-600 max-w-md">{slide.desc}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ===== CONSULTING SERVICES GRID ===== */}
       <section className="pb-20 px-4 sm:px-6">
         <div className="max-w-7xl mx-auto">
           <div className="mx-auto mb-12 max-w-3xl text-center animate-fade-in-up">
@@ -272,7 +421,7 @@ export default function ITConsultingPage() {
         </div>
       </section>
 
-      {/* ===== CTA (gradient + animations) ===== */}
+      {/* ===== CTA ===== */}
       <section className="py-24 px-4 sm:px-6">
         <div className="max-w-5xl mx-auto relative rounded-3xl overflow-hidden bg-gradient-to-r from-[#0A66C2] to-[#38BDF8] p-8 sm:p-12 text-center text-white shadow-2xl shadow-[#0A66C2]/20 animate-gradient-flow">
           <div className="absolute -top-20 -left-20 w-48 h-48 bg-white/20 rounded-full filter blur-2xl animate-[float_8s_ease-in-out_infinite]" />

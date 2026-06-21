@@ -104,6 +104,99 @@ export default function CloudSolutionsPage() {
     "CI/CD",
   ];
 
+  // ---------------------------------------------------------------
+  // 6 slides for the animated cloud carousel
+  // ---------------------------------------------------------------
+  const cloudSlides = [
+    {
+      title: "Cloud Migration",
+      desc: "Seamlessly move your apps, websites, and databases to the cloud.",
+      color: "#0A66C2",
+      icon: (
+        <svg viewBox="0 0 120 120" className="w-28 h-28 sm:w-36 sm:h-36">
+          <path d="M30 80 L60 50 L90 80" fill="none" stroke="#0A66C2" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="animate-pulse" />
+          <rect x="45" y="40" width="30" height="20" rx="4" fill="#E0F2FE" stroke="#0A66C2" strokeWidth="2" />
+          <rect x="20" y="85" width="80" height="15" rx="4" fill="#0A66C2" opacity="0.1" />
+          <circle cx="60" cy="55" r="6" fill="#0A66C2" />
+        </svg>
+      ),
+    },
+    {
+      title: "Infrastructure",
+      desc: "Scalable servers, storage, and networking built for your needs.",
+      color: "#7C3AED",
+      icon: (
+        <svg viewBox="0 0 120 120" className="w-28 h-28 sm:w-36 sm:h-36">
+          <rect x="30" y="30" width="60" height="50" rx="6" fill="#EDE9FE" stroke="#7C3AED" strokeWidth="2" />
+          <rect x="40" y="40" width="15" height="30" rx="2" fill="#7C3AED" opacity="0.3" />
+          <rect x="60" y="45" width="15" height="25" rx="2" fill="#7C3AED" opacity="0.3" />
+          <circle cx="50" cy="55" r="4" fill="#7C3AED" />
+          <circle cx="70" cy="55" r="4" fill="#7C3AED" />
+          <line x1="45" y1="85" x2="45" y2="95" stroke="#7C3AED" strokeWidth="3" />
+          <line x1="55" y1="85" x2="55" y2="95" stroke="#7C3AED" strokeWidth="3" />
+          <line x1="65" y1="85" x2="65" y2="95" stroke="#7C3AED" strokeWidth="3" />
+        </svg>
+      ),
+    },
+    {
+      title: "DevOps & Deployment",
+      desc: "Automated CI/CD pipelines for faster, safer releases.",
+      color: "#059669",
+      icon: (
+        <svg viewBox="0 0 120 120" className="w-28 h-28 sm:w-36 sm:h-36">
+          <rect x="20" y="25" width="80" height="70" rx="8" fill="#D1FAE5" stroke="#059669" strokeWidth="2" />
+          <line x1="30" y1="40" x2="90" y2="40" stroke="#059669" strokeWidth="3" strokeDasharray="4,2" className="animate-pulse" />
+          <line x1="30" y1="55" x2="90" y2="55" stroke="#059669" strokeWidth="3" strokeDasharray="4,2" className="animate-pulse" style={{ animationDelay: "0.5s" }} />
+          <line x1="30" y1="70" x2="90" y2="70" stroke="#059669" strokeWidth="3" strokeDasharray="4,2" className="animate-pulse" style={{ animationDelay: "1s" }} />
+          <circle cx="100" cy="35" r="8" fill="#10b981" className="animate-ping" style={{ animationDuration: "2s" }} />
+          <text x="100" y="38" textAnchor="middle" fontSize="8" fill="white" fontWeight="bold">✓</text>
+        </svg>
+      ),
+    },
+    {
+      title: "Cloud Security",
+      desc: "Encryption, access control, and continuous monitoring.",
+      color: "#D97706",
+      icon: (
+        <svg viewBox="0 0 120 120" className="w-28 h-28 sm:w-36 sm:h-36">
+          <rect x="25" y="20" width="70" height="80" rx="8" fill="#FEF3C7" stroke="#D97706" strokeWidth="2" />
+          <path d="M40 45 L60 35 L80 45 V65 Q60 75 40 65 Z" fill="#D97706" opacity="0.2" stroke="#D97706" strokeWidth="2" />
+          <circle cx="60" cy="55" r="8" fill="#D97706" />
+          <text x="60" y="58" textAnchor="middle" fontSize="8" fill="white" fontWeight="bold">🔒</text>
+        </svg>
+      ),
+    },
+    {
+      title: "Performance & Scaling",
+      desc: "Auto‑scale to meet demand and keep response times fast.",
+      color: "#4F46E5",
+      icon: (
+        <svg viewBox="0 0 120 120" className="w-28 h-28 sm:w-36 sm:h-36">
+          <polyline points="15,90 35,60 55,75 75,30 95,50 105,40" fill="none" stroke="#4F46E5" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+          <circle cx="35" cy="60" r="4" fill="#4F46E5" />
+          <circle cx="55" cy="75" r="4" fill="#4F46E5" />
+          <circle cx="75" cy="30" r="4" fill="#4F46E5" />
+          <circle cx="95" cy="50" r="4" fill="#4F46E5" />
+          <rect x="40" y="85" width="40" height="15" rx="4" fill="#EEF2FF" stroke="#4F46E5" strokeWidth="2" />
+          <text x="60" y="96" textAnchor="middle" fontSize="8" fill="#4F46E5" fontWeight="bold">SCALE</text>
+        </svg>
+      ),
+    },
+    {
+      title: "Backup & Recovery",
+      desc: "Automated backups and disaster recovery plans.",
+      color: "#E11D48",
+      icon: (
+        <svg viewBox="0 0 120 120" className="w-28 h-28 sm:w-36 sm:h-36">
+          <circle cx="60" cy="55" r="20" fill="none" stroke="#E11D48" strokeWidth="3" strokeDasharray="5,3" className="animate-[spin_10s_linear_infinite]" />
+          <path d="M60 35 V75 M40 55 H80" stroke="#E11D48" strokeWidth="3" strokeLinecap="round" />
+          <rect x="35" y="80" width="50" height="15" rx="4" fill="#FFE4E6" stroke="#E11D48" strokeWidth="2" />
+          <text x="60" y="91" textAnchor="middle" fontSize="8" fill="#E11D48" fontWeight="bold">RECOVER</text>
+        </svg>
+      ),
+    },
+  ];
+
   return (
     <main className="relative min-h-screen overflow-hidden bg-white">
       {/* ===== ANIMATED BACKGROUND ORBS (brand colors) ===== */}
@@ -134,19 +227,49 @@ export default function CloudSolutionsPage() {
           0%, 100% { box-shadow: 0 0 0 0 rgba(10, 102, 194, 0.5); }
           50% { box-shadow: 0 0 0 15px rgba(10, 102, 194, 0); }
         }
-        .animate-fade-in-up {
-          animation: fade-in-up 0.7s ease-out forwards;
-          opacity: 0;
+
+        /* Cloud carousel */
+        .cloud-carousel {
+          position: relative;
+          width: 100%;
+          height: 280px;
+          overflow: hidden;
         }
+        .cloud-carousel .cloud-slide {
+          position: absolute;
+          top: 0; left: 0; width: 100%; height: 100%;
+          opacity: 0;
+          animation: carousel-fade 30s infinite;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 1rem;
+        }
+        .cloud-carousel .cloud-slide:nth-child(1) { animation-delay: 0s; }
+        .cloud-carousel .cloud-slide:nth-child(2) { animation-delay: 5s; }
+        .cloud-carousel .cloud-slide:nth-child(3) { animation-delay: 10s; }
+        .cloud-carousel .cloud-slide:nth-child(4) { animation-delay: 15s; }
+        .cloud-carousel .cloud-slide:nth-child(5) { animation-delay: 20s; }
+        .cloud-carousel .cloud-slide:nth-child(6) { animation-delay: 25s; }
+
+        @keyframes carousel-fade {
+          0%, 14.28% { opacity: 1; }
+          18%, 100%  { opacity: 0; }
+        }
+
+        .animate-float { animation: float 6s ease-in-out infinite; }
+        .animate-pulse-soft { animation: pulse-soft 2.5s infinite; }
         .animate-gradient-flow {
           background-size: 200% 200%;
           animation: gradient-flow 4s ease infinite;
         }
-        .animate-pulse-soft {
-          animation: pulse-soft 2.5s infinite;
+        .animate-fade-in-up {
+          animation: fade-in-up 0.7s ease-out forwards;
+          opacity: 0;
         }
       `}</style>
-{/* ===== BREADCRUMB ===== */}
+
+      {/* ===== BREADCRUMB ===== */}
       <section className="px-6 pt-8">
         <div className="mx-auto max-w-7xl text-sm text-[#6B7280] animate-fade-in-up">
           <Link href="/" className="hover:text-[#0A66C2]">Home</Link> /
@@ -155,7 +278,7 @@ export default function CloudSolutionsPage() {
         </div>
       </section>
 
-      {/* ===== HERO ===== */}
+      {/* ===== HERO (restructured for impact) ===== */}
       <section className="pt-16 pb-20 sm:pt-24 sm:pb-28 px-6 text-center">
         <div className="max-w-7xl mx-auto">
           <h1 className="text-5xl sm:text-6xl md:text-7xl font-extrabold text-[#1F2937] mb-4 animate-fade-in-up">
@@ -192,6 +315,32 @@ export default function CloudSolutionsPage() {
             >
               Talk to Cloud Experts
             </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ===== ANIMATED CLOUD CAROUSEL (NEW) ===== */}
+      <section className="pb-16 px-4 sm:px-6">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-3xl font-bold text-center text-[#1F2937] mb-8 animate-fade-in-up">
+            Our Cloud Capabilities
+          </h2>
+          <div className="cloud-carousel rounded-3xl shadow-lg border border-gray-100 bg-white">
+            {cloudSlides.map((slide, idx) => (
+              <div key={idx} className="cloud-slide">
+                <div className="flex flex-col sm:flex-row items-center gap-6 p-6">
+                  <div className="rounded-2xl bg-gray-50 p-4 shadow-sm">
+                    {slide.icon}
+                  </div>
+                  <div className="text-center sm:text-left">
+                    <h3 className="text-2xl font-extrabold" style={{ color: slide.color }}>
+                      {slide.title}
+                    </h3>
+                    <p className="mt-2 text-gray-600 max-w-md">{slide.desc}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -343,6 +492,6 @@ export default function CloudSolutionsPage() {
           </div>
         </div>
       </section>
-</main>
+    </main>
   );
 }
