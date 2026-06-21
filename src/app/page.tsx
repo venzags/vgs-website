@@ -24,7 +24,7 @@ export default function Home() {
   ];
 
   return (
-    <main className="bg-white text-gray-900">
+    <main className="bg-white pb-24 text-gray-900">
 
   {/* Hero */}
      <section

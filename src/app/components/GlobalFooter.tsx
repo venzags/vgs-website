@@ -1,12 +1,24 @@
 import Image from "next/image";
 import Link from "next/link";
 
+const companyLinks = [
+  { name: "Home", href: "/" },
+  { name: "About Us", href: "/#about" },
+  { name: "All Services", href: "/services" },
+  { name: "Portfolio", href: "/#portfolio" },
+  { name: "Industries", href: "/#industries" },
+  { name: "Contact Us", href: "/contact" },
+];
+
 const serviceLinks = [
   { name: "AI Solutions", href: "/services/ai-solutions" },
   { name: "Machine Learning", href: "/services/machine-learning" },
   { name: "Software Development", href: "/services/software-development" },
   { name: "Web Development", href: "/services/web-development" },
   { name: "Mobile Applications", href: "/services/mobile-applications" },
+];
+
+const solutionLinks = [
   { name: "Cloud Solutions", href: "/services/cloud-solutions" },
   { name: "IT Consulting", href: "/services/it-consulting" },
   { name: "Digital Marketing", href: "/services/digital-marketing" },
@@ -15,104 +27,98 @@ const serviceLinks = [
 
 export default function GlobalFooter() {
   return (
-    <footer className="bg-slate-950 text-white">
-      <div className="mx-auto max-w-7xl px-6 py-14">
-        <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-4">
-          {/* VGS Brand */}
+    <footer className="bg-[#020617] pb-24 text-white">
+      {/* Main footer */}
+      <div className="mx-auto max-w-7xl px-6 py-16">
+        <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
+          {/* Brand column */}
           <div>
             <Link href="/" className="inline-block">
-              <Image
-                src="/images/vgs-logo.png"
-                alt="Venza Global Services"
-                width={250}
-                height={80}
-                className="h-auto w-[220px] rounded-lg bg-white p-2"
-              />
+              <div className="rounded-xl bg-white p-4">
+                <Image
+                  src="/images/vgs-logo.png"
+                  alt="Venza Global Services"
+                  width={250}
+                  height={80}
+                  className="h-auto w-[220px]"
+                />
+              </div>
             </Link>
 
-            <p className="mt-5 text-sm leading-7 text-slate-300">
+            <p className="mt-7 max-w-xs text-sm leading-7 text-slate-300">
               Venza Global Services delivers AI, cloud, software development,
               cybersecurity, consulting, and digital transformation solutions.
             </p>
 
             <Link
               href="/consultation"
-              className="mt-6 inline-block rounded-xl bg-blue-700 px-5 py-3 text-sm font-bold text-white transition hover:bg-blue-800"
+              className="mt-7 inline-flex rounded-xl bg-blue-700 px-5 py-3 text-sm font-bold text-white transition hover:bg-blue-800"
             >
               Free Consultation →
             </Link>
           </div>
 
-          {/* Company */}
+          {/* Company links */}
           <div>
-            <h3 className="mb-5 text-lg font-bold">Company</h3>
+            <h3 className="mb-5 text-lg font-bold text-white">Company</h3>
 
-            <div className="space-y-3 text-sm">
-              <Link href="/" className="block text-slate-300 transition hover:text-cyan-400">
-                Home
-              </Link>
-
-              <Link href="/#about" className="block text-slate-300 transition hover:text-cyan-400">
-                About Us
-              </Link>
-
-              <Link href="/services" className="block text-slate-300 transition hover:text-cyan-400">
-                All Services
-              </Link>
-
-              <Link href="/#portfolio" className="block text-slate-300 transition hover:text-cyan-400">
-                Portfolio
-              </Link>
-
-              <Link href="/#industries" className="block text-slate-300 transition hover:text-cyan-400">
-                Industries
-              </Link>
-
-              <Link href="/contact" className="block text-slate-300 transition hover:text-cyan-400">
-                Contact Us
-              </Link>
-            </div>
+            <ul className="space-y-3">
+              {companyLinks.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="text-sm text-slate-300 transition hover:text-cyan-400"
+                  >
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
 
-          {/* Services Column 1 */}
+          {/* Services links */}
           <div>
-            <h3 className="mb-5 text-lg font-bold">Services</h3>
+            <h3 className="mb-5 text-lg font-bold text-white">Services</h3>
 
-            <div className="space-y-3 text-sm">
-              {serviceLinks.slice(0, 5).map((service) => (
-                <Link
-                  key={service.href}
-                  href={service.href}
-                  className="block text-slate-300 transition hover:text-cyan-400"
-                >
-                  {service.name}
-                </Link>
+            <ul className="space-y-3">
+              {serviceLinks.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="text-sm text-slate-300 transition hover:text-cyan-400"
+                  >
+                    {link.name}
+                  </Link>
+                </li>
               ))}
-            </div>
+            </ul>
           </div>
 
-          {/* Services Column 2 */}
+          {/* More solutions */}
           <div>
-            <h3 className="mb-5 text-lg font-bold">More Solutions</h3>
+            <h3 className="mb-5 text-lg font-bold text-white">
+              More Solutions
+            </h3>
 
-            <div className="space-y-3 text-sm">
-              {serviceLinks.slice(5).map((service) => (
-                <Link
-                  key={service.href}
-                  href={service.href}
-                  className="block text-slate-300 transition hover:text-cyan-400"
-                >
-                  {service.name}
-                </Link>
+            <ul className="space-y-3">
+              {solutionLinks.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="text-sm text-slate-300 transition hover:text-cyan-400"
+                  >
+                    {link.name}
+                  </Link>
+                </li>
               ))}
+            </ul>
 
-              <Link
-                href="/consultation"
-                className="mt-5 block font-bold text-cyan-400 transition hover:text-cyan-300"
-              >
-                Talk to an Expert →
-              </Link>
-            </div>
+            <Link
+              href="/consultation"
+              className="mt-6 inline-flex text-sm font-bold text-cyan-400 transition hover:text-cyan-300"
+            >
+              Talk to an Expert →
+            </Link>
           </div>
         </div>
       </div>
@@ -121,24 +127,23 @@ export default function GlobalFooter() {
       <div className="border-t border-white/10">
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-6 py-5 text-center text-sm text-slate-400 sm:flex-row sm:text-left">
           <p>
-            © {new Date().getFullYear()} Venza Global Services. All Rights Reserved.
+            © {new Date().getFullYear()} Venza Global Services. All Rights
+            Reserved.
           </p>
 
-          <div className="flex flex-wrap justify-center gap-5">
-            <Link href="/" className="transition hover:text-white">
-              Home
+          <div className="flex items-center gap-5">
+            <Link
+              href="/privacy-policy"
+              className="transition hover:text-cyan-400"
+            >
+              Privacy Policy
             </Link>
 
-            <Link href="/services" className="transition hover:text-white">
-              Services
-            </Link>
-
-            <Link href="/contact" className="transition hover:text-white">
-              Contact
-            </Link>
-
-            <Link href="/consultation" className="transition hover:text-white">
-              Consultation
+            <Link
+              href="/terms"
+              className="transition hover:text-cyan-400"
+            >
+              Terms of Use
             </Link>
           </div>
         </div>
