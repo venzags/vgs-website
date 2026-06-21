@@ -27,11 +27,9 @@ const solutionLinks = [
 
 export default function GlobalFooter() {
   return (
-    <footer className="bg-[#020617] pb-24 text-white">
-      {/* Main footer */}
+    <footer className="bg-[#020617] text-white">
       <div className="mx-auto max-w-7xl px-6 py-16">
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
-          {/* Brand column */}
           <div>
             <Link href="/" className="inline-block">
               <div className="rounded-xl bg-white p-4">
@@ -58,9 +56,8 @@ export default function GlobalFooter() {
             </Link>
           </div>
 
-          {/* Company links */}
           <div>
-            <h3 className="mb-5 text-lg font-bold text-white">Company</h3>
+            <h3 className="mb-5 text-lg font-bold">Company</h3>
 
             <ul className="space-y-3">
               {companyLinks.map((link) => (
@@ -76,9 +73,8 @@ export default function GlobalFooter() {
             </ul>
           </div>
 
-          {/* Services links */}
           <div>
-            <h3 className="mb-5 text-lg font-bold text-white">Services</h3>
+            <h3 className="mb-5 text-lg font-bold">Services</h3>
 
             <ul className="space-y-3">
               {serviceLinks.map((link) => (
@@ -94,11 +90,8 @@ export default function GlobalFooter() {
             </ul>
           </div>
 
-          {/* More solutions */}
           <div>
-            <h3 className="mb-5 text-lg font-bold text-white">
-              More Solutions
-            </h3>
+            <h3 className="mb-5 text-lg font-bold">More Solutions</h3>
 
             <ul className="space-y-3">
               {solutionLinks.map((link) => (
@@ -123,7 +116,6 @@ export default function GlobalFooter() {
         </div>
       </div>
 
-      {/* Bottom copyright section */}
       <div className="border-t border-white/10">
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-6 py-5 text-center text-sm text-slate-400 sm:flex-row sm:text-left">
           <p>
@@ -139,10 +131,7 @@ export default function GlobalFooter() {
               Privacy Policy
             </Link>
 
-            <Link
-              href="/terms"
-              className="transition hover:text-cyan-400"
-            >
+            <Link href="/terms" className="transition hover:text-cyan-400">
               Terms of Use
             </Link>
           </div>
