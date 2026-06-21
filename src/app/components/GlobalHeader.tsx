@@ -15,15 +15,25 @@ const services = [
   { name: "Digital Marketing", href: "/services/digital-marketing" },
   { name: "Cyber Security", href: "/services/cyber-security" },
 ];
+const exploreLinks = [
+  { name: "What We Do", href: "/what-we-do" },
+  { name: "Who We Are", href: "/who-we-are" },
+  { name: "Products", href: "/products" },
+  { name: "Careers", href: "/careers" },
+  { name: "Newsroom", href: "/newsroom" },
+  { name: "Blog", href: "/blog" },
+];
 
 export default function GlobalHeader() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
+  const [exploreOpen, setExploreOpen] = useState(false);
 
-  const closeMenu = () => {
-    setMobileOpen(false);
-    setServicesOpen(false);
-  };
+ const closeMenu = () => {
+  setMobileOpen(false);
+  setServicesOpen(false);
+  setExploreOpen(false);
+};
 
   return (
     <>
@@ -58,6 +68,27 @@ export default function GlobalHeader() {
             <Link href="/services" className="transition hover:text-blue-700">
               Services
             </Link>
+            <div className="group relative">
+  <button
+    type="button"
+    className="flex items-center gap-1 transition hover:text-blue-700"
+  >
+    Explore
+    <span className="text-xs">⌄</span>
+  </button>
+
+  <div className="invisible absolute left-0 top-full z-50 mt-3 w-52 rounded-2xl border border-slate-200 bg-white p-2 opacity-0 shadow-xl transition-all duration-200 group-hover:visible group-hover:opacity-100">
+    {exploreLinks.map((link) => (
+      <Link
+        key={link.href}
+        href={link.href}
+        className="block rounded-xl px-4 py-3 text-sm text-slate-700 transition hover:bg-blue-50 hover:text-blue-700"
+      >
+        {link.name}
+      </Link>
+    ))}
+  </div>
+</div>
 
             <Link href="/#portfolio" className="transition hover:text-blue-700">
               Portfolio
@@ -181,6 +212,31 @@ export default function GlobalHeader() {
                   </div>
                 )}
               </div>
+              <div className="rounded-xl border border-slate-200">
+  <button
+    type="button"
+    onClick={() => setExploreOpen(!exploreOpen)}
+    className="flex w-full items-center justify-between px-4 py-4 text-left font-semibold text-slate-800"
+  >
+    <span>🌐 Explore VGS</span>
+    <span className="text-xl">{exploreOpen ? "−" : "+"}</span>
+  </button>
+
+  {exploreOpen && (
+    <div className="border-t border-slate-200 p-3">
+      {exploreLinks.map((link) => (
+        <Link
+          key={link.href}
+          href={link.href}
+          onClick={closeMenu}
+          className="block rounded-lg px-4 py-3 text-sm font-medium text-slate-600 transition hover:bg-blue-50 hover:text-blue-700"
+        >
+          {link.name}
+        </Link>
+      ))}
+    </div>
+  )}
+</div>
 
               <Link
                 href="/#portfolio"
