@@ -3,6 +3,14 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import {
+  Menu,
+  Search,
+  X,
+  ChevronDown,
+  Globe,
+  ArrowRight,
+} from "lucide-react";
 
 const services = [
   { name: "AI Solutions", href: "/services/ai-solutions" },
@@ -11,270 +19,347 @@ const services = [
   { name: "Web Development", href: "/services/web-development" },
   { name: "Mobile Applications", href: "/services/mobile-applications" },
   { name: "Cloud Solutions", href: "/services/cloud-solutions" },
-  { name: "IT Consulting", href: "/services/it-consulting" },
-  { name: "Digital Marketing", href: "/services/digital-marketing" },
   { name: "Cyber Security", href: "/services/cyber-security" },
 ];
+
 const exploreLinks = [
-  { name: "What We Do", href: "/what-we-do" },
-  { name: "Who We Are", href: "/who-we-are" },
-  { name: "Products", href: "/products" },
+  { name: "Customer Stories", href: "/customer-stories" },
+  { name: "Partnerships", href: "/partnerships" },
   { name: "Careers", href: "/careers" },
-  { name: "Newsroom", href: "/newsroom" },
-  { name: "Blog", href: "/blog" },
+  { name: "Media Enquiry", href: "/media-enquiry" },
+  { name: "Business Enquiry", href: "/business-enquiry" },
 ];
 
 export default function GlobalHeader() {
-  const [mobileOpen, setMobileOpen] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
   const [exploreOpen, setExploreOpen] = useState(false);
 
- const closeMenu = () => {
-  setMobileOpen(false);
-  setServicesOpen(false);
-  setExploreOpen(false);
-};
+  const closeMenu = () => {
+    setMobileMenuOpen(false);
+    setServicesOpen(false);
+    setExploreOpen(false);
+  };
 
   return (
     <>
-      <header className="sticky top-0 z-50 border-b border-slate-200 bg-white/95 shadow-sm backdrop-blur-xl">
-        <div className="mx-auto flex min-h-[82px] max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-          {/* Same original VGS logo on every page */}
-          <Link
-            href="/"
-            onClick={closeMenu}
-            className="flex shrink-0 items-center"
-          >
+      {/* =========================================================
+          DESKTOP HEADER — only desktop. Do not change mobile here.
+      ========================================================== */}
+      <header className="hidden border-b border-slate-200 bg-white text-slate-900 lg:block">
+        <div className="mx-auto flex h-[92px] max-w-7xl items-center justify-between px-6">
+          {/* Logo */}
+          <Link href="/" className="flex items-center" onClick={closeMenu}>
             <Image
               src="/images/vgs-logo.png"
               alt="Venza Global Services"
-              width={260}
-              height={80}
+              width={250}
+              height={85}
               priority
-              className="h-auto w-[190px] sm:w-[230px] lg:w-[250px]"
+              className="h-auto w-[230px]"
             />
           </Link>
 
-          {/* Desktop menu */}
-          <nav className="hidden items-center gap-5 text-sm font-semibold text-slate-700 xl:flex">
-            <Link href="/" className="transition hover:text-blue-700">
+          {/* Desktop navigation */}
+          <nav className="flex items-center gap-7">
+            <Link
+              href="/"
+              className="text-[15px] font-semibold text-slate-800 transition hover:text-cyan-600"
+            >
               Home
             </Link>
 
-            <Link href="/#about" className="transition hover:text-blue-700">
-              About
+            <Link
+              href="/about"
+              className="text-[15px] font-semibold text-slate-800 transition hover:text-cyan-600"
+            >
+              About Us
             </Link>
 
-            <Link href="/services" className="transition hover:text-blue-700">
-              Services
-            </Link>
-            <div className="group relative">
-  <button
-    type="button"
-    className="flex items-center gap-1 transition hover:text-blue-700"
-  >
-    Explore
-    <span className="text-xs">⌄</span>
-  </button>
+            {/* SERVICES DROPDOWN */}
+            <div className="group relative py-8">
+              <Link
+                href="/services"
+                className="flex items-center gap-1 text-[15px] font-semibold text-slate-800 transition hover:text-cyan-600"
+              >
+                Services
+                <ChevronDown
+                  size={17}
+                  className="transition duration-200 group-hover:rotate-180"
+                />
+              </Link>
 
-  <div className="invisible absolute left-0 top-full z-50 mt-3 w-52 rounded-2xl border border-slate-200 bg-white p-2 opacity-0 shadow-xl transition-all duration-200 group-hover:visible group-hover:opacity-100">
-    {exploreLinks.map((link) => (
-      <Link
-        key={link.href}
-        href={link.href}
-        className="block rounded-xl px-4 py-3 text-sm text-slate-700 transition hover:bg-blue-50 hover:text-blue-700"
-      >
-        {link.name}
-      </Link>
-    ))}
-  </div>
-</div>
+              {/* Invisible hover bridge: prevents dropdown closing */}
+              <div className="absolute left-0 top-full h-3 w-full" />
 
-            <Link href="/#portfolio" className="transition hover:text-blue-700">
+              <div className="invisible absolute left-1/2 top-[76px] z-[150] w-[310px] -translate-x-1/2 rounded-2xl border border-slate-200 bg-white p-4 opacity-0 shadow-xl transition-all duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
+                <Link
+                  href="/services"
+                  className="mb-3 flex items-center justify-between rounded-xl bg-slate-50 px-4 py-3 text-sm font-bold text-slate-900 transition hover:bg-cyan-50 hover:text-cyan-700"
+                >
+                  View All Services
+                  <ArrowRight size={17} />
+                </Link>
+
+                <div className="space-y-1">
+                  {services.map((service) => (
+                    <Link
+                      key={service.href}
+                      href={service.href}
+                      className="block rounded-xl px-4 py-3 text-sm font-medium text-slate-600 transition hover:bg-cyan-50 hover:text-cyan-700"
+                    >
+                      {service.name}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* EXPLORE VGS DROPDOWN */}
+            <div className="group relative py-8">
+              <button
+                type="button"
+                className="flex items-center gap-1 text-[15px] font-semibold text-slate-800 transition hover:text-cyan-600"
+              >
+                Explore VGS
+                <ChevronDown
+                  size={17}
+                  className="transition duration-200 group-hover:rotate-180"
+                />
+              </button>
+
+              {/* Invisible hover bridge */}
+              <div className="absolute left-0 top-full h-3 w-full" />
+
+              <div className="invisible absolute left-1/2 top-[76px] z-[150] w-[275px] -translate-x-1/2 rounded-2xl border border-slate-200 bg-white p-4 opacity-0 shadow-xl transition-all duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
+                <div className="space-y-1">
+                  {exploreLinks.map((link) => (
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      className="block rounded-xl px-4 py-3 text-sm font-medium text-slate-600 transition hover:bg-cyan-50 hover:text-cyan-700"
+                    >
+                      {link.name}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            <Link
+              href="/portfolio"
+              className="text-[15px] font-semibold text-slate-800 transition hover:text-cyan-600"
+            >
               Portfolio
             </Link>
 
             <Link
-              href="/#industries"
-              className="transition hover:text-blue-700"
+              href="/industries"
+              className="text-[15px] font-semibold text-slate-800 transition hover:text-cyan-600"
             >
               Industries
             </Link>
 
-            <Link href="/contact" className="transition hover:text-blue-700">
-              Contact
-            </Link>
-
             <Link
               href="/consultation"
-              className="rounded-xl bg-blue-700 px-5 py-3 text-white shadow-md transition hover:bg-blue-800"
+              className="border-2 border-cyan-500 px-5 py-3 text-[15px] font-bold text-cyan-700 transition hover:bg-cyan-500 hover:text-slate-950"
             >
               Free Consultation
             </Link>
           </nav>
+        </div>
+      </header>
 
-          {/* Tablet and mobile hamburger */}
+      {/* =========================================================
+          MOBILE + TABLET HEADER — fixed only below lg desktop.
+      ========================================================== */}
+      <header className="fixed left-0 top-0 z-[100] w-full border-b border-white/10 bg-[#030712] text-white lg:hidden">
+        <div className="mx-auto flex h-[82px] items-center justify-between px-5 sm:px-6">
           <button
             type="button"
-            onClick={() => setMobileOpen(true)}
-            aria-label="Open navigation menu"
-            className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-slate-200 bg-slate-50 text-2xl font-bold text-slate-800 transition hover:bg-blue-50 hover:text-blue-700 xl:hidden"
+            aria-label="Search"
+            className="flex h-12 w-12 items-center justify-center text-white"
           >
-            ☰
+            <Search size={31} strokeWidth={1.7} />
+          </button>
+
+          <Link href="/" className="flex items-center" onClick={closeMenu}>
+            <Image
+              src="/images/vgs-logo.png"
+              alt="Venza Global Services"
+              width={240}
+              height={80}
+              priority
+              className="h-auto w-[185px] bg-white px-2 py-1 sm:w-[215px]"
+            />
+          </Link>
+
+          <button
+            type="button"
+            onClick={() => setMobileMenuOpen(true)}
+            aria-label="Open menu"
+            className="flex h-12 w-12 items-center justify-center text-white"
+          >
+            <Menu size={34} strokeWidth={1.7} />
           </button>
         </div>
       </header>
 
-      {/* Tablet / Mobile side drawer */}
-      {mobileOpen && (
-        <div className="fixed inset-0 z-[100] xl:hidden">
-          <button
-            type="button"
-            aria-label="Close navigation menu"
-            onClick={closeMenu}
-            className="absolute inset-0 h-full w-full bg-slate-950/60"
-          />
+      {/* Space only for fixed mobile/tablet header */}
+      <div className="h-[82px] lg:hidden" />
 
-          <aside className="absolute right-0 top-0 h-full w-[88%] max-w-md overflow-y-auto bg-white shadow-2xl">
-            {/* Drawer logo */}
-            <div className="flex items-center justify-between border-b border-slate-200 p-5">
-              <Link href="/" onClick={closeMenu} className="flex items-center">
-                <Image
-                  src="/images/vgs-logo.png"
-                  alt="Venza Global Services"
-                  width={220}
-                  height={70}
-                  priority
-                  className="h-auto w-[190px]"
-                />
-              </Link>
+      {/* =========================================================
+          FULL SCREEN MOBILE + TABLET MENU
+      ========================================================== */}
+      {mobileMenuOpen && (
+        <div className="fixed inset-0 z-[200] min-h-screen overflow-y-auto bg-[#171d1f] text-white lg:hidden">
+          <div className="flex min-h-[105px] items-center justify-between border-b border-white/10 px-7">
+            <Link href="/" onClick={closeMenu}>
+              <Image
+                src="/images/vgs-logo.png"
+                alt="Venza Global Services"
+                width={230}
+                height={80}
+                priority
+                className="h-auto w-[190px] bg-white px-2 py-1"
+              />
+            </Link>
 
+            <button
+              type="button"
+              onClick={closeMenu}
+              aria-label="Close menu"
+              className="text-white"
+            >
+              <X size={40} strokeWidth={1.5} />
+            </button>
+          </div>
+
+          <div className="pb-[175px] px-6 pt-5">
+            <Link
+              href="/"
+              onClick={closeMenu}
+              className="flex min-h-[82px] items-center border-b border-white/20 text-[27px] font-light"
+            >
+              Home
+            </Link>
+
+            <Link
+              href="/about"
+              onClick={closeMenu}
+              className="flex min-h-[82px] items-center border-b border-white/20 text-[27px] font-light"
+            >
+              About Us
+            </Link>
+
+            <div className="border-b border-white/20">
               <button
                 type="button"
-                onClick={closeMenu}
-                aria-label="Close navigation menu"
-                className="ml-3 flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-slate-100 text-2xl text-slate-800 transition hover:bg-slate-200"
+                onClick={() => setServicesOpen(!servicesOpen)}
+                className="flex min-h-[82px] w-full items-center justify-between text-left text-[27px] font-light"
               >
-                ×
+                Services
+                <ChevronDown
+                  size={32}
+                  className={`transition ${servicesOpen ? "rotate-180" : ""}`}
+                />
               </button>
+
+              {servicesOpen && (
+                <div className="pb-4">
+                  <Link
+                    href="/services"
+                    onClick={closeMenu}
+                    className="block py-3 pl-4 text-lg font-semibold text-cyan-300"
+                  >
+                    View All Services →
+                  </Link>
+
+                  {services.map((service) => (
+                    <Link
+                      key={service.href}
+                      href={service.href}
+                      onClick={closeMenu}
+                      className="block py-3 pl-4 text-lg text-slate-300 hover:text-cyan-300"
+                    >
+                      {service.name}
+                    </Link>
+                  ))}
+                </div>
+              )}
             </div>
 
-            <nav className="space-y-2 p-5">
-              <Link
-                href="/"
-                onClick={closeMenu}
-                className="block rounded-xl px-4 py-4 font-semibold text-slate-800 transition hover:bg-blue-50 hover:text-blue-700"
+            <div className="border-b border-white/20">
+              <button
+                type="button"
+                onClick={() => setExploreOpen(!exploreOpen)}
+                className="flex min-h-[82px] w-full items-center justify-between text-left text-[27px] font-light"
               >
-                🏠 Home
-              </Link>
+                Explore VGS
+                <ChevronDown
+                  size={32}
+                  className={`transition ${exploreOpen ? "rotate-180" : ""}`}
+                />
+              </button>
 
-              <Link
-                href="/#about"
-                onClick={closeMenu}
-                className="block rounded-xl px-4 py-4 font-semibold text-slate-800 transition hover:bg-blue-50 hover:text-blue-700"
-              >
-                ℹ️ About Us
-              </Link>
-
-              {/* Services menu */}
-              <div className="rounded-xl border border-slate-200">
-                <button
-                  type="button"
-                  onClick={() => setServicesOpen(!servicesOpen)}
-                  className="flex w-full items-center justify-between px-4 py-4 text-left font-semibold text-slate-800"
-                >
-                  <span>⚡ Services</span>
-                  <span className="text-xl">{servicesOpen ? "−" : "+"}</span>
-                </button>
-
-                {servicesOpen && (
-                  <div className="border-t border-slate-200 p-3">
+              {exploreOpen && (
+                <div className="pb-4">
+                  {exploreLinks.map((link) => (
                     <Link
-                      href="/services"
+                      key={link.href}
+                      href={link.href}
                       onClick={closeMenu}
-                      className="mb-2 block rounded-lg bg-blue-700 px-4 py-3 font-semibold text-white transition hover:bg-blue-800"
+                      className="block py-3 pl-4 text-lg text-slate-300 hover:text-cyan-300"
                     >
-                      View All Services →
+                      {link.name}
                     </Link>
+                  ))}
+                </div>
+              )}
+            </div>
 
-                    <div className="space-y-1">
-                      {services.map((service) => (
-                        <Link
-                          key={service.href}
-                          href={service.href}
-                          onClick={closeMenu}
-                          className="block rounded-lg px-4 py-3 text-sm font-medium text-slate-600 transition hover:bg-blue-50 hover:text-blue-700"
-                        >
-                          {service.name}
-                        </Link>
-                      ))}
-                    </div>
-                  </div>
-                )}
-              </div>
-              <div className="rounded-xl border border-slate-200">
-  <button
-    type="button"
-    onClick={() => setExploreOpen(!exploreOpen)}
-    className="flex w-full items-center justify-between px-4 py-4 text-left font-semibold text-slate-800"
-  >
-    <span>🌐 Explore VGS</span>
-    <span className="text-xl">{exploreOpen ? "−" : "+"}</span>
-  </button>
+            <Link
+              href="/portfolio"
+              onClick={closeMenu}
+              className="flex min-h-[82px] items-center border-b border-white/20 text-[27px] font-light"
+            >
+              Portfolio
+            </Link>
 
-  {exploreOpen && (
-    <div className="border-t border-slate-200 p-3">
-      {exploreLinks.map((link) => (
-        <Link
-          key={link.href}
-          href={link.href}
-          onClick={closeMenu}
-          className="block rounded-lg px-4 py-3 text-sm font-medium text-slate-600 transition hover:bg-blue-50 hover:text-blue-700"
-        >
-          {link.name}
-        </Link>
-      ))}
-    </div>
-  )}
-</div>
+            <Link
+              href="/industries"
+              onClick={closeMenu}
+              className="flex min-h-[82px] items-center border-b border-white/20 text-[27px] font-light"
+            >
+              Industries
+            </Link>
 
-              <Link
-                href="/#portfolio"
-                onClick={closeMenu}
-                className="block rounded-xl px-4 py-4 font-semibold text-slate-800 transition hover:bg-blue-50 hover:text-blue-700"
-              >
-                💼 Portfolio
-              </Link>
+            <Link
+              href="/contact"
+              onClick={closeMenu}
+              className="flex min-h-[82px] items-center border-b border-white/20 text-[27px] font-light"
+            >
+              Contact Us
+            </Link>
+          </div>
 
-              <Link
-                href="/#industries"
-                onClick={closeMenu}
-                className="block rounded-xl px-4 py-4 font-semibold text-slate-800 transition hover:bg-blue-50 hover:text-blue-700"
-              >
-                🏢 Industries
-              </Link>
+          <div className="fixed bottom-0 left-0 z-[210] w-full border-t border-white/20 bg-[#171d1f]">
+            <button
+              type="button"
+              className="flex w-full items-center gap-4 border-b border-white/20 px-8 py-5 text-left text-xl font-medium"
+            >
+              <Globe size={27} />
+              Global (En)
+            </button>
 
-              <Link
-                href="/contact"
-                onClick={closeMenu}
-                className="block rounded-xl px-4 py-4 font-semibold text-slate-800 transition hover:bg-blue-50 hover:text-blue-700"
-              >
-                ✉️ Contact Us
-              </Link>
-
-              <Link
-                href="/consultation"
-                onClick={closeMenu}
-                className="mt-5 block rounded-xl bg-blue-700 px-5 py-4 text-center font-bold text-white shadow-lg shadow-blue-700/25 transition hover:bg-blue-800"
-              >
-                Free Consultation →
-              </Link>
-            </nav>
-
-            <p className="px-5 pb-6 pt-2 text-center text-xs text-slate-400">
-              © {new Date().getFullYear()} Venza Global Services
-            </p>
-          </aside>
+            <Link
+              href="/consultation"
+              onClick={closeMenu}
+              className="flex w-full items-center justify-center bg-cyan-400 px-8 py-5 text-xl font-bold text-slate-950"
+            >
+              Free Consultation →
+            </Link>
+          </div>
         </div>
       )}
     </>

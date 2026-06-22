@@ -1,4 +1,5 @@
 "use client";
+import Newsletter from "./components/Newsletter";
 import { motion } from "framer-motion";
 import FadeIn from "./components/FadeIn";
 import Counter from "./components/Counter";
@@ -243,6 +244,7 @@ export default function Home() {
 
   </div>
 </div>
+<Newsletter />
     </main>
   );
 }

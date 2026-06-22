@@ -4,10 +4,12 @@ import Link from "next/link";
 const companyLinks = [
   { name: "Home", href: "/" },
   { name: "About Us", href: "/#about" },
-  { name: "All Services", href: "/services" },
-  { name: "Portfolio", href: "/#portfolio" },
-  { name: "Industries", href: "/#industries" },
-  { name: "Contact Us", href: "/contact" },
+  { name: "Vijlak", href: "/vijlak" },
+  { name: "What We Do", href: "/what-we-do" },
+  { name: "Customer Stories", href: "/customer-stories" },
+  { name: "Partnerships", href: "/partnerships" },
+  { name: "Connect VGS", href: "/connect-vgs" },
+  { name: "Website Feedback", href: "/website-feedback" },
 ];
 
 const serviceLinks = [
@@ -28,16 +30,38 @@ const solutionLinks = [
 const legalLinks = [
   { name: "Privacy Notice", href: "/privacy-policy" },
   { name: "Cookie Policy", href: "/cookie-policy" },
-  { name: "Accessibility Declaration", href: "/accessibility" },
+  { name: "Accessibility", href: "/accessibility" },
   { name: "Disclaimer", href: "/disclaimer" },
   { name: "Security Policy", href: "/security-policy" },
   { name: "Customize Cookies", href: "/customize-cookies" },
 ];
 
+const socialLinks = [
+  {
+    name: "Facebook",
+    href: "https://www.facebook.com/",
+    icon: "f",
+  },
+  {
+    name: "YouTube",
+    href: "https://www.youtube.com/",
+    icon: "▶",
+  },
+  {
+    name: "X",
+    href: "https://x.com/",
+    icon: "X",
+  },
+  {
+    name: "Instagram",
+    href: "https://www.instagram.com/",
+    icon: "◎",
+  },
+];
+
 export default function GlobalFooter() {
   return (
     <footer className="bg-[#020617] text-white">
-      {/* Main footer */}
       <div className="mx-auto max-w-7xl px-6 py-16">
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
           {/* Brand */}
@@ -55,8 +79,9 @@ export default function GlobalFooter() {
             </Link>
 
             <p className="mt-7 max-w-xs text-sm leading-7 text-slate-300">
-              Venza Global Services delivers AI, cloud, software development,
-              cybersecurity, consulting, and digital transformation solutions.
+              Venza Global Services is the technology wing of Vijlak,
+              delivering AI, cloud, software development, cybersecurity,
+              consulting, and digital transformation solutions.
             </p>
 
             <Link
@@ -65,6 +90,28 @@ export default function GlobalFooter() {
             >
               Free Consultation →
             </Link>
+
+            {/* Social Media */}
+            <div className="mt-7">
+              <p className="mb-3 text-sm font-semibold text-white">
+                Follow VGS
+              </p>
+
+              <div className="flex items-center gap-3">
+                {socialLinks.map((social) => (
+                  <a
+                    key={social.name}
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`Follow VGS on ${social.name}`}
+                    className="flex h-10 w-10 items-center justify-center rounded-full border border-white/15 bg-white/5 text-sm font-bold text-slate-300 transition hover:border-cyan-400 hover:bg-cyan-400 hover:text-slate-950"
+                  >
+                    {social.icon}
+                  </a>
+                ))}
+              </div>
+            </div>
           </div>
 
           {/* Company */}
@@ -130,7 +177,7 @@ export default function GlobalFooter() {
         </div>
       </div>
 
-      {/* Legal links area */}
+      {/* Legal Links */}
       <div className="border-t border-white/10">
         <div className="mx-auto max-w-7xl px-6 py-6">
           <div className="flex flex-wrap justify-center gap-x-6 gap-y-3 text-center text-sm text-slate-400">
@@ -156,7 +203,7 @@ export default function GlobalFooter() {
           </p>
 
           <Link
-            href="/contact"
+            href="/connect-vgs"
             className="font-medium text-cyan-400 transition hover:text-cyan-300"
           >
             Contact Support →
