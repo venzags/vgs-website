@@ -190,7 +190,7 @@ export default function GlobalHeader() {
   width={250}
   height={80}
   priority
-  className="h-auto w-[54px] sm:w-[230px]"
+  className="h-auto w-[230px]"
 />
           </Link>
 
