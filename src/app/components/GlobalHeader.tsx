@@ -185,13 +185,13 @@ export default function GlobalHeader() {
 
           <Link href="/" className="flex items-center" onClick={closeMenu}>
             <Image
-              src="/images/vgs-logo.png"
-              alt="Venza Global Services"
-              width={240}
-              height={80}
-              priority
-              className="h-auto w-[185px] bg-white px-2 py-1 sm:w-[215px]"
-            />
+  src="/images/vgs-logo-white.png"
+  alt="Venza Global Services"
+  width={220}
+  height={220}
+  priority
+  className="h-auto w-[54px] sm:w-[60px]"
+/>
           </Link>
 
           <button
@@ -216,13 +216,13 @@ export default function GlobalHeader() {
           <div className="flex min-h-[105px] items-center justify-between border-b border-white/10 px-7">
             <Link href="/" onClick={closeMenu}>
               <Image
-                src="/images/vgs-logo.png"
-                alt="Venza Global Services"
-                width={230}
-                height={80}
-                priority
-                className="h-auto w-[190px] bg-white px-2 py-1"
-              />
+            src="/images/vgs-logo-white.png"
+            alt="Venza Global Services"
+            width={220}
+            height={220}
+            priority
+            className="h-auto w-[62px]"
+            />
             </Link>
 
             <button

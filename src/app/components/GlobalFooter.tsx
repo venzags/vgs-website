@@ -67,16 +67,14 @@ export default function GlobalFooter() {
           {/* Brand */}
           <div>
             <Link href="/" className="inline-block">
-              <div className="rounded-xl bg-white p-4">
-                <Image
-                  src="/images/vgs-logo.png"
-                  alt="Venza Global Services"
-                  width={250}
-                  height={80}
-                  className="h-auto w-[220px]"
-                />
-              </div>
-            </Link>
+  <Image
+    src="/images/vgs-logo-white.png"
+    alt="Venza Global Services"
+    width={250}
+    height={80}
+    className="h-auto w-[220px]"
+  />
+</Link>
 
             <p className="mt-7 max-w-xs text-sm leading-7 text-slate-300">
               Venza Global Services is the technology wing of Vijlak,
