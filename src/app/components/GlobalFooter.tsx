@@ -68,7 +68,7 @@ export default function GlobalFooter() {
           <div>
             <Link href="/" className="inline-block">
   <Image
-    src="/images/vgs-logo-white.png"
+    src="/images/vgs-logo-white-footer.png"
     alt="Venza Global Services"
     width={250}
     height={80}
