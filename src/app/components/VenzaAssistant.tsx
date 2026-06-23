@@ -151,9 +151,8 @@ export default function VenzaAssistant() {
 
       {/* Assistant window */}
       {isOpen && (
-        <div className="fixed inset-0 z-[500] flex items-end justify-center bg-slate-950/50 p-0 backdrop-blur-[2px] md:items-end md:justify-end md:p-6">
-          <section className="flex h-[calc(100dvh-18px)] w-full flex-col overflow-hidden rounded-t-[28px] border border-cyan-400/30 bg-[#03081a] shadow-2xl md:h-[720px] md:w-[470px] md:rounded-[28px]">
-            {/* Header - always visible */}
+        <div className="fixed inset-0 z-[500] flex items-end justify-center bg-slate-950/50 p-0 backdrop-blur-[2px] lg:pointer-events-none lg:bg-transparent lg:p-0 lg:backdrop-blur-none">
+          <section className="pointer-events-auto flex h-[calc(100dvh-18px)] w-full flex-col overflow-hidden rounded-t-[28px] border border-cyan-400/30 bg-[#03081a] shadow-2xl lg:absolute lg:bottom-6 lg:right-6 lg:h-[620px] lg:w-[420px] lg:rounded-[28px]">
             <div className="sticky top-0 z-20 flex min-h-[94px] items-center justify-between bg-gradient-to-r from-cyan-400 via-sky-500 to-blue-600 px-5 text-slate-950">
               <div className="flex items-center gap-4">
                 <div className="flex h-14 w-14 items-center justify-center rounded-full bg-slate-950 text-cyan-300 shadow-lg">
@@ -182,7 +181,7 @@ export default function VenzaAssistant() {
             </div>
 
             {/* Scrollable chat area */}
-            <div className="flex-1 overflow-y-auto px-4 pb-5 pt-5">
+            <div className="flex-1 overflow-y-auto px-4 pb-5 pt-5 lg:px-5">
               {messages.map((message) => (
                 <div
                   key={message.id}

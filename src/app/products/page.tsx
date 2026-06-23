@@ -7,42 +7,42 @@ const products = [
     category: "AI & Automation",
     description:
       "Custom AI automation systems for customer support, workflow automation, lead management, and business operations.",
-    image: "/images/products/ai-business-automation.jpg",
+    image: "/images/products/ai-business-automation.png",
   },
   {
     name: "Business Management Platform",
     category: "Software Products",
     description:
       "A scalable dashboard for managing customers, projects, teams, reports, and day-to-day business processes.",
-    image: "/images/products/business-management-platform.jpg",
+    image: "/images/products/business-management-platform.png",
   },
   {
     name: "Cloud Infrastructure Setup",
     category: "Cloud Solutions",
     description:
       "Secure cloud deployment, hosting, backup, monitoring, and scalable infrastructure for growing businesses.",
-    image: "/images/products/cloud-infrastructure.jpg",
+    image: "/images/products/cloud-infrastructure.png",
   },
   {
     name: "Cyber Security Assessment",
     category: "Security Products",
     description:
       "Security review, vulnerability assessment, access controls, and recommendations to protect your digital systems.",
-    image: "/images/products/cyber-security-assessment.jpg",
+    image: "/images/products/cyber-security-assessment.png",
   },
   {
     name: "Digital Growth Toolkit",
     category: "Digital Marketing",
     description:
       "A practical package for websites, SEO, lead generation, analytics, campaign tracking, and digital growth.",
-    image: "/images/products/digital-growth-toolkit.jpg",
+    image: "/images/products/digital-growth-toolkit.png",
   },
   {
     name: "Custom Website Package",
     category: "Web Development",
     description:
       "Modern responsive business websites built for performance, credibility, lead generation, and future expansion.",
-    image: "/images/products/custom-website-package.jpg",
+    image: "/images/products/custom-website-package.png",
   },
 ];
 
