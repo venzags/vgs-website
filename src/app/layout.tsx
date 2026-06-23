@@ -1,9 +1,10 @@
-import VenzaChatAgent from "./components/VenzaChatAgent";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+
 import GlobalHeader from "./components/GlobalHeader";
 import GlobalFooter from "./components/GlobalFooter";
+import VenzaAssistant from "./components/VenzaAssistant";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -38,7 +39,9 @@ export default function RootLayout({
           <main className="flex-1">{children}</main>
 
           <GlobalFooter />
-          <VenzaChatAgent />
+
+          {/* Venza AI chat button and popup — available on every page */}
+          <VenzaAssistant />
         </div>
       </body>
     </html>
