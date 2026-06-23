@@ -28,6 +28,7 @@ const services = [
 
 const exploreLinks = [
   { name: "About Us", href: "/about" },
+  { name: "Gallery", href: "/gallery" },
   { name: "Portfolio", href: "/portfolio" },
   { name: "Industries", href: "/industries" },
   { name: "VIJLAK Ecosystem", href: "/vijlak" },
@@ -221,13 +222,6 @@ export default function GlobalHeader() {
               className="whitespace-nowrap text-[14px] font-semibold text-slate-800 transition hover:text-cyan-600"
             >
               Home
-            </Link>
-
-            <Link
-              href="/about"
-              className="whitespace-nowrap text-[14px] font-semibold text-slate-800 transition hover:text-cyan-600"
-            >
-              About Us
             </Link>
 
             {/* Services */}
