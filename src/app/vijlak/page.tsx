@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 const serviceAreas = [
   {
@@ -171,37 +172,49 @@ export default function VijlakPage() {
         </div>
       </section>
 
-      {/* Origins */}
-      <section className="mx-auto max-w-6xl px-6 py-20">
-        <div className="grid gap-12 lg:grid-cols-2">
+      {/* Origins – replaced with the new version including the VIJLAK logo */}
+      <section className="bg-slate-50 py-20 lg:py-28">
+        <div className="mx-auto grid max-w-7xl gap-12 px-6 lg:grid-cols-2 lg:gap-20 lg:px-8">
+          {/* Left side: heading + VIJLAK logo */}
           <div>
-            <p className="text-sm font-bold uppercase tracking-[0.18em] text-blue-700">
+            <p className="text-sm font-bold uppercase tracking-[0.22em] text-blue-600">
               Established in 2009
             </p>
 
-            <h2 className="mt-4 text-4xl font-bold leading-tight">
+            <h2 className="mt-5 text-4xl font-bold text-slate-900 sm:text-5xl">
               The Origins of VIJLAK
             </h2>
+
+            {/* VIJLAK logo */}
+            <div className="mt-10 flex items-center">
+              <Image
+                src="/images/vijlak_logo.png"
+                alt="VIJLAK"
+                width={420}
+                height={180}
+                className="h-auto w-full max-w-[330px] object-contain"
+              />
+            </div>
           </div>
 
-          <div className="space-y-6 text-lg leading-8 text-slate-600">
+          {/* Right side: company story */}
+          <div className="space-y-7 text-lg leading-8 text-slate-600">
             <p>
               VIJLAK was established in 2009 with a clear ambition: to provide
-              reliable, diverse, and forward-thinking consultancy services
-              that can adapt to an evolving global environment.
+              reliable, diverse, and forward-thinking consultancy services that can
+              adapt to an evolving global environment.
             </p>
 
             <p>
-              Founded by Vijaya Lakshmi, VIJLAK began with a small group of
-              clients and a commitment to offer more than advice. The focus was
-              partnership, innovation, strategic foresight, and practical
-              support.
+              Founded by Vijaya Lakshmi, VIJLAK began with a small group of clients
+              and a commitment to offer more than advice. The focus was partnership,
+              innovation, strategic foresight, and practical support.
             </p>
 
             <p>
-              Today, VIJLAK has grown into a wider ecosystem that brings
-              together consulting, technology, business development, workforce
-              initiatives, investment facilitation, and social-impact work.
+              Today, VIJLAK has grown into a wider ecosystem that brings together
+              consulting, technology, business development, workforce initiatives,
+              investment facilitation, and social-impact work.
             </p>
           </div>
         </div>

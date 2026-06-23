@@ -147,62 +147,148 @@ const serviceSlides = [
 ];
 
 // ------------------------------------------------------------------
-// Services data (same as before)
+// Services data – icons now match the carousel size
 // ------------------------------------------------------------------
 const services = [
   {
-    icon: "🤖",
     title: "AI Solutions",
     href: "/services/ai-solutions",
     description: "AI-powered automation, analytics, and intelligent business solutions.",
+    icon: (
+      <svg viewBox="0 0 120 120" className="w-28 h-28 sm:w-36 sm:h-36">
+        <circle cx="60" cy="45" r="22" fill="none" stroke="#0A66C2" strokeWidth="3" strokeDasharray="6 3" className="animate-[spin_12s_linear_infinite]" />
+        <circle cx="60" cy="45" r="14" fill="#0A66C2" opacity="0.15" />
+        <circle cx="60" cy="45" r="8" fill="#0A66C2" />
+        <line x1="60" y1="23" x2="60" y2="15" stroke="#0A66C2" strokeWidth="2" />
+        <line x1="82" y1="45" x2="90" y2="45" stroke="#0A66C2" strokeWidth="2" />
+        <line x1="60" y1="67" x2="60" y2="75" stroke="#0A66C2" strokeWidth="2" />
+        <line x1="38" y1="45" x2="30" y2="45" stroke="#0A66C2" strokeWidth="2" />
+        <text x="60" y="48" textAnchor="middle" dominantBaseline="central" fontSize="10" fill="white" fontWeight="bold">AI</text>
+      </svg>
+    ),
   },
   {
-    icon: "🧠",
     title: "Machine Learning",
     href: "/services/machine-learning",
     description: "Predictive analytics, deep learning, and intelligent decision systems.",
+    icon: (
+      <svg viewBox="0 0 120 120" className="w-28 h-28 sm:w-36 sm:h-36">
+        <polyline points="10,80 30,60 50,70 70,30 90,50 110,40" fill="none" stroke="#7C3AED" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+        <circle cx="30" cy="60" r="4" fill="#7C3AED" />
+        <circle cx="50" cy="70" r="4" fill="#7C3AED" />
+        <circle cx="70" cy="30" r="4" fill="#7C3AED" />
+        <circle cx="90" cy="50" r="4" fill="#7C3AED" />
+        <circle cx="110" cy="40" r="4" fill="#7C3AED" />
+        <rect x="35" y="85" width="50" height="20" rx="4" fill="#EDE9FE" stroke="#7C3AED" strokeWidth="2" />
+        <text x="60" y="98" textAnchor="middle" fontSize="9" fill="#7C3AED" fontWeight="bold">ML</text>
+      </svg>
+    ),
   },
   {
-    icon: "💻",
     title: "Software Development",
     href: "/services/software-development",
     description: "Custom software solutions built for performance, scalability, and growth.",
+    icon: (
+      <svg viewBox="0 0 120 120" className="w-28 h-28 sm:w-36 sm:h-36">
+        <rect x="15" y="25" width="90" height="70" rx="8" fill="#D1FAE5" stroke="#059669" strokeWidth="2" />
+        <rect x="25" y="35" width="70" height="8" rx="2" fill="#059669" className="animate-pulse" />
+        <rect x="25" y="50" width="50" height="8" rx="2" fill="#059669" opacity="0.7" />
+        <rect x="25" y="65" width="60" height="8" rx="2" fill="#059669" opacity="0.5" />
+        <rect x="25" y="80" width="40" height="8" rx="2" fill="#059669" opacity="0.3" />
+        <circle cx="100" cy="90" r="10" fill="#10b981" className="animate-ping" style={{ animationDuration: "2.5s" }} />
+        <text x="100" y="94" textAnchor="middle" fontSize="8" fill="white" fontWeight="bold">✓</text>
+      </svg>
+    ),
   },
   {
-    icon: "🌐",
     title: "Web Development",
     href: "/services/web-development",
     description: "Modern websites and web applications built with current technologies.",
+    icon: (
+      <svg viewBox="0 0 120 120" className="w-28 h-28 sm:w-36 sm:h-36">
+        <rect x="15" y="30" width="90" height="60" rx="6" fill="#FEF3C7" stroke="#D97706" strokeWidth="2" />
+        <rect x="25" y="40" width="30" height="18" rx="2" fill="white" />
+        <rect x="25" y="65" width="40" height="6" rx="2" fill="#D97706" opacity="0.6" />
+        <rect x="65" y="40" width="30" height="18" rx="2" fill="white" />
+        <rect x="65" y="65" width="30" height="6" rx="2" fill="#D97706" opacity="0.6" />
+        <circle cx="45" cy="55" r="8" fill="#D97706" className="animate-[ping_2s_ease-in-out_infinite]" />
+        <text x="45" y="58" textAnchor="middle" fontSize="8" fill="white" fontWeight="bold">🌐</text>
+      </svg>
+    ),
   },
   {
-    icon: "📱",
     title: "Mobile Applications",
     href: "/services/mobile-applications",
     description: "Android and iOS applications with smooth, premium user experiences.",
+    icon: (
+      <svg viewBox="0 0 120 120" className="w-28 h-28 sm:w-36 sm:h-36">
+        <rect x="30" y="15" width="60" height="90" rx="8" fill="#FFE4E6" stroke="#E11D48" strokeWidth="2" />
+        <rect x="40" y="25" width="40" height="50" rx="4" fill="white" />
+        <circle cx="60" cy="50" r="12" fill="#E11D48" className="animate-pulse" />
+        <text x="60" y="54" textAnchor="middle" fontSize="10" fill="white" fontWeight="bold">📱</text>
+        <rect x="45" y="85" width="30" height="4" rx="2" fill="#E11D48" opacity="0.5" />
+        <circle cx="60" cy="92" r="3" fill="#E11D48" />
+      </svg>
+    ),
   },
   {
-    icon: "☁️",
     title: "Cloud Solutions",
     href: "/services/cloud-solutions",
     description: "Cloud migration, infrastructure management, and scalable deployments.",
+    icon: (
+      <svg viewBox="0 0 120 120" className="w-28 h-28 sm:w-36 sm:h-36">
+        <path d="M30 75 Q 60 60 90 75 Q 105 95 75 95 L45 95 Q 15 95 30 75" fill="none" stroke="#0284C7" strokeWidth="3" />
+        <circle cx="40" cy="65" r="10" fill="#E0F2FE" stroke="#0284C7" strokeWidth="2" className="animate-[float_3s_ease-in-out_infinite]" />
+        <circle cx="65" cy="55" r="14" fill="#E0F2FE" stroke="#0284C7" strokeWidth="2" className="animate-[float_3s_ease-in-out_infinite]" style={{ animationDelay: "0.5s" }} />
+        <circle cx="90" cy="65" r="12" fill="#E0F2FE" stroke="#0284C7" strokeWidth="2" className="animate-[float_3s_ease-in-out_infinite]" style={{ animationDelay: "1s" }} />
+        <line x1="45" y1="75" x2="45" y2="95" stroke="#0284C7" strokeWidth="3" strokeLinecap="round" />
+        <line x1="60" y1="60" x2="60" y2="85" stroke="#0284C7" strokeWidth="3" strokeLinecap="round" />
+        <line x1="80" y1="72" x2="80" y2="90" stroke="#0284C7" strokeWidth="3" strokeLinecap="round" />
+      </svg>
+    ),
   },
   {
-    icon: "📊",
     title: "IT Consulting",
     href: "/services/it-consulting",
     description: "Technology strategy, planning, and digital transformation consulting.",
+    icon: (
+      <svg viewBox="0 0 120 120" className="w-28 h-28 sm:w-36 sm:h-36">
+        <circle cx="60" cy="45" r="18" fill="none" stroke="#4F46E5" strokeWidth="3" />
+        <path d="M60 27 L60 35 M60 55 L60 63 M42 45 L35 45 M78 45 L85 45" stroke="#4F46E5" strokeWidth="3" strokeLinecap="round" />
+        <rect x="30" y="70" width="60" height="30" rx="6" fill="#EEF2FF" stroke="#4F46E5" strokeWidth="2" />
+        <text x="60" y="88" textAnchor="middle" fontSize="10" fill="#4F46E5" fontWeight="bold">STRATEGY</text>
+      </svg>
+    ),
   },
   {
-    icon: "📈",
     title: "Digital Marketing",
     href: "/services/digital-marketing",
     description: "SEO, social media marketing, content strategy, and online growth.",
+    icon: (
+      <svg viewBox="0 0 120 120" className="w-28 h-28 sm:w-36 sm:h-36">
+        <rect x="20" y="25" width="80" height="70" rx="8" fill="#FEF3C7" stroke="#B45309" strokeWidth="2" />
+        <polyline points="30,80 45,50 60,65 75,30 90,45" fill="none" stroke="#B45309" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+        <circle cx="45" cy="50" r="4" fill="#B45309" />
+        <circle cx="75" cy="30" r="4" fill="#B45309" />
+        <circle cx="90" cy="45" r="4" fill="#B45309" />
+        <rect x="35" y="85" width="50" height="10" rx="3" fill="#B45309" opacity="0.2" />
+        <text x="60" y="92" textAnchor="middle" fontSize="8" fill="#B45309" fontWeight="bold">GROWTH</text>
+      </svg>
+    ),
   },
   {
-    icon: "🔒",
     title: "Cyber Security",
     href: "/services/cyber-security",
     description: "Security solutions, cyber-risk protection, and safer digital systems.",
+    icon: (
+      <svg viewBox="0 0 120 120" className="w-28 h-28 sm:w-36 sm:h-36">
+        <rect x="25" y="20" width="70" height="80" rx="8" fill="#CCFBF1" stroke="#0F766E" strokeWidth="2" />
+        <circle cx="60" cy="50" r="18" fill="none" stroke="#0F766E" strokeWidth="3" strokeDasharray="5 3" className="animate-[spin_10s_linear_infinite]" />
+        <path d="M55 40 L65 50 L55 60" fill="none" stroke="#0F766E" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+        <rect x="50" y="70" width="20" height="15" rx="3" fill="#0F766E" />
+        <text x="60" y="80" textAnchor="middle" fontSize="8" fill="white" fontWeight="bold">🔒</text>
+      </svg>
+    ),
   },
 ];
 
@@ -339,7 +425,7 @@ export default function ServicesPage() {
                 href={service.href}
                 className="group bg-white rounded-3xl p-6 sm:p-8 shadow-md border border-gray-100 hover:shadow-xl hover:shadow-[#0A66C2]/10 hover:-translate-y-1 transition-all duration-300 animate-fade-in-up"
               >
-                <div className="text-5xl mb-4">{service.icon}</div>
+                <div className="mb-4">{service.icon}</div>
                 <h2 className="text-xl sm:text-2xl font-bold text-[#0A66C2] mb-3 group-hover:text-[#094e9e] transition-colors">
                   {service.title}
                 </h2>
@@ -383,6 +469,6 @@ export default function ServicesPage() {
           </div>
         </div>
       </section>
-</main>
+    </main>
   );
 }
