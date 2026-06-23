@@ -449,12 +449,12 @@ export default function GlobalHeader() {
 
         <Link href="/" onClick={closeEverything}>
           <Image
-            src="/images/vgs-logo-white.png"
+            src="/images/vgs-logo-white-mob.png"
             alt="Venza Global Services"
-            width={200}
-            height={70}
+            width={250}
+            height={85}
             priority
-            className="h-auto w-[160px]"
+            className="h-auto w-[220px]"
           />
         </Link>
 
@@ -476,11 +476,11 @@ export default function GlobalHeader() {
           <div className="flex h-[88px] items-center justify-between border-b border-white/10 px-6">
             <Link href="/" onClick={closeEverything}>
               <Image
-                src="/images/vgs-logo-white.png"
+                src="/images/vgs-logo-white-mob.png"
                 alt="Venza Global Services"
-                width={210}
-                height={75}
-                className="h-auto w-[170px]"
+                width={250}
+                height={85}
+                className="h-auto w-[220px]"
               />
             </Link>
 
