@@ -1,3 +1,4 @@
+import VenzaChatAgent from "./components/VenzaChatAgent";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
@@ -37,6 +38,7 @@ export default function RootLayout({
           <main className="flex-1">{children}</main>
 
           <GlobalFooter />
+          <VenzaChatAgent />
         </div>
       </body>
     </html>

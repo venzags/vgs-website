@@ -1,66 +1,165 @@
+import Image from "next/image";
 import Link from "next/link";
 
 const products = [
   {
-    name: "VGS AI Automation",
+    name: "AI Business Automation",
+    category: "AI & Automation",
     description:
-      "Custom workflow automation, AI assistants, customer support systems, and internal productivity tools.",
-    status: "Available for custom implementation",
+      "Custom AI automation systems for customer support, workflow automation, lead management, and business operations.",
+    image: "/images/products/ai-business-automation.jpg",
   },
   {
-    name: "VGS Business Dashboard",
+    name: "Business Management Platform",
+    category: "Software Products",
     description:
-      "A central dashboard for sales, operations, customer insights, reports, and performance monitoring.",
-    status: "Available for custom implementation",
+      "A scalable dashboard for managing customers, projects, teams, reports, and day-to-day business processes.",
+    image: "/images/products/business-management-platform.jpg",
   },
   {
-    name: "VGS Cloud Launchpad",
+    name: "Cloud Infrastructure Setup",
+    category: "Cloud Solutions",
     description:
-      "Secure cloud setup, deployment pipelines, monitoring, backups, and infrastructure management.",
-    status: "Available for custom implementation",
+      "Secure cloud deployment, hosting, backup, monitoring, and scalable infrastructure for growing businesses.",
+    image: "/images/products/cloud-infrastructure.jpg",
+  },
+  {
+    name: "Cyber Security Assessment",
+    category: "Security Products",
+    description:
+      "Security review, vulnerability assessment, access controls, and recommendations to protect your digital systems.",
+    image: "/images/products/cyber-security-assessment.jpg",
+  },
+  {
+    name: "Digital Growth Toolkit",
+    category: "Digital Marketing",
+    description:
+      "A practical package for websites, SEO, lead generation, analytics, campaign tracking, and digital growth.",
+    image: "/images/products/digital-growth-toolkit.jpg",
+  },
+  {
+    name: "Custom Website Package",
+    category: "Web Development",
+    description:
+      "Modern responsive business websites built for performance, credibility, lead generation, and future expansion.",
+    image: "/images/products/custom-website-package.jpg",
   },
 ];
 
 export default function ProductsPage() {
   return (
-    <main className="bg-slate-50 text-slate-900">
-      <section className="bg-gradient-to-br from-slate-950 via-indigo-950 to-blue-950 px-6 py-24 text-white">
-        <div className="mx-auto max-w-6xl text-center">
-          <p className="text-sm font-bold uppercase tracking-[0.25em] text-cyan-300">
-            VGS Products
+    <main className="bg-slate-950 text-white">
+      {/* Hero */}
+      <section className="border-b border-white/10 bg-[radial-gradient(circle_at_top_right,_#0e7490_0%,_#0f172a_42%,_#020617_100%)]">
+        <div className="mx-auto max-w-7xl px-6 py-20 md:py-28">
+          <p className="text-sm font-bold uppercase tracking-[0.22em] text-cyan-300">
+            Venza Global Services
           </p>
-          <h1 className="mt-4 text-4xl font-bold sm:text-5xl md:text-6xl">
-            Technology Products Built Around Your Business
+
+          <h1 className="mt-5 max-w-4xl text-4xl font-black leading-tight md:text-6xl">
+            Products Built for Modern Business Growth
           </h1>
-          <p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-slate-300">
-            Practical technology accelerators that can be customised for your
-            operations, customers, and growth goals.
+
+          <p className="mt-6 max-w-3xl text-lg leading-8 text-slate-300">
+            Explore VGS digital products, business platforms, AI automation,
+            cloud services, security solutions, and growth-focused technology
+            packages.
           </p>
+
+          <div className="mt-9 flex flex-wrap gap-4">
+            <Link
+              href="/consultation"
+              className="rounded-xl bg-cyan-400 px-6 py-3 font-bold text-slate-950 transition hover:bg-cyan-300"
+            >
+              Discuss Your Requirement →
+            </Link>
+
+            <Link
+              href="/contact"
+              className="rounded-xl border border-white/30 px-6 py-3 font-bold text-white transition hover:border-cyan-300 hover:text-cyan-300"
+            >
+              Contact VGS
+            </Link>
+          </div>
         </div>
       </section>
 
-      <section className="px-6 py-20">
-        <div className="mx-auto grid max-w-6xl gap-7 md:grid-cols-3">
+      {/* Products */}
+      <section className="mx-auto max-w-7xl px-6 py-16 md:py-24">
+        <div className="max-w-3xl">
+          <p className="text-sm font-bold uppercase tracking-[0.22em] text-cyan-300">
+            VGS Solutions Catalogue
+          </p>
+
+          <h2 className="mt-4 text-3xl font-black md:text-5xl">
+            Technology Products and Service Packages
+          </h2>
+
+          <p className="mt-5 text-lg leading-8 text-slate-300">
+            Every VGS product can be customized based on your business size,
+            industry, target market, technical requirements, and growth goals.
+          </p>
+        </div>
+
+        <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {products.map((product) => (
             <article
               key={product.name}
-              className="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm"
+              className="group overflow-hidden rounded-2xl border border-white/10 bg-white/[0.04] transition hover:-translate-y-1 hover:border-cyan-400/60 hover:bg-white/[0.07]"
             >
-              <p className="text-sm font-bold text-cyan-700">
-                {product.status}
-              </p>
-              <h2 className="mt-4 text-2xl font-bold">{product.name}</h2>
-              <p className="mt-4 leading-7 text-slate-600">
-                {product.description}
-              </p>
-              <Link
-                href="/consultation"
-                className="mt-7 inline-flex font-bold text-blue-700 transition hover:text-cyan-600"
-              >
-                Request product demo →
-              </Link>
+              <div className="relative h-52 overflow-hidden bg-slate-900">
+                <Image
+                  src={product.image}
+                  alt={product.name}
+                  fill
+                  className="object-cover transition duration-500 group-hover:scale-105"
+                />
+              </div>
+
+              <div className="p-6">
+                <p className="text-xs font-bold uppercase tracking-[0.16em] text-cyan-300">
+                  {product.category}
+                </p>
+
+                <h3 className="mt-3 text-xl font-bold text-white">
+                  {product.name}
+                </h3>
+
+                <p className="mt-3 text-sm leading-7 text-slate-300">
+                  {product.description}
+                </p>
+
+                <Link
+                  href="/consultation"
+                  className="mt-6 inline-flex font-bold text-cyan-300 transition hover:text-cyan-200"
+                >
+                  Request Details →
+                </Link>
+              </div>
             </article>
           ))}
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="border-t border-white/10 bg-slate-900/60">
+        <div className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-7 px-6 py-14 md:flex-row md:items-center">
+          <div>
+            <p className="text-sm font-bold uppercase tracking-[0.2em] text-cyan-300">
+              Need a custom solution?
+            </p>
+
+            <h2 className="mt-3 text-3xl font-black">
+              Let VGS build the right product for your business.
+            </h2>
+          </div>
+
+          <Link
+            href="/consultation"
+            className="whitespace-nowrap rounded-xl bg-cyan-400 px-6 py-3 font-bold text-slate-950 transition hover:bg-cyan-300"
+          >
+            Free Consultation →
+          </Link>
         </div>
       </section>
     </main>
