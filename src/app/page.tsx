@@ -242,55 +242,63 @@ export default function Home() {
   return (
     <main className="bg-white text-gray-900 overflow-x-hidden">
       {/* ================= HERO ================= */}
-      <section
-        id="home"
-        className="relative overflow-hidden bg-gradient-to-br from-slate-950 via-slate-900 to-black text-white py-32 px-6"
-      >
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-20 left-20 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl animate-pulse" />
-          <div className="absolute bottom-20 right-20 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl animate-pulse" />
-          <div className="absolute top-1/2 left-1/2 w-80 h-80 bg-indigo-500/10 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
-        </div>
+<section
+  id="home"
+  className="relative overflow-hidden bg-gradient-to-br from-slate-950 via-slate-900 to-black text-white py-16 md:py-20 lg:py-24 px-6"
+>
+  <div className="absolute inset-0 overflow-hidden">
+    <div className="absolute top-20 left-20 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl animate-pulse" />
+    <div className="absolute bottom-20 right-20 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl animate-pulse" />
+    <div className="absolute top-1/2 left-1/2 w-80 h-80 bg-indigo-500/10 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
+  </div>
 
-        <div className="relative z-10 max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center min-h-[600px] lg:min-h-[600px]">
-            <div className="text-left order-1">
-              <motion.h2
-                initial={{ opacity: 0, y: 50 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1 }}
-                className="text-5xl md:text-6xl font-bold mb-6"
-              >
-                AI‑Powered Digital Transformation
-              </motion.h2>
-              <p className="text-lg md:text-xl mb-10 text-slate-300">
-                Helping businesses worldwide accelerate growth through
-                Artificial Intelligence, Cloud Technologies, Software
-                Development, and Digital Innovation.
-              </p>
-              <div className="flex gap-4 flex-wrap">
-                <a
-                  href="/services"
-                  className="bg-white text-blue-700 px-8 py-3 rounded-lg font-semibold inline-block hover:bg-blue-50 transition"
-                >
-                  Explore Services
-                </a>
-                <a
-                  href="/contact"
-                  className="border border-white px-8 py-3 rounded-lg inline-block hover:bg-white/10 transition"
-                >
-                  Contact Us
-                </a>
-              </div>
-            </div>
-            <div className="flex justify-center items-center order-2 lg:order-none">
-              <div className="relative w-[320px] h-[320px] sm:w-[380px] sm:h-[380px] md:w-[450px] md:h-[450px] lg:w-[500px] lg:h-[500px]">
-                <VGSNetwork />
-              </div>
-            </div>
-          </div>
+  <div className="relative z-10 max-w-7xl mx-auto">
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center min-h-[420px] lg:min-h-[470px]">
+      
+      {/* Network graphic */}
+      <div className="flex justify-center items-center order-2 lg:order-1">
+        <div className="relative w-[280px] h-[280px] sm:w-[320px] sm:h-[320px] md:w-[370px] md:h-[370px] lg:w-[410px] lg:h-[410px]">
+          <VGSNetwork />
         </div>
-      </section>
+      </div>
+
+      {/* Hero content */}
+      <div className="text-left order-1 lg:order-2">
+        <motion.h2
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
+          className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 leading-tight"
+        >
+          AI-Powered Digital Transformation
+        </motion.h2>
+
+        <p className="text-base sm:text-lg md:text-xl mb-8 text-slate-300 max-w-2xl leading-relaxed">
+          Helping businesses worldwide accelerate growth through Artificial
+          Intelligence, Cloud Technologies, Software Development, and Digital
+          Innovation.
+        </p>
+
+        <div className="flex gap-4 flex-wrap">
+          <a
+            href="/services"
+            className="bg-white text-blue-700 px-7 py-3 rounded-lg font-semibold inline-block hover:bg-blue-50 transition"
+          >
+            Explore Services
+          </a>
+
+          <a
+            href="/contact"
+            className="border border-white px-7 py-3 rounded-lg inline-block hover:bg-white/10 transition"
+          >
+            Contact Us
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
 
       {/* ================= STATISTICS ================= */}
       <section className="bg-white py-16">
