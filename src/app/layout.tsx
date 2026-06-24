@@ -20,6 +20,11 @@ export const metadata: Metadata = {
   title: "Venza Global Services",
   description:
     "AI Solutions, Machine Learning, Software Development, Cloud Services, IT Consulting and Digital Transformation.",
+    icons: {
+    icon: "/images/favicon-VGS.png",
+    shortcut: "/images/favicon-VGS.png",
+    apple: "/images/favicon-VGS.png",
+    },
 };
 
 export default function RootLayout({
