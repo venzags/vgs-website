@@ -39,30 +39,27 @@ function generateParticles(count: number): Particle[] {
   return Array.from({ length: count }, (_, index) => {
     const random = createSeededRandom(index + 100);
 
-    const left = (random() * 100).toFixed(2);
-    const top = (random() * 100).toFixed(2);
-    const hue = Math.floor(random() * 360);
-
     return {
-      left: `${left}%`,
-      top: `${top}%`,
-      background: `hsl(${hue}, 70%, 70%)`,
+      left: `${(random() * 100).toFixed(2)}%`,
+      top: `${(random() * 100).toFixed(2)}%`,
+      background: `hsl(${Math.floor(random() * 360)}, 70%, 70%)`,
     };
   });
 }
 
-/*
-  This is outside the component intentionally.
-  It is deterministic: server and browser receive exactly the same values.
-  Therefore no hydration mismatch and no useEffect/useState required.
-*/
-const particles = generateParticles(50);
+/* Deterministic values: no hydration mismatch */
+const particles = generateParticles(45);
 
 export default function VGSNetwork() {
   const centerX = 50;
   const centerY = 50;
+
+  /*
+    Larger full network:
+    Keep below 45 / 40 so outer nodes do not leave the hero area.
+  */
   const radiusX = 42;
-  const radiusY = 38;
+  const radiusY = 39;
 
   const nodes = services.map((service, index) => {
     const angle = (index / services.length) * 2 * Math.PI;
@@ -72,7 +69,6 @@ export default function VGSNetwork() {
 
     const directionX = centerX - x;
     const directionY = centerY - y;
-
     const length =
       Math.sqrt(directionX * directionX + directionY * directionY) || 1;
 
@@ -86,23 +82,27 @@ export default function VGSNetwork() {
   });
 
   return (
-    <div className="pointer-events-none absolute inset-0 overflow-hidden">
+    /*
+      IMPORTANT:
+      overflow-visible allows the large network and labels to remain complete.
+      Do NOT change this outer wrapper to overflow-hidden.
+    */
+    <div className="pointer-events-none absolute inset-0 overflow-visible">
+      {/* Background only: clipping is safe here */}
       <div className="absolute inset-0 overflow-hidden">
-        {/* Background glow */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(6,182,212,0.12),transparent_65%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(6,182,212,0.16),transparent_68%)]" />
 
-        {/* Center glow */}
         <motion.div
           animate={{
-            scale: [1, 1.4, 1],
-            opacity: [0.3, 0.8, 0.3],
+            scale: [1, 1.45, 1],
+            opacity: [0.25, 0.8, 0.25],
           }}
           transition={{
             repeat: Infinity,
             duration: 3.8,
             ease: "easeInOut",
           }}
-          className="absolute h-20 w-20 rounded-full bg-cyan-300/20 blur-3xl"
+          className="absolute h-28 w-28 rounded-full bg-cyan-300/20 blur-3xl"
           style={{
             left: "50%",
             top: "50%",
@@ -110,15 +110,14 @@ export default function VGSNetwork() {
           }}
         />
 
-        {/* Center node */}
         <motion.div
-          animate={{ scale: [1, 1.15, 1] }}
+          animate={{ scale: [1, 1.18, 1] }}
           transition={{
             repeat: Infinity,
             duration: 3,
             ease: "easeInOut",
           }}
-          className="absolute h-8 w-8 rounded-full bg-gradient-to-br from-cyan-300 to-blue-500 shadow-[0_0_40px_#22d3ee,0_0_70px_#0ea5e9]"
+          className="absolute h-10 w-10 rounded-full bg-gradient-to-br from-cyan-300 to-blue-500 shadow-[0_0_45px_#22d3ee,0_0_80px_#0ea5e9]"
           style={{
             left: "50%",
             top: "50%",
@@ -126,13 +125,12 @@ export default function VGSNetwork() {
           }}
         />
 
-        {/* Expanding rings */}
         {[1, 2, 3].map((ring) => (
           <motion.div
             key={ring}
             animate={{
-              scale: [1, 1.7],
-              opacity: [0.5, 0],
+              scale: [1, 1.55],
+              opacity: [0.4, 0],
             }}
             transition={{
               repeat: Infinity,
@@ -140,7 +138,7 @@ export default function VGSNetwork() {
               ease: "linear",
               delay: ring * 0.9,
             }}
-            className="absolute rounded-full border border-white/20"
+            className="absolute rounded-full border border-white/15"
             style={{
               width: `${radiusX * 2}%`,
               height: `${radiusY * 2}%`,
@@ -150,15 +148,14 @@ export default function VGSNetwork() {
           />
         ))}
 
-        {/* Deterministic particles */}
         {particles.map((particle, index) => (
           <motion.div
             key={`particle-${index}`}
             className="absolute h-1.5 w-1.5 rounded-full"
             style={particle}
             animate={{
-              opacity: [0.1, 0.8, 0.1],
-              scale: [0.7, 1.5, 0.7],
+              opacity: [0.1, 0.75, 0.1],
+              scale: [0.7, 1.45, 0.7],
             }}
             transition={{
               repeat: Infinity,
@@ -170,7 +167,7 @@ export default function VGSNetwork() {
         ))}
       </div>
 
-      {/* Service nodes */}
+      {/* Nodes are OUTSIDE overflow-hidden background */}
       {nodes.map((node, index) => {
         const nodeStyle: NodeStyle = {
           left: node.xPercent,
@@ -183,7 +180,7 @@ export default function VGSNetwork() {
         return (
           <motion.div
             key={node.label}
-            className="pointer-events-auto absolute"
+            className="pointer-events-auto absolute z-10"
             style={nodeStyle}
             animate={{
               x: [0, 6, 0, -6, 0],
@@ -198,16 +195,13 @@ export default function VGSNetwork() {
             }}
           >
             <motion.div
-              className="h-12 w-12 rounded-full"
+              className="h-14 w-14 rounded-full"
               style={{
                 background: `radial-gradient(circle at 30% 30%, ${node.color}cc, ${node.color})`,
-                boxShadow: `0 0 30px ${node.color}, 0 0 50px ${node.color}80`,
+                boxShadow: `0 0 34px ${node.color}, 0 0 62px ${node.color}80`,
               }}
-              whileHover={{ scale: 1.45 }}
-              transition={{
-                type: "spring",
-                stiffness: 300,
-              }}
+              whileHover={{ scale: 1.3 }}
+              transition={{ type: "spring", stiffness: 300 }}
             />
 
             <span
@@ -215,8 +209,8 @@ export default function VGSNetwork() {
               style={{
                 color: node.color,
                 transform: `translate(
-                  calc(var(--dx) * clamp(20px, 5vw, 45px)),
-                  calc(var(--dy) * clamp(20px, 5vw, 45px))
+                  calc(var(--dx) * clamp(28px, 5vw, 54px)),
+                  calc(var(--dy) * clamp(28px, 5vw, 54px))
                 ) translate(-50%, -50%)`,
               }}
             >
