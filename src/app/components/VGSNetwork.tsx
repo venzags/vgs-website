@@ -2,228 +2,152 @@
 
 import { motion } from "framer-motion";
 
+const services = [
+  { label: "AI Solutions", color: "#06b6d4" },       // cyan-500
+  { label: "Machine Learning", color: "#a855f7" },    // purple-500
+  { label: "Software Development", color: "#10b981" }, // emerald-500
+  { label: "Web Development", color: "#f97316" },      // orange-500
+  { label: "Mobile Applications", color: "#f43f5e" },  // rose-500
+  { label: "Cloud Solutions", color: "#3b82f6" },      // blue-500
+  { label: "Digital Marketing", color: "#eab308" },     // yellow-500
+  { label: "IT Consulting", color: "#6366f1" },         // indigo-500
+  { label: "Cyber Security", color: "#14b8a6" },        // teal-500
+];
+
 export default function VGSNetwork() {
-    const serviceLabels = [
-    "AI Solutions",
-    "Machine Learning",
-    "Software Development",
-    "Web Development",
-    "Mobile Applications",
-    "Cloud Solutions",
-    "Digital Marketing",
-    "IT Consulting",
-    "Cyber Security",
-  ];
+  const centerX = 50;
+  const centerY = 50;
+  const radiusX = 38;
+  const radiusY = 34;
+
+  const nodes = services.map((service, i) => {
+    const angle = (i / services.length) * 2 * Math.PI;
+    const xPercent = centerX + radiusX * Math.cos(angle);
+    const yPercent = centerY + radiusY * Math.sin(angle);
+    // direction from node to center (normalized)
+    const dirX = centerX - xPercent;
+    const dirY = centerY - yPercent;
+    const len = Math.sqrt(dirX * dirX + dirY * dirY) || 1;
+    const nx = dirX / len;
+    const ny = dirY / len;
+
+    return {
+      ...service,
+      xPercent,
+      yPercent,
+      nx,
+      ny,
+    };
+  });
+
   return (
-    <div className="absolute inset-0 overflow-hidden">
+    <div className="absolute inset-0 overflow-visible pointer-events-none">
+      {/* Deep space background */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-radial from-cyan-500/5 via-transparent to-transparent opacity-60" />
 
-      {/* AI Core Glow */}
-      <motion.div
-        animate={{
-          scale: [1, 1.2, 1],
-          opacity: [0.3, 0.8, 0.3],
-        }}
-        transition={{
-          repeat: Infinity,
-          duration: 3,
-        }}
-        className="absolute top-1/2 left-1/2 w-24 h-24 rounded-full bg-cyan-400/20 blur-3xl -translate-x-1/2 -translate-y-1/2"
-      />
-
-      {/* Main Nodes */}
-
-      <motion.div
-        animate={{ scale: [1, 1.4, 1] }}
-        transition={{ repeat: Infinity, duration: 4 }}
-        className="absolute top-16 left-16 w-4 h-4 bg-cyan-400 rounded-full shadow-[0_0_20px_#22d3ee]"
-      />
-
-      <motion.div
-        animate={{ scale: [1, 1.5, 1] }}
-        transition={{ repeat: Infinity, duration: 5 }}
-        className="absolute top-32 right-24 w-4 h-4 bg-blue-400 rounded-full shadow-[0_0_20px_#60a5fa]"
-      />
-
-      <motion.div
-        animate={{ scale: [1, 1.6, 1] }}
-        transition={{ repeat: Infinity, duration: 6 }}
-        className="absolute bottom-28 left-1/4 w-4 h-4 bg-indigo-400 rounded-full shadow-[0_0_20px_#818cf8]"
-      />
-
-      <motion.div
-        animate={{ scale: [1, 1.4, 1] }}
-        transition={{ repeat: Infinity, duration: 7 }}
-        className="absolute bottom-20 right-20 w-4 h-4 bg-cyan-300 rounded-full shadow-[0_0_20px_#67e8f9]"
-      />
-
-      {/* Extra Network Nodes */}
-
-      {[...Array(12)].map((_, i) => (
+        {/* Central core */}
         <motion.div
-          key={i}
+          animate={{ scale: [1, 1.4, 1], opacity: [0.3, 0.8, 0.3] }}
+          transition={{ repeat: Infinity, duration: 3.8, ease: "easeInOut" }}
+          className="absolute w-20 h-20 rounded-full bg-white/10 blur-3xl"
+          style={{ left: "50%", top: "50%", transform: "translate(-50%, -50%)" }}
+        />
+        <motion.div
+          animate={{ scale: [1, 1.15, 1] }}
+          transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }}
+          className="absolute w-8 h-8 rounded-full bg-gradient-to-br from-cyan-300 to-blue-400 shadow-[0_0_40px_#22d3ee,0_0_60px_#0ea5e9]"
+          style={{ left: "50%", top: "50%", transform: "translate(-50%, -50%)" }}
+        />
+
+        {/* Expanding rings */}
+        {[1, 2, 3].map((i) => (
+          <motion.div
+            key={`ring-${i}`}
+            animate={{ scale: [1, 1.7], opacity: [0.5, 0] }}
+            transition={{ repeat: Infinity, duration: 5 + i * 2, ease: "linear", delay: i * 0.9 }}
+            className="absolute rounded-full border border-white/20"
+            style={{
+              width: `${radiusX * 2}%`,
+              height: `${radiusY * 2}%`,
+              left: `${centerX - radiusX}%`,
+              top: `${centerY - radiusY}%`,
+            }}
+          />
+        ))}
+
+        {/* Cosmic particles */}
+        {[...Array(50)].map((_, i) => (
+          <motion.div
+            key={`particle-${i}`}
+            className="absolute w-1.5 h-1.5 rounded-full"
+            style={{
+              background: `hsl(${Math.random() * 360}, 70%, 70%)`,
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+            }}
+            animate={{ opacity: [0.1, 0.8, 0.1], scale: [0.7, 1.5, 0.7] }}
+            transition={{ repeat: Infinity, duration: 4 + Math.random() * 6, ease: "easeInOut", delay: Math.random() * 3 }}
+          />
+        ))}
+      </div>
+
+      {/* Nodes & labels */}
+      {nodes.map((node, i) => (
+        <motion.div
+          key={node.label}
+          className="absolute"
+          style={{
+            left: `${node.xPercent}%`,
+            top: `${node.yPercent}%`,
+            transform: "translate(-50%, -50%)",
+            pointerEvents: "auto",
+            // CSS custom properties for responsive label offset
+            "--dx": node.nx,
+            "--dy": node.ny,
+          } as React.CSSProperties}
           animate={{
-            scale: [1, 1.5, 1],
-            opacity: [0.3, 1, 0.3],
+            x: [0, 6, 0, -6, 0],
+            y: [0, -8, 0, 8, 0],
+            scale: [1, 1.03, 1, 1.03, 1],
           }}
           transition={{
             repeat: Infinity,
-            duration: 2 + i * 0.3,
+            duration: 7 + i * 0.8,
+            ease: "easeInOut",
+            delay: i * 0.4,
           }}
-          className="absolute w-2 h-2 rounded-full bg-cyan-400"
-          style={{
-            left: `${10 + i * 6}%`,
-            top: `${15 + (i % 4) * 18}%`,
-          }}
-        />
-      ))}
+        >
+          {/* Glowing node */}
+          <motion.div
+            className="w-12 h-12 rounded-full shadow-lg"
+            style={{
+              background: `radial-gradient(circle at 30% 30%, ${node.color}cc, ${node.color})`,
+              boxShadow: `0 0 30px ${node.color}, 0 0 50px ${node.color}80`,
+            }}
+            whileHover={{ scale: 1.6 }}
+            transition={{ type: "spring", stiffness: 300 }}
+          />
 
-      {/* Animated Connection Lines */}
-
-      <motion.div
-        animate={{ opacity: [0.2, 1, 0.2] }}
-        transition={{ repeat: Infinity, duration: 3 }}
-        className="absolute top-20 left-20 w-72 h-px bg-cyan-400/40 rotate-12"
-      />
-
-      <motion.div
-        animate={{ opacity: [0.2, 1, 0.2] }}
-        transition={{ repeat: Infinity, duration: 4 }}
-        className="absolute top-40 left-60 w-80 h-px bg-blue-400/30 -rotate-12"
-      />
-
-      <motion.div
-        animate={{ opacity: [0.2, 1, 0.2] }}
-        transition={{ repeat: Infinity, duration: 5 }}
-        className="absolute bottom-32 left-1/4 w-72 h-px bg-indigo-400/30 rotate-6"
-      />
-
-      {/* Data Pulse 1 */}
-
-      <motion.div
-        animate={{
-          x: [0, 250],
-          opacity: [0, 1, 0],
-        }}
-        transition={{
-          repeat: Infinity,
-          duration: 4,
-          ease: "linear",
-        }}
-        className="absolute top-20 left-20 w-2 h-2 rounded-full bg-white shadow-[0_0_15px_white]"
-      />
-
-      {/* Data Pulse 2 */}
-
-      <motion.div
-        animate={{
-          x: [0, 300],
-          opacity: [0, 1, 0],
-        }}
-        transition={{
-          repeat: Infinity,
-          duration: 6,
-          ease: "linear",
-        }}
-        className="absolute bottom-32 left-1/4 w-2 h-2 rounded-full bg-cyan-300 shadow-[0_0_15px_#22d3ee]"
-      />
-
-      {/* Floating Labels */}
-
-<motion.div
-  animate={{ y: [0, -15, 0] }}
-  transition={{ repeat: Infinity, duration: 4 }}
-  className="absolute top-16 left-1/2 -translate-x-1/2 md:top-24 md:left-32 md:translate-x-0 text-cyan-300/80 text-sm md:text-base font-semibold"
->
-  AI Solutions
-</motion.div>
-
-<motion.div
-  animate={{ y: [0, 15, 0] }}
-  transition={{ repeat: Infinity, duration: 5 }}
-  className="absolute top-32 left-8 md:top-48 md:right-32 md:left-auto text-blue-300/80 text-sm md:text-base font-semibold"
->
-  Cloud Services
-</motion.div>
-
-<motion.div
-  animate={{ y: [0, -20, 0] }}
-  transition={{ repeat: Infinity, duration: 6 }}
-  className="absolute bottom-28 left-10 md:bottom-32 md:left-1/4 text-indigo-300/80 text-sm md:text-base font-semibold"
->
-  Software Development
-</motion.div>
-
-<motion.div
-  animate={{ y: [0, 18, 0] }}
-  transition={{ repeat: Infinity, duration: 7 }}
-  className="absolute bottom-44 right-8 md:bottom-44 md:right-20 text-cyan-300/80 text-sm md:text-base font-semibold"
->
-  Digital Marketing
-</motion.div>
-{/* Machine Learning */}
-<motion.div
-  animate={{ y: [0, -12, 0] }}
-  transition={{ repeat: Infinity, duration: 5 }}
-  className="absolute top-20 right-24 text-pink-300/70 font-semibold text-sm md:text-base"
->
-  Machine Learning
-</motion.div>
-
-{/* Web Development */}
-<motion.div
-  animate={{ y: [0, 15, 0] }}
-  transition={{ repeat: Infinity, duration: 6 }}
-  className="absolute top-1/2 left-8 text-cyan-300/70 font-semibold text-sm md:text-base"
->
-  Web Development
-</motion.div>
-
-{/* Mobile Applications */}
-<motion.div
-  animate={{ y: [0, -18, 0] }}
-  transition={{ repeat: Infinity, duration: 7 }}
-  className="absolute bottom-28 left-12 text-blue-300/70 font-semibold text-sm md:text-base"
->
-  Mobile Applications
-</motion.div>
-
-{/* IT Consulting */}
-<motion.div
-  animate={{ y: [0, 10, 0] }}
-  transition={{ repeat: Infinity, duration: 5.5 }}
-  className="absolute bottom-16 right-32 text-indigo-300/70 font-semibold text-sm md:text-base"
->
-  IT Consulting
-</motion.div>
-
-{/* Cyber Security */}
-<motion.div
-  animate={{ y: [0, -14, 0] }}
-  transition={{ repeat: Infinity, duration: 6.5 }}
-  className="absolute top-40 right-10 text-red-300/70 font-semibold text-sm md:text-base"
->
-  Cyber Security
-</motion.div>
-
-      {/* Particles */}
-
-      {[...Array(30)].map((_, i) => (
-        <motion.div
-          key={`particle-${i}`}
-          animate={{
-            opacity: [0.1, 1, 0.1],
-            y: [0, -20, 0],
-          }}
-          transition={{
-            repeat: Infinity,
-            duration: 3 + i * 0.2,
-          }}
-          className="absolute w-1 h-1 rounded-full bg-cyan-400/50"
-          style={{
-            left: `${(i * 7) % 100}%`,
-            top: `${(i * 11) % 100}%`,
-          }}
-        />
+          {/* Label – responsive offset using CSS clamp */}
+          <span
+            className="absolute text-xs md:text-sm font-bold whitespace-nowrap drop-shadow-lg pointer-events-none"
+            style={{
+              color: node.color,
+              // Responsive offset: 20px on small screens, up to 45px on large screens
+              transform: `translate(
+                calc(var(--dx) * clamp(20px, 5vw, 45px)),
+                calc(var(--dy) * clamp(20px, 5vw, 45px))
+              )`,
+              left: "50%",
+              top: "50%",
+              // Center the label on itself
+              translate: "-50% -50%",
+            }}
+          >
+            {node.label}
+          </span>
+        </motion.div>
       ))}
     </div>
   );
