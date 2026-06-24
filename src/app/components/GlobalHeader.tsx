@@ -2,15 +2,22 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useRef, useState, useCallback } from "react";
 import {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+  type ReactNode,
+} from "react";
+import {
+  ArrowRight,
   ChevronDown,
   Globe2,
   Menu,
+  Package,
   Search,
   X,
-  Package,
-  ArrowRight,
 } from "lucide-react";
 
 const services = [
@@ -75,6 +82,7 @@ const searchItems = [
   { name: "Services", href: "/services", type: "Page" },
   { name: "Products", href: "/products", type: "Page" },
   { name: "Portfolio", href: "/portfolio", type: "Page" },
+  { name: "Gallery", href: "/gallery", type: "Page" },
   { name: "Industries", href: "/industries", type: "Page" },
   { name: "VIJLAK Ecosystem", href: "/vijlak", type: "Page" },
   { name: "Connect VGS", href: "/connect-vgs", type: "Page" },
@@ -85,6 +93,39 @@ const searchItems = [
 ];
 
 type DesktopMenu = "services" | "explore" | "products" | "language" | null;
+
+type DesktopDropdownProps = {
+  menuName: Exclude<DesktopMenu, null>;
+  isOpen: boolean;
+  width?: string;
+  children: ReactNode;
+  onMouseEnter: () => void;
+  onMouseLeave: () => void;
+};
+
+function DesktopDropdown({
+  menuName,
+  isOpen,
+  width = "w-[310px]",
+  children,
+  onMouseEnter,
+  onMouseLeave,
+}: DesktopDropdownProps) {
+  if (!isOpen) return null;
+
+  return (
+    <div
+      id={`${menuName}-dropdown`}
+      role="menu"
+      aria-label={`${menuName} menu`}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
+      className={`absolute left-1/2 top-full z-[150] mt-3 -translate-x-1/2 rounded-2xl border border-slate-200 bg-white p-3 shadow-2xl ${width}`}
+    >
+      {children}
+    </div>
+  );
+}
 
 export default function GlobalHeader() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -98,15 +139,7 @@ export default function GlobalHeader() {
   const [mobileLanguageOpen, setMobileLanguageOpen] = useState(false);
 
   const headerRef = useRef<HTMLElement>(null);
-  const closeTimeoutRef = useRef<NodeJS.Timeout | null>(null);
-
-  // Close menu with a delay (for hover leave)
-  const delayedClose = useCallback(() => {
-    if (closeTimeoutRef.current) clearTimeout(closeTimeoutRef.current);
-    closeTimeoutRef.current = setTimeout(() => {
-      setDesktopMenu(null);
-    }, 150);
-  }, []);
+  const closeTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const clearCloseTimeout = useCallback(() => {
     if (closeTimeoutRef.current) {
@@ -115,29 +148,42 @@ export default function GlobalHeader() {
     }
   }, []);
 
-  const openDesktopMenu = (menu: DesktopMenu) => {
-    clearCloseTimeout();
-    setDesktopMenu(menu);
-  };
-
-  const closeDesktopMenusImmediately = () => {
+  const closeDesktopMenusImmediately = useCallback(() => {
     clearCloseTimeout();
     setDesktopMenu(null);
-  };
+  }, [clearCloseTimeout]);
 
-  const closeMobileMenu = () => {
+  const delayedClose = useCallback(() => {
+    clearCloseTimeout();
+
+    closeTimeoutRef.current = setTimeout(() => {
+      setDesktopMenu(null);
+      closeTimeoutRef.current = null;
+    }, 150);
+  }, [clearCloseTimeout]);
+
+  const openDesktopMenu = useCallback(
+    (menu: Exclude<DesktopMenu, null>) => {
+      clearCloseTimeout();
+      setDesktopMenu(menu);
+    },
+    [clearCloseTimeout]
+  );
+
+  const closeMobileMenu = useCallback(() => {
     setMobileMenuOpen(false);
     setMobileServicesOpen(false);
     setMobileExploreOpen(false);
     setMobileProductsOpen(false);
     setMobileLanguageOpen(false);
-  };
+  }, []);
 
-  const closeEverything = () => {
+  const closeEverything = useCallback(() => {
     closeDesktopMenusImmediately();
     closeMobileMenu();
     setSearchOpen(false);
-  };
+    setSearchTerm("");
+  }, [closeDesktopMenusImmediately, closeMobileMenu]);
 
   useEffect(() => {
     const handleOutsideClick = (event: MouseEvent) => {
@@ -150,49 +196,48 @@ export default function GlobalHeader() {
     };
 
     document.addEventListener("mousedown", handleOutsideClick);
+
     return () => {
       document.removeEventListener("mousedown", handleOutsideClick);
     };
-  }, []);
+  }, [closeDesktopMenusImmediately]);
 
   useEffect(() => {
     document.body.style.overflow =
       mobileMenuOpen || searchOpen ? "hidden" : "auto";
+
     return () => {
       document.body.style.overflow = "auto";
     };
   }, [mobileMenuOpen, searchOpen]);
 
-  const filteredSearchResults = searchItems
-    .filter((item, index, array) => {
-      const sameName = array.findIndex(
-        (searchItem) => searchItem.name === item.name
-      );
-      return sameName === index;
-    })
-    .filter((item) =>
-      item.name.toLowerCase().includes(searchTerm.trim().toLowerCase())
-    )
-    .slice(0, 10);
+  useEffect(() => {
+    return () => {
+      clearCloseTimeout();
+    };
+  }, [clearCloseTimeout]);
 
-  const DesktopDropdown = ({
-    menuName,
-    children,
-    width = "w-[310px]",
-  }: {
-    menuName: DesktopMenu;
-    children: React.ReactNode;
-    width?: string;
-  }) => {
-    if (desktopMenu !== menuName) return null;
-
-    return (
-      <div
-        className={`absolute left-1/2 top-full z-[150] mt-3 -translate-x-1/2 rounded-2xl border border-slate-200 bg-white p-3 shadow-2xl ${width}`}
-      >
-        {children}
-      </div>
+  const filteredSearchResults = useMemo(() => {
+    const uniqueItems = searchItems.filter(
+      (item, index, array) =>
+        array.findIndex(
+          (searchItem) =>
+            searchItem.name === item.name && searchItem.href === item.href
+        ) === index
     );
+
+    const normalizedSearch = searchTerm.trim().toLowerCase();
+
+    if (!normalizedSearch) return [];
+
+    return uniqueItems
+      .filter((item) => item.name.toLowerCase().includes(normalizedSearch))
+      .slice(0, 10);
+  }, [searchTerm]);
+
+  const toggleDesktopMenu = (menu: Exclude<DesktopMenu, null>) => {
+    clearCloseTimeout();
+    setDesktopMenu((currentMenu) => (currentMenu === menu ? null : menu));
   };
 
   return (
@@ -203,8 +248,11 @@ export default function GlobalHeader() {
         className="sticky top-0 z-[100] hidden w-full border-b border-slate-200 bg-white text-slate-900 lg:block"
       >
         <div className="mx-auto flex h-[92px] max-w-[1600px] items-center px-6 xl:px-10">
-          {/* Logo */}
-          <Link href="/" className="mr-auto flex shrink-0 items-center">
+          <Link
+            href="/"
+            aria-label="Venza Global Services home"
+            className="mr-auto flex shrink-0 items-center"
+          >
             <Image
               src="/images/vgs-logo.png"
               alt="Venza Global Services"
@@ -215,8 +263,10 @@ export default function GlobalHeader() {
             />
           </Link>
 
-          {/* Desktop navigation */}
-          <nav className="ml-6 flex items-center gap-4 xl:gap-5">
+          <nav
+            aria-label="Main navigation"
+            className="ml-6 flex items-center gap-4 xl:gap-5"
+          >
             <Link
               href="/"
               className="whitespace-nowrap text-[14px] font-semibold text-slate-800 transition hover:text-cyan-600"
@@ -232,11 +282,9 @@ export default function GlobalHeader() {
             >
               <button
                 type="button"
-                onClick={() =>
-                  setDesktopMenu(
-                    desktopMenu === "services" ? null : "services"
-                  )
-                }
+                onClick={() => toggleDesktopMenu("services")}
+                aria-expanded={desktopMenu === "services"}
+                aria-controls="services-dropdown"
                 className="flex items-center gap-1 whitespace-nowrap text-[14px] font-semibold text-slate-800 transition hover:text-cyan-600"
               >
                 Services
@@ -248,11 +296,18 @@ export default function GlobalHeader() {
                 />
               </button>
 
-              <DesktopDropdown menuName="services" width="w-[310px]">
+              <DesktopDropdown
+                menuName="services"
+                isOpen={desktopMenu === "services"}
+                width="w-[310px]"
+                onMouseEnter={() => openDesktopMenu("services")}
+                onMouseLeave={delayedClose}
+              >
                 {services.map((item, index) => (
                   <Link
                     key={item.href}
                     href={item.href}
+                    role="menuitem"
                     onClick={closeDesktopMenusImmediately}
                     className={`block rounded-xl px-4 py-3 text-sm transition hover:bg-cyan-50 hover:text-cyan-700 ${
                       index === 0
@@ -274,11 +329,9 @@ export default function GlobalHeader() {
             >
               <button
                 type="button"
-                onClick={() =>
-                  setDesktopMenu(
-                    desktopMenu === "explore" ? null : "explore"
-                  )
-                }
+                onClick={() => toggleDesktopMenu("explore")}
+                aria-expanded={desktopMenu === "explore"}
+                aria-controls="explore-dropdown"
                 className="flex items-center gap-1 whitespace-nowrap text-[14px] font-semibold text-slate-800 transition hover:text-cyan-600"
               >
                 Explore VGS
@@ -290,11 +343,18 @@ export default function GlobalHeader() {
                 />
               </button>
 
-              <DesktopDropdown menuName="explore" width="w-[300px]">
+              <DesktopDropdown
+                menuName="explore"
+                isOpen={desktopMenu === "explore"}
+                width="w-[300px]"
+                onMouseEnter={() => openDesktopMenu("explore")}
+                onMouseLeave={delayedClose}
+              >
                 {exploreLinks.map((item) => (
                   <Link
                     key={item.href}
                     href={item.href}
+                    role="menuitem"
                     onClick={closeDesktopMenusImmediately}
                     className="block rounded-xl px-4 py-3 text-sm text-slate-600 transition hover:bg-cyan-50 hover:text-cyan-700"
                   >
@@ -312,11 +372,9 @@ export default function GlobalHeader() {
             >
               <button
                 type="button"
-                onClick={() =>
-                  setDesktopMenu(
-                    desktopMenu === "products" ? null : "products"
-                  )
-                }
+                onClick={() => toggleDesktopMenu("products")}
+                aria-expanded={desktopMenu === "products"}
+                aria-controls="products-dropdown"
                 className="flex items-center gap-1 whitespace-nowrap text-[14px] font-semibold text-slate-800 transition hover:text-cyan-600"
               >
                 Products
@@ -328,11 +386,18 @@ export default function GlobalHeader() {
                 />
               </button>
 
-              <DesktopDropdown menuName="products" width="w-[330px]">
+              <DesktopDropdown
+                menuName="products"
+                isOpen={desktopMenu === "products"}
+                width="w-[330px]"
+                onMouseEnter={() => openDesktopMenu("products")}
+                onMouseLeave={delayedClose}
+              >
                 {productLinks.map((item, index) => (
                   <Link
                     key={item.href}
                     href={item.href}
+                    role="menuitem"
                     onClick={closeDesktopMenusImmediately}
                     className={`block rounded-xl px-4 py-3 text-sm transition hover:bg-cyan-50 hover:text-cyan-700 ${
                       index === 0
@@ -360,7 +425,6 @@ export default function GlobalHeader() {
               Industries
             </Link>
 
-            {/* Search */}
             <button
               type="button"
               onClick={() => {
@@ -374,7 +438,7 @@ export default function GlobalHeader() {
               <Search size={20} />
             </button>
 
-            {/* Global English / regions */}
+            {/* Language */}
             <div
               className="relative"
               onMouseEnter={() => openDesktopMenu("language")}
@@ -382,11 +446,9 @@ export default function GlobalHeader() {
             >
               <button
                 type="button"
-                onClick={() =>
-                  setDesktopMenu(
-                    desktopMenu === "language" ? null : "language"
-                  )
-                }
+                onClick={() => toggleDesktopMenu("language")}
+                aria-expanded={desktopMenu === "language"}
+                aria-controls="language-dropdown"
                 className="flex items-center gap-1.5 whitespace-nowrap text-[14px] font-semibold text-slate-800 transition hover:text-cyan-600"
               >
                 <Globe2 size={18} />
@@ -399,15 +461,22 @@ export default function GlobalHeader() {
                 />
               </button>
 
-              <DesktopDropdown menuName="language" width="w-[245px]">
+              <DesktopDropdown
+                menuName="language"
+                isOpen={desktopMenu === "language"}
+                width="w-[245px]"
+                onMouseEnter={() => openDesktopMenu("language")}
+                onMouseLeave={delayedClose}
+              >
                 <p className="px-4 pb-2 pt-1 text-xs font-bold uppercase tracking-wider text-slate-400">
-                  Regions & Languages
+                  Regions &amp; Languages
                 </p>
 
                 {languageLinks.map((item) => (
                   <Link
                     key={item.name}
                     href={item.href}
+                    role="menuitem"
                     onClick={closeDesktopMenusImmediately}
                     className="block rounded-xl px-4 py-3 text-sm text-slate-600 transition hover:bg-cyan-50 hover:text-cyan-700"
                   >
@@ -441,7 +510,11 @@ export default function GlobalHeader() {
           <Search size={30} strokeWidth={1.8} />
         </button>
 
-        <Link href="/" onClick={closeEverything}>
+        <Link
+          href="/"
+          aria-label="Venza Global Services home"
+          onClick={closeEverything}
+        >
           <Image
             src="/images/vgs-logo-white-mob.png"
             alt="Venza Global Services"
@@ -456,6 +529,7 @@ export default function GlobalHeader() {
           type="button"
           onClick={() => setMobileMenuOpen(true)}
           aria-label="Open menu"
+          aria-expanded={mobileMenuOpen}
           className="flex h-12 w-12 items-center justify-center"
         >
           <Menu size={33} strokeWidth={1.8} />
@@ -468,7 +542,11 @@ export default function GlobalHeader() {
       {mobileMenuOpen && (
         <div className="fixed inset-0 z-[200] flex min-h-screen flex-col bg-[#171d1f] text-white lg:hidden">
           <div className="flex h-[88px] items-center justify-between border-b border-white/10 px-6">
-            <Link href="/" onClick={closeEverything}>
+            <Link
+              href="/"
+              aria-label="Venza Global Services home"
+              onClick={closeEverything}
+            >
               <Image
                 src="/images/vgs-logo-white-mob.png"
                 alt="Venza Global Services"
@@ -505,102 +583,57 @@ export default function GlobalHeader() {
               About Us
             </Link>
 
-            <div className="border-b border-white/20">
-              <button
-                type="button"
-                onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
-                className="flex min-h-[76px] w-full items-center justify-between text-left text-[25px] font-light"
-              >
-                Services
-                <ChevronDown
-                  size={28}
-                  className={`transition ${
-                    mobileServicesOpen ? "rotate-180" : ""
-                  }`}
-                />
-              </button>
+            <MobileAccordion
+              label="Services"
+              open={mobileServicesOpen}
+              onToggle={() => setMobileServicesOpen((value) => !value)}
+            >
+              {services.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  onClick={closeEverything}
+                  className="block rounded-lg px-4 py-3 text-base text-slate-300 hover:bg-white/5 hover:text-cyan-300"
+                >
+                  {item.name}
+                </Link>
+              ))}
+            </MobileAccordion>
 
-              {mobileServicesOpen && (
-                <div className="pb-4">
-                  {services.map((item) => (
-                    <Link
-                      key={item.href}
-                      href={item.href}
-                      onClick={closeEverything}
-                      className="block rounded-lg px-4 py-3 text-base text-slate-300 hover:bg-white/5 hover:text-cyan-300"
-                    >
-                      {item.name}
-                    </Link>
-                  ))}
-                </div>
-              )}
-            </div>
+            <MobileAccordion
+              label="Explore VGS"
+              open={mobileExploreOpen}
+              onToggle={() => setMobileExploreOpen((value) => !value)}
+            >
+              {exploreLinks.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  onClick={closeEverything}
+                  className="block rounded-lg px-4 py-3 text-base text-slate-300 hover:bg-white/5 hover:text-cyan-300"
+                >
+                  {item.name}
+                </Link>
+              ))}
+            </MobileAccordion>
 
-            <div className="border-b border-white/20">
-              <button
-                type="button"
-                onClick={() => setMobileExploreOpen(!mobileExploreOpen)}
-                className="flex min-h-[76px] w-full items-center justify-between text-left text-[25px] font-light"
-              >
-                Explore VGS
-                <ChevronDown
-                  size={28}
-                  className={`transition ${
-                    mobileExploreOpen ? "rotate-180" : ""
-                  }`}
-                />
-              </button>
-
-              {mobileExploreOpen && (
-                <div className="pb-4">
-                  {exploreLinks.map((item) => (
-                    <Link
-                      key={item.href}
-                      href={item.href}
-                      onClick={closeEverything}
-                      className="block rounded-lg px-4 py-3 text-base text-slate-300 hover:bg-white/5 hover:text-cyan-300"
-                    >
-                      {item.name}
-                    </Link>
-                  ))}
-                </div>
-              )}
-            </div>
-
-            <div className="border-b border-white/20">
-              <button
-                type="button"
-                onClick={() => setMobileProductsOpen(!mobileProductsOpen)}
-                className="flex min-h-[76px] w-full items-center justify-between text-left text-[25px] font-light"
-              >
-                <span className="flex items-center gap-3">
-                  <Package size={24} />
-                  Products
-                </span>
-
-                <ChevronDown
-                  size={28}
-                  className={`transition ${
-                    mobileProductsOpen ? "rotate-180" : ""
-                  }`}
-                />
-              </button>
-
-              {mobileProductsOpen && (
-                <div className="pb-4">
-                  {productLinks.map((item) => (
-                    <Link
-                      key={item.href}
-                      href={item.href}
-                      onClick={closeEverything}
-                      className="block rounded-lg px-4 py-3 text-base text-slate-300 hover:bg-white/5 hover:text-cyan-300"
-                    >
-                      {item.name}
-                    </Link>
-                  ))}
-                </div>
-              )}
-            </div>
+            <MobileAccordion
+              label="Products"
+              open={mobileProductsOpen}
+              onToggle={() => setMobileProductsOpen((value) => !value)}
+              icon={<Package size={24} />}
+            >
+              {productLinks.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  onClick={closeEverything}
+                  className="block rounded-lg px-4 py-3 text-base text-slate-300 hover:bg-white/5 hover:text-cyan-300"
+                >
+                  {item.name}
+                </Link>
+              ))}
+            </MobileAccordion>
 
             <Link
               href="/portfolio"
@@ -634,40 +667,24 @@ export default function GlobalHeader() {
               Contact Us
             </Link>
 
-            <div className="border-b border-white/20">
-              <button
-                type="button"
-                onClick={() => setMobileLanguageOpen(!mobileLanguageOpen)}
-                className="flex min-h-[76px] w-full items-center justify-between text-left text-[22px] font-light"
-              >
-                <span className="flex items-center gap-3">
-                  <Globe2 size={25} />
-                  Global (EN)
-                </span>
-
-                <ChevronDown
-                  size={28}
-                  className={`transition ${
-                    mobileLanguageOpen ? "rotate-180" : ""
-                  }`}
-                />
-              </button>
-
-              {mobileLanguageOpen && (
-                <div className="pb-4">
-                  {languageLinks.map((item) => (
-                    <Link
-                      key={item.name}
-                      href={item.href}
-                      onClick={closeEverything}
-                      className="block rounded-lg px-4 py-3 text-base text-slate-300 hover:bg-white/5 hover:text-cyan-300"
-                    >
-                      {item.name}
-                    </Link>
-                  ))}
-                </div>
-              )}
-            </div>
+            <MobileAccordion
+              label="Global (EN)"
+              open={mobileLanguageOpen}
+              onToggle={() => setMobileLanguageOpen((value) => !value)}
+              icon={<Globe2 size={25} />}
+              labelClassName="text-[22px]"
+            >
+              {languageLinks.map((item) => (
+                <Link
+                  key={item.name}
+                  href={item.href}
+                  onClick={closeEverything}
+                  className="block rounded-lg px-4 py-3 text-base text-slate-300 hover:bg-white/5 hover:text-cyan-300"
+                >
+                  {item.name}
+                </Link>
+              ))}
+            </MobileAccordion>
           </div>
 
           <div className="border-t border-white/20 bg-[#171d1f] p-5">
@@ -682,9 +699,14 @@ export default function GlobalHeader() {
         </div>
       )}
 
-      {/* SEARCH OVERLAY WITH RESULTS */}
+      {/* SEARCH OVERLAY */}
       {searchOpen && (
-        <div className="fixed inset-0 z-[300] overflow-y-auto bg-slate-950/80 px-4 pt-20 backdrop-blur-sm sm:px-6">
+        <div
+          className="fixed inset-0 z-[300] overflow-y-auto bg-slate-950/80 px-4 pt-20 backdrop-blur-sm sm:px-6"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Site search"
+        >
           <div className="mx-auto w-full max-w-2xl rounded-2xl bg-white p-5 shadow-2xl">
             <div className="flex items-center gap-3 border-b border-slate-200 pb-4">
               <Search className="shrink-0 text-slate-500" size={24} />
@@ -700,7 +722,10 @@ export default function GlobalHeader() {
 
               <button
                 type="button"
-                onClick={() => setSearchOpen(false)}
+                onClick={() => {
+                  setSearchOpen(false);
+                  setSearchTerm("");
+                }}
                 aria-label="Close search"
                 className="rounded-lg p-2 text-slate-600 transition hover:bg-slate-100"
               >
@@ -718,14 +743,13 @@ export default function GlobalHeader() {
                   <Link
                     key={`${item.type}-${item.href}`}
                     href={item.href}
-                    onClick={() => {
-                      setSearchOpen(false);
-                      setSearchTerm("");
-                    }}
+                    onClick={closeEverything}
                     className="flex items-center justify-between rounded-xl px-4 py-4 transition hover:bg-cyan-50"
                   >
                     <div>
-                      <p className="font-semibold text-slate-900">{item.name}</p>
+                      <p className="font-semibold text-slate-900">
+                        {item.name}
+                      </p>
                       <p className="mt-1 text-xs font-medium uppercase tracking-wide text-cyan-700">
                         {item.type}
                       </p>
@@ -745,5 +769,46 @@ export default function GlobalHeader() {
         </div>
       )}
     </>
+  );
+}
+
+type MobileAccordionProps = {
+  label: string;
+  open: boolean;
+  onToggle: () => void;
+  children: ReactNode;
+  icon?: ReactNode;
+  labelClassName?: string;
+};
+
+function MobileAccordion({
+  label,
+  open,
+  onToggle,
+  children,
+  icon,
+  labelClassName = "text-[25px]",
+}: MobileAccordionProps) {
+  return (
+    <div className="border-b border-white/20">
+      <button
+        type="button"
+        onClick={onToggle}
+        aria-expanded={open}
+        className={`flex min-h-[76px] w-full items-center justify-between text-left font-light ${labelClassName}`}
+      >
+        <span className="flex items-center gap-3">
+          {icon}
+          {label}
+        </span>
+
+        <ChevronDown
+          size={28}
+          className={`transition ${open ? "rotate-180" : ""}`}
+        />
+      </button>
+
+      {open && <div className="pb-4">{children}</div>}
+    </div>
   );
 }

@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import type { CSSProperties } from "react";
 
 const services = [
   { label: "AI Solutions", color: "#06b6d4" },
@@ -19,6 +19,11 @@ type Particle = {
   left: string;
   top: string;
   background: string;
+};
+
+type NodeStyle = CSSProperties & {
+  "--dx": string;
+  "--dy": string;
 };
 
 function createSeededRandom(seed: number) {
@@ -46,17 +51,18 @@ function generateParticles(count: number): Particle[] {
   });
 }
 
-export default function VGSNetwork() {
-  const [particles, setParticles] = useState<Particle[]>([]);
+/*
+  This is outside the component intentionally.
+  It is deterministic: server and browser receive exactly the same values.
+  Therefore no hydration mismatch and no useEffect/useState required.
+*/
+const particles = generateParticles(50);
 
+export default function VGSNetwork() {
   const centerX = 50;
   const centerY = 50;
   const radiusX = 38;
   const radiusY = 34;
-
-  useEffect(() => {
-    setParticles(generateParticles(50));
-  }, []);
 
   const nodes = services.map((service, index) => {
     const angle = (index / services.length) * 2 * Math.PI;
@@ -67,7 +73,8 @@ export default function VGSNetwork() {
     const directionX = centerX - x;
     const directionY = centerY - y;
 
-    const length = Math.sqrt(directionX * directionX + directionY * directionY) || 1;
+    const length =
+      Math.sqrt(directionX * directionX + directionY * directionY) || 1;
 
     return {
       ...service,
@@ -79,7 +86,7 @@ export default function VGSNetwork() {
   });
 
   return (
-    <div className="pointer-events-none absolute inset-0 overflow-visible">
+    <div className="pointer-events-none absolute inset-0 overflow-hidden">
       <div className="absolute inset-0 overflow-hidden">
         {/* Background glow */}
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(6,182,212,0.12),transparent_65%)]" />
@@ -143,7 +150,7 @@ export default function VGSNetwork() {
           />
         ))}
 
-        {/* Browser-only particles */}
+        {/* Deterministic particles */}
         {particles.map((particle, index) => (
           <motion.div
             key={`particle-${index}`}
@@ -164,56 +171,60 @@ export default function VGSNetwork() {
       </div>
 
       {/* Service nodes */}
-      {nodes.map((node, index) => (
-        <motion.div
-          key={node.label}
-          className="pointer-events-auto absolute"
-          style={{
-            left: node.xPercent,
-            top: node.yPercent,
-            transform: "translate(-50%, -50%)",
-            ["--dx" as string]: node.directionX,
-            ["--dy" as string]: node.directionY,
-          }}
-          animate={{
-            x: [0, 6, 0, -6, 0],
-            y: [0, -8, 0, 8, 0],
-            scale: [1, 1.03, 1, 1.03, 1],
-          }}
-          transition={{
-            repeat: Infinity,
-            duration: 7 + index * 0.8,
-            ease: "easeInOut",
-            delay: index * 0.4,
-          }}
-        >
-          <motion.div
-            className="h-12 w-12 rounded-full"
-            style={{
-              background: `radial-gradient(circle at 30% 30%, ${node.color}cc, ${node.color})`,
-              boxShadow: `0 0 30px ${node.color}, 0 0 50px ${node.color}80`,
-            }}
-            whileHover={{ scale: 1.45 }}
-            transition={{
-              type: "spring",
-              stiffness: 300,
-            }}
-          />
+      {nodes.map((node, index) => {
+        const nodeStyle: NodeStyle = {
+          left: node.xPercent,
+          top: node.yPercent,
+          transform: "translate(-50%, -50%)",
+          "--dx": node.directionX,
+          "--dy": node.directionY,
+        };
 
-          <span
-            className="pointer-events-none absolute left-1/2 top-1/2 whitespace-nowrap text-xs font-bold drop-shadow-lg md:text-sm"
-            style={{
-              color: node.color,
-              transform: `translate(
-                calc(var(--dx) * clamp(20px, 5vw, 45px)),
-                calc(var(--dy) * clamp(20px, 5vw, 45px))
-              ) translate(-50%, -50%)`,
+        return (
+          <motion.div
+            key={node.label}
+            className="pointer-events-auto absolute"
+            style={nodeStyle}
+            animate={{
+              x: [0, 6, 0, -6, 0],
+              y: [0, -8, 0, 8, 0],
+              scale: [1, 1.03, 1, 1.03, 1],
+            }}
+            transition={{
+              repeat: Infinity,
+              duration: 7 + index * 0.8,
+              ease: "easeInOut",
+              delay: index * 0.4,
             }}
           >
-            {node.label}
-          </span>
-        </motion.div>
-      ))}
+            <motion.div
+              className="h-12 w-12 rounded-full"
+              style={{
+                background: `radial-gradient(circle at 30% 30%, ${node.color}cc, ${node.color})`,
+                boxShadow: `0 0 30px ${node.color}, 0 0 50px ${node.color}80`,
+              }}
+              whileHover={{ scale: 1.45 }}
+              transition={{
+                type: "spring",
+                stiffness: 300,
+              }}
+            />
+
+            <span
+              className="pointer-events-none absolute left-1/2 top-1/2 whitespace-nowrap text-xs font-bold drop-shadow-lg md:text-sm"
+              style={{
+                color: node.color,
+                transform: `translate(
+                  calc(var(--dx) * clamp(20px, 5vw, 45px)),
+                  calc(var(--dy) * clamp(20px, 5vw, 45px))
+                ) translate(-50%, -50%)`,
+              }}
+            >
+              {node.label}
+            </span>
+          </motion.div>
+        );
+      })}
     </div>
   );
 }
