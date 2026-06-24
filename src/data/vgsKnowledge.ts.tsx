@@ -1,3 +1,10 @@
+// Type definition
+type KnowledgeItem = {
+  keywords: string[];
+  answer: string;
+};
+
+// Exported knowledge array
 export const vgsKnowledge: KnowledgeItem[] = [
   /* ================= COMPANY / IDENTITY ================= */
   {

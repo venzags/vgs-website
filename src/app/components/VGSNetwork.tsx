@@ -61,8 +61,8 @@ const particles = generateParticles(50);
 export default function VGSNetwork() {
   const centerX = 50;
   const centerY = 50;
-  const radiusX = 38;
-  const radiusY = 34;
+  const radiusX = 42;
+  const radiusY = 38;
 
   const nodes = services.map((service, index) => {
     const angle = (index / services.length) * 2 * Math.PI;
