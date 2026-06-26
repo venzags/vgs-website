@@ -245,7 +245,7 @@ export default function GlobalHeader() {
       {/* DESKTOP HEADER */}
       <header
         ref={headerRef}
-        className="sticky top-0 z-[100] hidden w-full border-b border-slate-200 bg-white text-slate-900 lg:block"
+        className="sticky top-0 z-[100] hidden w-full border-b border-slate-200 bg-white text-slate-900 xl:block"
       >
         <div className="mx-auto flex h-[92px] max-w-[1600px] items-center px-6 xl:px-10">
           <Link
@@ -497,7 +497,7 @@ export default function GlobalHeader() {
       </header>
 
       {/* MOBILE / TABLET HEADER */}
-      <header className="fixed left-0 top-0 z-[100] flex h-[82px] w-full items-center justify-between border-b border-white/10 bg-[#050b16] px-5 text-white lg:hidden">
+      <header className="fixed left-0 top-0 z-[100] flex h-[82px] w-full items-center justify-between border-b border-white/10 bg-[#050b16] px-5 text-white xl:hidden">
         <button
           type="button"
           onClick={() => {
@@ -536,11 +536,11 @@ export default function GlobalHeader() {
         </button>
       </header>
 
-      <div className="h-[82px] lg:hidden" />
+      <div className="h-[82px] xl:hidden" />
 
       {/* MOBILE FULL SCREEN MENU */}
       {mobileMenuOpen && (
-        <div className="fixed inset-0 z-[200] flex min-h-screen flex-col bg-[#171d1f] text-white lg:hidden">
+        <div className="fixed inset-0 z-[200] flex min-h-screen flex-col bg-[#171d1f] text-white xl:hidden">
           <div className="flex h-[88px] items-center justify-between border-b border-white/10 px-6">
             <Link
               href="/"
