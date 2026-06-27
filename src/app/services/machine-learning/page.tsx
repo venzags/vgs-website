@@ -305,19 +305,26 @@ export default function MachineLearningPage() {
       {/* CTA */}
       <section className="px-6 pb-24">
         <div className="mx-auto max-w-5xl rounded-3xl bg-gradient-to-r from-cyan-600 to-blue-600 p-8 text-center text-white sm:p-12 shadow-xl animate-gradient-flow relative overflow-hidden">
-          <div className="absolute top-0 left-0 w-full h-full">
-            {[...Array(6)].map((_, i) => (
-              <div
-                key={i}
-                className="absolute w-2 h-2 bg-white/40 rounded-full animate-float"
-                style={{
-                  left: `${Math.random() * 100}%`,
-                  top: `${Math.random() * 100}%`,
-                  animationDelay: `${i * 1.5}s`,
-                }}
-              />
-            ))}
-          </div>
+          <div className="absolute inset-0 pointer-events-none overflow-hidden">
+  {[
+    { left: "8%", top: "18%", delay: "0s" },
+    { left: "22%", top: "72%", delay: "0.6s" },
+    { left: "42%", top: "28%", delay: "1.2s" },
+    { left: "63%", top: "80%", delay: "1.8s" },
+    { left: "82%", top: "35%", delay: "2.4s" },
+    { left: "93%", top: "65%", delay: "3s" },
+  ].map((particle, index) => (
+    <div
+      key={index}
+      className="absolute h-2 w-2 rounded-full bg-white/40 animate-float"
+      style={{
+        left: particle.left,
+        top: particle.top,
+        animationDelay: particle.delay,
+      }}
+    />
+  ))}
+</div>
           <h2 className="mb-5 text-3xl font-bold sm:text-4xl animate-fade-in-up">
             Ready to Turn Data Into Better Decisions?
           </h2>
