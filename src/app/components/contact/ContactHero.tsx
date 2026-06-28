@@ -22,7 +22,7 @@ export default function ContactHero() {
       <div className="absolute left-0 top-0 h-96 w-96 rounded-full bg-cyan-500/10 blur-[140px]" />
       <div className="absolute right-0 bottom-0 h-96 w-96 rounded-full bg-blue-500/10 blur-[160px]" />
 
-      <div className="relative mx-auto max-w-7xl px-6 pt-32 pb-20 lg:px-10">
+      <div className="relative mx-auto max-w-7xl px-0 sm:px-6 pt-32 pb-20 lg:px-10">
         <motion.div
           initial={{ opacity: 0, y: -25 }}
           animate={{ opacity: 1, y: 0 }}

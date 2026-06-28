@@ -706,7 +706,7 @@ export default function VenzaAssistant() {
           type="button"
           onClick={() => setIsOpen(true)}
           aria-label="Open Venza AI Assistant"
-          className="fixed bottom-5 right-5 z-[90] flex h-16 w-16 items-center justify-center rounded-full bg-cyan-400 text-slate-950 shadow-2xl transition hover:scale-105 hover:bg-cyan-300 md:bottom-7 md:right-7"
+          className="fixed bottom-4 right-4 z-[90] flex h-16 w-16 items-center justify-center rounded-full bg-cyan-400 text-slate-950 shadow-2xl transition hover:scale-105 hover:bg-cyan-300 md:bottom-7 md:right-7"
         >
           <MessageCircle size={31} strokeWidth={2} />
         </button>

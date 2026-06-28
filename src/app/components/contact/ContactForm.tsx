@@ -13,14 +13,23 @@ import type { UseFormRegisterReturn, Control, Path } from "react-hook-form";
 async function submitContactForm(
   data: ContactFormData & { turnstileToken: string }
 ): Promise<{ success: boolean; message?: string }> {
+  const formData = new FormData();
+  Object.entries(data).forEach(([key, value]) => {
+  if (key !== "attachments" && value !== undefined && value !== null) {
+    formData.append(key, String(value));
+  }
+});
+if (data.attachments && Array.isArray(data.attachments)) {
+  data.attachments.forEach((file: File) => {
+    formData.append("attachments", file);
+  });
+}
   const response = await fetch(
     "https://vgs-contact-api.venzags.workers.dev",
     {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
+      body: formData,
+      
     }
   );
 
@@ -385,14 +394,21 @@ const FileUpload: React.FC<{
   error?: string;
 }> = ({ onFilesChange, error }) => {
   const [dragActive, setDragActive] = useState(false);
+  const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
   const inputRef = useRef<HTMLInputElement>(null);
 
   const handleFiles = useCallback(
-    (files: FileList | null) => {
-      if (files) onFilesChange(Array.from(files));
-    },
-    [onFilesChange]
-  );
+  (files: FileList | null) => {
+    if (!files) return;
+
+    const fileArray = Array.from(files);
+
+    setSelectedFiles(fileArray);
+
+    onFilesChange(fileArray);
+  },
+  [onFilesChange]
+);
 
   const handleDrag = useCallback((e: React.DragEvent) => {
     e.preventDefault();
@@ -427,13 +443,16 @@ const FileUpload: React.FC<{
         aria-label="Upload attachments"
       >
         <input
-          ref={inputRef}
-          type="file"
-          multiple
-          accept=".pdf,.docx,.zip,.png,.jpg,.jpeg"
-          className="hidden"
-          onChange={(e) => handleFiles(e.target.files)}
-        />
+    ref={inputRef}
+    type="file"
+    multiple
+    accept=".pdf,.docx,.zip,.png,.jpg,.jpeg"
+    className="hidden"
+    onChange={(e) => {
+        console.log("Files:", e.target.files);
+        handleFiles(e.target.files);
+    }}
+/>
         <motion.div animate={{ scale: dragActive ? 1.05 : 1 }} className="flex flex-col items-center gap-3">
           <div className="w-12 h-12 rounded-full bg-slate-800 flex items-center justify-center">
             <svg className="w-6 h-6 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -446,6 +465,23 @@ const FileUpload: React.FC<{
           <p className="text-xs text-slate-500">PDF, DOCX, ZIP, PNG, JPG (max 10 MB)</p>
         </motion.div>
       </div>
+      {selectedFiles.length > 0 && (
+  <div className="mt-4 rounded-xl border border-green-500/30 bg-green-500/10 p-4">
+    <p className="text-green-400 font-semibold mb-3">
+      ✓ {selectedFiles.length} file(s) selected
+    </p>
+
+    {selectedFiles.map((file, index) => (
+      <div
+        key={index}
+        className="flex justify-between py-1 text-sm text-slate-300"
+      >
+        <span>{file.name}</span>
+        <span>{(file.size / 1024).toFixed(1)} KB</span>
+      </div>
+    ))}
+  </div>
+)}
       {error && (
         <motion.p initial={{ opacity: 0, y: -4 }} animate={{ opacity: 1, y: 0 }} className="text-red-400 text-xs mt-2 ml-1">
           {error}
@@ -549,7 +585,7 @@ const ContactForm: React.FC = () => {
   };
 
   return (
-    <section className="relative min-h-screen bg-[#020617] text-white overflow-hidden pt-6 md:pt-10 pb-16 px-4 sm:px-6 lg:px-8">
+    <section className="relative min-h-screen bg-[#020617] text-white overflow-hidden pt-6 md:pt-10 pb-16 px-0 sm:px-6 lg:px-8">
       {/* Background image */}
       <div
         className="absolute inset-0 bg-cover bg-center opacity-30"
@@ -571,9 +607,9 @@ const ContactForm: React.FC = () => {
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        className="relative z-10 w-full max-w-5xl mx-auto bg-[#020617]/70 backdrop-blur-2xl border border-white/10 rounded-3xl shadow-2xl hover:shadow-[0_0_40px_rgba(34,211,238,0.1)] transition-shadow duration-500"
+        className="relative z-10 w-full max-w-7xl mx-auto px-1 sm:px-6 lg:px-8 bg-[#020617]/70 backdrop-blur-2xl border border-white/10 rounded-3xl shadow-2xl hover:shadow-[0_0_40px_rgba(34,211,238,0.1)] transition-shadow duration-500"
       >
-        <div className="p-8 sm:p-10 md:p-12">
+        <div className="px-3 py-8 sm:px-8 sm:py-10 md:px-12 md:py-12">
           {/* In‑card hero / heading */}
           <div className="mb-8 text-center sm:text-left">
             <motion.span
@@ -620,7 +656,7 @@ const ContactForm: React.FC = () => {
               </button>
             </motion.div>
           ) : (
-            <form onSubmit={handleSubmit(onSubmit)} noValidate className="space-y-10">
+            <form onSubmit={handleSubmit(onSubmit)} noValidate className="space-y-10 pb-28">
               {/* ---- Personal Information ---- */}
               <div>
                 <h3 className="text-lg font-semibold text-cyan-400 mb-6 flex items-center gap-2">
