@@ -544,6 +544,7 @@ const ContactForm: React.FC = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
+  const [showTurnstile, setShowTurnstile] = useState(false);
   const turnstileRef = useRef<any>(null);
 
   const {
@@ -671,7 +672,12 @@ const ContactForm: React.FC = () => {
               </button>
             </motion.div>
           ) : (
-            <form onSubmit={handleSubmit(onSubmit)} noValidate className="space-y-10 pb-28">
+            <form
+  onSubmit={handleSubmit(onSubmit)}
+  onFocusCapture={() => setShowTurnstile(true)}
+  noValidate
+  className="space-y-10 pb-28"
+>
               {/* ---- Personal Information ---- */}
               <div>
                 <h3 className="text-lg font-semibold text-cyan-400 mb-6 flex items-center gap-2">
@@ -832,15 +838,20 @@ const ContactForm: React.FC = () => {
               </div>
 
               {/* ---- Cloudflare Turnstile ---- */}
-              <div className="flex justify-center py-2">
-                <Turnstile
-                  sitekey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY || "0x4AAAAAADrReyVICiE2Fzct"}
-                  onVerify={(token) => setTurnstileToken(token)}
-                  onError={() => setTurnstileToken(null)}
-                  onExpire={() => setTurnstileToken(null)}
-                  theme="dark"
-                />
-              </div>
+              {showTurnstile && (
+  <div className="flex justify-center mt-4">
+    <Turnstile
+      sitekey={
+        process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY ||
+        "0x4AAAAAADrReyVICiE2Fzct"
+      }
+      onVerify={(token: string) => setTurnstileToken(token)}
+      onError={() => setTurnstileToken(null)}
+      onExpire={() => setTurnstileToken(null)}
+      theme="dark"
+    />
+  </div>
+)}
 
               {/* ---- Submit Button ---- */}
               <motion.button

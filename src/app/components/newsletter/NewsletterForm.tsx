@@ -97,8 +97,10 @@ const abortRef = useRef<AbortController | null>(null);
         {/* First Name */}
         <div className="relative flex-1 w-full min-w-0">
           <input
-            {...register("firstName")}
-            type="text"
+  {...register("firstName")}
+  type="text"
+  onFocus={() => setShowTurnstile(true)}
+  onChange={() => setShowTurnstile(true)}
             placeholder="First name (optional)"
             className="w-full bg-slate-900/50 backdrop-blur-sm border border-slate-700 rounded-xl px-4 py-3 text-white placeholder-slate-400 focus:border-cyan-400 focus:ring-2 focus:ring-cyan-500/30 outline-none transition-colors duration-300"
           />
@@ -110,8 +112,10 @@ const abortRef = useRef<AbortController | null>(null);
         {/* Email */}
         <div className="relative flex-1 w-full min-w-0">
           <input
-            {...register("email")}
-            type="email"
+  {...register("email")}
+  type="email"
+  onFocus={() => setShowTurnstile(true)}
+  onChange={() => setShowTurnstile(true)}
             placeholder="Your work email *"
             className="w-full bg-slate-900/50 backdrop-blur-sm border border-slate-700 rounded-xl px-4 py-3 text-white placeholder-slate-400 focus:border-cyan-400 focus:ring-2 focus:ring-cyan-500/30 outline-none transition-colors duration-300"
           />
@@ -141,16 +145,21 @@ const abortRef = useRef<AbortController | null>(null);
         style={{ position: "absolute", left: "-9999px", opacity: 0 }}
       />
 
-      {/* Cloudflare Turnstile */}
-      <div className="flex justify-center mt-4">
-        <Turnstile
-          sitekey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY || "0x4AAAAAADrReyVICiE2Fzct"}
-          onVerify={(token) => setTurnstileToken(token)}
-          onError={() => setTurnstileToken(null)}
-          onExpire={() => setTurnstileToken(null)}
-          theme="dark"
-        />
-      </div>
+      {/* Cloudflare Turnstile - Show only after user starts typing */}
+{showTurnstile && (
+  <div className="flex justify-center mt-4">
+    <Turnstile
+      sitekey={
+        process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY ||
+        "0x4AAAAAADrReyVICiE2Fzct"
+      }
+      onVerify={(token: string) => setTurnstileToken(token)}
+      onError={() => setTurnstileToken(null)}
+      onExpire={() => setTurnstileToken(null)}
+      theme="dark"
+    />
+  </div>
+)}
 
       {errorMsg && (
         <motion.p

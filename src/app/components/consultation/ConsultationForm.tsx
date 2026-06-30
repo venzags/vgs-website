@@ -578,6 +578,7 @@ const ConsultationForm: React.FC = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
+  const [showTurnstile, setShowTurnstile] = useState(false);
   const turnstileRef = useRef<any>(null);
 
   const {
@@ -685,7 +686,12 @@ const ConsultationForm: React.FC = () => {
                 </button>
               </motion.div>
             ) : (
-              <form onSubmit={handleSubmit(onSubmit)} noValidate className="space-y-10">
+              <form
+  onSubmit={handleSubmit(onSubmit)}
+  onFocusCapture={() => setShowTurnstile(true)}
+  noValidate
+  className="space-y-10 pb-28"
+>
                 <input
   type="text"
   {...register("website_url")}
@@ -840,15 +846,20 @@ const ConsultationForm: React.FC = () => {
                 </div>
 
                 {/* ---- Cloudflare Turnstile ---- */}
-                <div className="flex justify-center py-2">
-                  <Turnstile
-                    sitekey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY || "0x4AAAAAADrReyVICiE2Fzct"}
-                    onVerify={(token) => setTurnstileToken(token)}
-                    onError={() => setTurnstileToken(null)}
-                    onExpire={() => setTurnstileToken(null)}
-                    theme="dark"
-                  />
-                </div>
+                {showTurnstile && (
+  <div className="flex justify-center mt-6">
+    <Turnstile
+      sitekey={
+        process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY ||
+        "0x4AAAAAADrReyVICiE2Fzct"
+      }
+      onVerify={(token: string) => setTurnstileToken(token)}
+      onError={() => setTurnstileToken(null)}
+      onExpire={() => setTurnstileToken(null)}
+      theme="dark"
+    />
+  </div>
+)}
 
                 {/* ---- Submit Button ---- */}
                 <motion.button
