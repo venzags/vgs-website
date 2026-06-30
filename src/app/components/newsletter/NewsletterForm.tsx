@@ -6,6 +6,7 @@ import React, { useState, useRef } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { motion } from "framer-motion";
+import Turnstile from "react-turnstile";
 import { newsletterSchema, type NewsletterFormValues } from "./newsletterSchema";
 import { submitNewsletter } from "./api";
 import NewsletterLoading from "./NewsletterLoading";
@@ -15,6 +16,7 @@ import { COOLDOWN_MS } from "./constants";
 const NewsletterForm: React.FC = () => {
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [errorMsg, setErrorMsg] = useState("");
+  const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
   const lastSubmission = useRef(0);
   const abortRef = useRef<AbortController | null>(null);
 
@@ -33,7 +35,6 @@ const NewsletterForm: React.FC = () => {
   });
 
   const onSubmit = async (data: NewsletterFormValues) => {
-    // Cooldown check
     const now = Date.now();
     if (now - lastSubmission.current < COOLDOWN_MS) {
       setErrorMsg("Please wait before subscribing again.");
@@ -41,17 +42,15 @@ const NewsletterForm: React.FC = () => {
     }
     lastSubmission.current = now;
 
-    // Honeypot check
-    if (data.honeypot && data.honeypot.length > 0) {
-      // Silently reject bots
+    if (data.honeypot && data.honeypot.length > 0) return;
+
+    if (!turnstileToken) {
+      setErrorMsg("Please complete the security verification.");
       return;
     }
 
     setStatus("loading");
     setErrorMsg("");
-
-    // In a real app you'd obtain a Turnstile token before calling submit.
-    const turnstileToken = "DUMMY_TOKEN"; // Replace with real Turnstile implementation
 
     try {
       abortRef.current = new AbortController();
@@ -70,14 +69,13 @@ const NewsletterForm: React.FC = () => {
         throw new Error(result.message || "Subscription failed");
       }
     } catch (err: any) {
-  if (err.name !== "AbortError") {
-    setErrorMsg(err.message || "An unexpected error occurred.");
-    setStatus("idle");
-  }
-}
-finally {
-  abortRef.current = null;
-}
+      if (err.name !== "AbortError") {
+        setErrorMsg(err.message || "An unexpected error occurred.");
+        setStatus("idle");
+      }
+    } finally {
+      abortRef.current = null;
+    }
   };
 
   if (status === "success") return <NewsletterSuccess />;
@@ -93,8 +91,8 @@ finally {
       transition={{ duration: 0.5 }}
     >
       <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
-        {/* First Name (Optional) */}
-        <div className="relative flex-1 w-full">
+        {/* First Name */}
+        <div className="relative flex-1 w-full min-w-0">
           <input
             {...register("firstName")}
             type="text"
@@ -107,7 +105,7 @@ finally {
         </div>
 
         {/* Email */}
-        <div className="relative flex-1 w-full">
+        <div className="relative flex-1 w-full min-w-0">
           <input
             {...register("email")}
             type="email"
@@ -119,16 +117,7 @@ finally {
           )}
         </div>
 
-        {/* Honeypot (hidden) */}
-        <input
-          {...register("honeypot")}
-          type="text"
-          tabIndex={-1}
-          autoComplete="off"
-          style={{ position: "absolute", left: "-9999px", opacity: 0 }}
-        />
-
-        {/* Subscribe Button */}
+        {/* Subscribe Button – always enabled here because loading state is handled earlier */}
         <motion.button
           type="submit"
           disabled={false}
@@ -140,11 +129,31 @@ finally {
         </motion.button>
       </div>
 
+      {/* Honeypot (hidden) */}
+      <input
+        {...register("honeypot")}
+        type="text"
+        tabIndex={-1}
+        autoComplete="off"
+        style={{ position: "absolute", left: "-9999px", opacity: 0 }}
+      />
+
+      {/* Cloudflare Turnstile */}
+      <div className="flex justify-center mt-4">
+        <Turnstile
+          sitekey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY || "0x4AAAAAADrReyVICiE2Fzct"}
+          onVerify={(token) => setTurnstileToken(token)}
+          onError={() => setTurnstileToken(null)}
+          onExpire={() => setTurnstileToken(null)}
+          theme="dark"
+        />
+      </div>
+
       {errorMsg && (
         <motion.p
           initial={{ opacity: 0, y: -4 }}
           animate={{ opacity: 1, y: 0 }}
-          className="text-red-400 text-sm mt-2"
+          className="text-red-400 text-sm mt-2 text-center"
         >
           {errorMsg}
         </motion.p>

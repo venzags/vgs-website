@@ -5,7 +5,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 
 import Counter from "./components/Counter";
-import Newsletter from "./components/Newsletter";
+import NewsletterSection from "./components/newsletter/NewsletterSection";
 import VGSNetwork from "./components/VGSNetwork";
 
 type Service = {
@@ -867,7 +867,7 @@ export default function Home() {
         </nav>
       </div>
 
-      <Newsletter />
+      <NewsletterSection />
     </div>
   );
 }
