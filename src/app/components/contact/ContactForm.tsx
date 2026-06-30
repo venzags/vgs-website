@@ -15,7 +15,13 @@ async function submitContactForm(
 ): Promise<{ success: boolean; message?: string }> {
   const formData = new FormData();
   Object.entries(data).forEach(([key, value]) => {
-  if (key !== "attachments" && value !== undefined && value !== null) {
+  if (key === "attachments" || value === undefined || value === null) {
+    return;
+  }
+
+  if (Array.isArray(value)) {
+    formData.append(key, JSON.stringify(value));
+  } else {
     formData.append(key, String(value));
   }
 });
@@ -23,6 +29,11 @@ if (data.attachments && Array.isArray(data.attachments)) {
   data.attachments.forEach((file: File) => {
     formData.append("attachments", file);
   });
+}
+console.log("========== FORMDATA ==========");
+
+for (const pair of formData.entries()) {
+  console.log(pair[0], pair[1]);
 }
   const response = await fetch(
     "https://vgs-contact-api.venzags.workers.dev",
@@ -36,7 +47,11 @@ if (data.attachments && Array.isArray(data.attachments)) {
   const result = await response.json();
 
   if (!response.ok) {
-    throw new Error(result.message || "Failed to submit contact form.");
+    throw new Error(
+    result.error ||
+    result.message ||
+    "Failed to submit contact form."
+);
   }
 
   return result;
