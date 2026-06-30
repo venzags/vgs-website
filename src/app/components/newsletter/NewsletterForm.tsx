@@ -15,10 +15,13 @@ import { COOLDOWN_MS } from "./constants";
 
 const NewsletterForm: React.FC = () => {
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
-  const [errorMsg, setErrorMsg] = useState("");
-  const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
-  const lastSubmission = useRef(0);
-  const abortRef = useRef<AbortController | null>(null);
+const [errorMsg, setErrorMsg] = useState("");
+
+const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
+const [showTurnstile, setShowTurnstile] = useState(false);
+
+const lastSubmission = useRef(0);
+const abortRef = useRef<AbortController | null>(null);
 
   const {
     register,
